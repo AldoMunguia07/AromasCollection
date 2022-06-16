@@ -30,6 +30,7 @@ namespace AromasCollection
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnProducto = new System.Windows.Forms.Button();
             this.btnQuitar = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.btnAgregar = new System.Windows.Forms.Button();
@@ -37,6 +38,7 @@ namespace AromasCollection
             this.numCantidad = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnCliente = new System.Windows.Forms.Button();
             this.txtObservaciones = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -60,8 +62,6 @@ namespace AromasCollection
             this.label8 = new System.Windows.Forms.Label();
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.btnCliente = new System.Windows.Forms.Button();
-            this.btnProducto = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numCantidad)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -84,6 +84,16 @@ namespace AromasCollection
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Agregar al carrito";
+            // 
+            // btnProducto
+            // 
+            this.btnProducto.Location = new System.Drawing.Point(330, 25);
+            this.btnProducto.Name = "btnProducto";
+            this.btnProducto.Size = new System.Drawing.Size(75, 23);
+            this.btnProducto.TabIndex = 10;
+            this.btnProducto.Text = "Producto";
+            this.btnProducto.UseVisualStyleBackColor = true;
+            this.btnProducto.Click += new System.EventHandler(this.btnProducto_Click);
             // 
             // btnQuitar
             // 
@@ -154,6 +164,15 @@ namespace AromasCollection
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Datos Factura";
+            // 
+            // btnCliente
+            // 
+            this.btnCliente.Location = new System.Drawing.Point(348, 61);
+            this.btnCliente.Name = "btnCliente";
+            this.btnCliente.Size = new System.Drawing.Size(75, 23);
+            this.btnCliente.TabIndex = 9;
+            this.btnCliente.Text = "Cliente";
+            this.btnCliente.UseVisualStyleBackColor = true;
             // 
             // txtObservaciones
             // 
@@ -344,25 +363,6 @@ namespace AromasCollection
             this.label9.TabIndex = 22;
             this.label9.Text = "Total";
             // 
-            // btnCliente
-            // 
-            this.btnCliente.Location = new System.Drawing.Point(348, 61);
-            this.btnCliente.Name = "btnCliente";
-            this.btnCliente.Size = new System.Drawing.Size(75, 23);
-            this.btnCliente.TabIndex = 9;
-            this.btnCliente.Text = "Cliente";
-            this.btnCliente.UseVisualStyleBackColor = true;
-            // 
-            // btnProducto
-            // 
-            this.btnProducto.Location = new System.Drawing.Point(330, 25);
-            this.btnProducto.Name = "btnProducto";
-            this.btnProducto.Size = new System.Drawing.Size(75, 23);
-            this.btnProducto.TabIndex = 10;
-            this.btnProducto.Text = "Producto";
-            this.btnProducto.UseVisualStyleBackColor = true;
-            this.btnProducto.Click += new System.EventHandler(this.btnProducto_Click);
-            // 
             // FrmFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -381,6 +381,7 @@ namespace AromasCollection
             this.Controls.Add(this.dgCarrito);
             this.Controls.Add(this.panel1);
             this.Name = "FrmFactura";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Factura";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

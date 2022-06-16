@@ -64,6 +64,7 @@ namespace AromasCollection
             this.Controls.Add(this.dgProductos);
             this.Controls.Add(this.btnAgregar);
             this.Name = "FrmProductoFactura";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmProductoFactura";
             ((System.ComponentModel.ISupportInitialize)(this.dgProductos)).EndInit();
             this.ResumeLayout(false);

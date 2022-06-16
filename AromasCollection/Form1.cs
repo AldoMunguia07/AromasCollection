@@ -24,9 +24,10 @@ namespace AromasCollection
             factura.IdCliente = 1;
             factura.Observaciones = "El cliente me miró feo";
 
-            factura.AgregarFactura(factura);
+           // factura.AgregarFactura(factura);
 
             
         }
+
     }
 }
