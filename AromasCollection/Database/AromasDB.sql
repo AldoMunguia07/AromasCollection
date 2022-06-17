@@ -189,7 +189,8 @@ CREATE PROCEDURE sp_Venta
 @fechaVenta DATETIME = NULL,
 @descuento FLOAT = NULL,
 @observaciones nvarchar(150) = NULL,
-@accion nvarchar(50)
+@accion nvarchar(50),
+@facturaBuscada VARCHAR(150)  = NULL
 
 AS
 BEGIN
@@ -197,6 +198,31 @@ BEGIN
 	IF @accion = 'insertar'
 		BEGIN
 			INSERT INTO Factura VALUES (@idFactura,@codigoSAR, @idColaborador, @idCliente, @fechaVenta, @descuento, @observaciones)
+		END
+	ELSE IF @accion = 'mostrar'
+		BEGIN
+			SELECT f.idFactura 'Código factura', f.fechaVenta 'Fecha venta', CONCAT(co.nombreColaborador, ' ', co.apellidoColaborador) Colaborador, CONCAT(c.nombreCliente,' ', c.apellidoCliente) Cliente, c.rtn 'RTN cliente',
+			SUM(df.cantidad * df.precio) Subtotal, (SUM(df.cantidad * df.precio) * 0.15) ISV, F.descuento Descuento, SUM(df.cantidad * df.precio) +  ((SUM(df.cantidad * df.precio) * 0.15) - f.descuento) Total,
+			f.observaciones Observaciones
+			FROM Factura f JOIN DetalleFactura df 
+			ON df.idFactura = f.idFactura
+			JOIN Cliente c ON c.idCliente = f.idCliente
+			JOIN Colaborador co on co.idColaborador = f.idColaborador
+			GROUP BY f.idFactura, f.fechaVenta, co.nombreColaborador, co.apellidoColaborador, c.nombreCliente, c.apellidoCliente, c.rtn, F.descuento, f.observaciones
+			
+		END
+		ELSE IF @accion = 'buscar'
+		BEGIN
+			SELECT f.idFactura 'Código factura', f.fechaVenta 'Fecha venta', CONCAT(co.nombreColaborador, ' ', co.apellidoColaborador) Colaborador, CONCAT(c.nombreCliente,' ', c.apellidoCliente) Cliente, c.rtn 'RTN cliente',
+			SUM(df.cantidad * df.precio) Subtotal, (SUM(df.cantidad * df.precio) * 0.15) ISV, F.descuento Descuento, SUM(df.cantidad * df.precio) +  ((SUM(df.cantidad * df.precio) * 0.15) - f.descuento) Total,
+			f.observaciones Observaciones
+			FROM Factura f JOIN DetalleFactura df 
+			ON df.idFactura = f.idFactura
+			JOIN Cliente c ON c.idCliente = f.idCliente
+			JOIN Colaborador co on co.idColaborador = f.idColaborador
+			WHERE  CONCAT(f.idFactura, ' ', f.fechaVenta, ' ', c.nombreCliente, ' ', c.apellidoCliente, ' ', c.rtn, co.nombreColaborador, ' ', co.apellidoColaborador) LIKE CONCAT('%', @facturaBuscada,'%')
+			GROUP BY f.idFactura, f.fechaVenta, co.nombreColaborador, co.apellidoColaborador, c.nombreCliente, c.apellidoCliente, c.rtn, F.descuento, f.observaciones
+			
 		END
 
 END
@@ -236,19 +262,19 @@ BEGIN
 	
 	IF @accion = 'insertar'
 		BEGIN
-			--select * from Producto
+			select * from Producto --Agregar el de insertar
 		END
 	ELSE IF @accion = 'mostrar'
 		BEGIN
 			  SELECT p.idProducto Codigo, p.nombreProducto Producto, p.descripcion Descripcion, p.precioDetalle 'Precio detalle', p.precioMayorista 'Precio mayorista', c.categoria Catgeoria,
-				(SELECT SUM(cantidad) FROM Lote WHERE idProducto = p.idProducto) - (SELECT ISNULL(SUM(cantidad), 0) FROM DetalleFactura WHERE idProducto = p.idProducto)  Existencia
+				(SELECT ISNULL(SUM(cantidad), 0) FROM Lote WHERE idProducto = p.idProducto) - (SELECT ISNULL(SUM(cantidad), 0) FROM DetalleFactura WHERE idProducto = p.idProducto)  Existencia
 				FROM Producto p JOIN Categoria c
 				ON p.idCategoria = C.idCategoria
 		END
 	ELSE IF @accion = 'buscar'
 		BEGIN
 			  SELECT p.idProducto Codigo, p.nombreProducto Producto, p.descripcion Descripcion, p.precioDetalle 'Precio detalle', p.precioMayorista 'Precio mayorista', c.categoria Catgeoria,
-				(SELECT SUM(cantidad) FROM Lote WHERE idProducto = p.idProducto) - (SELECT ISNULL(SUM(cantidad), 0) FROM DetalleFactura WHERE idProducto = p.idProducto)  Existencia
+				(SELECT ISNULL(SUM(cantidad), 0) FROM Lote WHERE idProducto = p.idProducto) - (SELECT ISNULL(SUM(cantidad), 0) FROM DetalleFactura WHERE idProducto = p.idProducto)  Existencia
 				FROM Producto p JOIN Categoria c
 				ON p.idCategoria = C.idCategoria
 				 WHERE  CONCAT(p.idProducto, ' ', p.nombreProducto, ' ', c.categoria) LIKE CONCAT('%', @productoBuscado,'%')
@@ -257,7 +283,7 @@ BEGIN
 END
 GO
 
-ALTER PROCEDURE sp_Cliente
+CREATE PROCEDURE sp_Cliente
 @idCliente int = NULL,
 @dni VARCHAR(15) = NULL,
 @rtn VARCHAR(15) = NULL,
@@ -271,7 +297,7 @@ BEGIN
 	
 	IF @accion = 'insertar'
 		BEGIN
-			select * from Producto
+			select * from Producto --Agregar el de insertar
 		END
 	ELSE IF @accion = 'mostrarEnFactura'
 		BEGIN

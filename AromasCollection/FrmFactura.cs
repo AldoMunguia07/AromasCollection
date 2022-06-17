@@ -151,6 +151,9 @@ namespace AromasCollection
 
                     }
 
+                    MessageBox.Show("Venta realizada", "Aromas Colllection", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+
                 }
                 else
                 {

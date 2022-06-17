@@ -23,6 +23,83 @@ namespace AromasCollection.Clases
         public string Observaciones { get; set; }
 
         //METODOS
+
+        public void Mostrar(DataGridView dataGrid)
+        {
+
+            try
+            {
+                conexion.sqlConnection.Open();
+                //Query para mostrar un zapato
+                SqlCommand sqlCommand = new SqlCommand("sp_Venta", conexion.sqlConnection);
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+
+                // Establecer los valores de los parámetros
+
+                sqlCommand.Parameters.AddWithValue("@accion", "mostrar");
+
+                using (sqlDataAdapter)
+                {
+                    DataTable dataTable = new DataTable();
+
+                    sqlDataAdapter.Fill(dataTable);
+
+                    dataGrid.DataSource = dataTable;
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                conexion.sqlConnection.Close();
+            }
+        }
+
+        public void BuscarFactura(DataGridView dataGrid, string valorBuscado)
+        {
+
+            try
+            {
+                conexion.sqlConnection.Open();
+                //Query para mostrar un zapato
+                SqlCommand sqlCommand = new SqlCommand("sp_Venta", conexion.sqlConnection);
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+
+                // Establecer los valores de los parámetros
+                sqlCommand.Parameters.AddWithValue("@facturaBuscada", valorBuscado);
+                sqlCommand.Parameters.AddWithValue("@accion", "buscar");
+
+                using (sqlDataAdapter)
+                {
+                    DataTable dataTable = new DataTable();
+
+                    sqlDataAdapter.Fill(dataTable);
+
+                    dataGrid.DataSource = dataTable;
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                conexion.sqlConnection.Close();
+            }
+        }
+
         public void AgregarFactura(Factura factura)
         {
             try
