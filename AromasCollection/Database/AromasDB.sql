@@ -192,6 +192,25 @@ BEGIN
 END
 GO
 
+CREATE PROCEDURE sp_detalleVenta
+@idFactura int = NULL,
+@codigoSAR int = NULL,
+@idProducto int = NULL,
+@precio float = NULL,
+@cantidad int = NULL,
+@accion nvarchar(50)
+
+AS
+BEGIN
+	
+	IF @accion = 'insertar'
+		BEGIN
+			INSERT INTO DetalleFactura VALUES (@idFactura,@codigoSAR, @idProducto, @precio, @cantidad)
+		END
+
+END
+GO
+
 
 CREATE PROCEDURE sp_Producto
 @idProducto int = NULL,
@@ -210,15 +229,10 @@ BEGIN
 		END
 	ELSE IF @accion = 'mostrar'
 		BEGIN
-			SELECT p.idProducto Codigo, p.nombreProducto Producto, p.descripcion Descripcion, p.precioDetalle 'Precio detalle', p.precioMayorista 'Precio mayorista', c.categoria Catgeoria,
-			sum(l.cantidad - ISNULL(df.cantidad, 0)) Existencia
-			FROM Producto p JOIN Categoria c
-			ON p.idCategoria = C.idCategoria
-			JOIN Lote l
-			ON l.idProducto = p.idProducto
-			LEFT JOIN DetalleFactura df
-			ON df.idProducto = p.idProducto
-			GROUP BY p.idProducto, p.nombreProducto, p.descripcion, p.precioDetalle, p.precioMayorista, c.categoria
+			  SELECT p.idProducto Codigo, p.nombreProducto Producto, p.descripcion Descripcion, p.precioDetalle 'Precio detalle', p.precioMayorista 'Precio mayorista', c.categoria Catgeoria,
+				(SELECT SUM(cantidad) FROM Lote WHERE idProducto = p.idProducto) - (SELECT ISNULL(SUM(cantidad), 0) FROM DetalleFactura WHERE idProducto = p.idProducto)  Existencia
+				FROM Producto p JOIN Categoria c
+				ON p.idCategoria = C.idCategoria
 		END
 
 END

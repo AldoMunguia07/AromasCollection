@@ -9,46 +9,45 @@ using System.Windows.Forms;
 
 namespace AromasCollection.Clases
 {
-    class Factura
+    class DetalleFactura
     {
         Conexion conexion = new Conexion();
 
         //PROPIEDADES
         public int IdFactura { get; set; }
         public int CodigoSAR { get; set; }
-        public int IdColaborador { get; set; }
-        public int IdCliente{ get; set; }
-        public DateTime FechaVenta { get; set; }
-        public string Observaciones { get; set; }
+        public int IdProducto{ get; set; }
+        public float Precio{ get; set; }
+        public int Cantidad { get; set; }
 
         //METODOS
-        public void AgregarFactura(Factura factura)
+
+        public void AgregarFactura(DetalleFactura detalleFactura)
         {
             try
             {
                 conexion.sqlConnection.Open();
                 //Query para añadir un paciente
-                SqlCommand sqlCommand = new SqlCommand("sp_Venta", conexion.sqlConnection);
+                SqlCommand sqlCommand = new SqlCommand("sp_detalleVenta", conexion.sqlConnection);
                 sqlCommand.CommandType = CommandType.StoredProcedure;
 
                 // Establecer los valores de los parámetros
-                sqlCommand.Parameters.AddWithValue("@idFactura", factura.IdFactura);
-                sqlCommand.Parameters.AddWithValue("@codigoSAR", factura.CodigoSAR);
-                sqlCommand.Parameters.AddWithValue("@idColaborador", factura.IdColaborador);
-                sqlCommand.Parameters.AddWithValue("@idCliente", factura.IdCliente);
-                //sqlCommand.Parameters.AddWithValue("@fechaVenta", factura.FechaVenta);
-                sqlCommand.Parameters.AddWithValue("@observaciones", factura.Observaciones);
+                sqlCommand.Parameters.AddWithValue("@idFactura", detalleFactura.IdFactura);
+                sqlCommand.Parameters.AddWithValue("@codigoSAR", detalleFactura.CodigoSAR);
+                sqlCommand.Parameters.AddWithValue("@idProducto", detalleFactura.IdProducto);
+                sqlCommand.Parameters.AddWithValue("@precio", detalleFactura.Precio);
+                sqlCommand.Parameters.AddWithValue("@cantidad", detalleFactura.Cantidad);
                 sqlCommand.Parameters.AddWithValue("@accion", "insertar");
 
                 sqlCommand.ExecuteNonQuery();
 
-              
+
 
             }
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message.ToString(), "Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -56,10 +55,6 @@ namespace AromasCollection.Clases
                 conexion.sqlConnection.Close();
             }
         }
-
-
-
-
 
     }
 }

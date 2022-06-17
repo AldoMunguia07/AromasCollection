@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace AromasCollection
 {
@@ -39,6 +40,38 @@ namespace AromasCollection
             this.WindowState = FormWindowState.Normal;
             btnMaximizar.Visible = true;
             btnRestaurar.Visible = false;
+        }
+
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+
+        private void titulo_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void abrirFormPanel(object form)
+        {
+            if(this.main.Controls.Count > 0)
+            {
+                this.main.Controls.RemoveAt(0);
+            }
+
+            Form fh = form as Form;
+            fh.TopLevel = false;
+            fh.Dock = DockStyle.Fill;
+            this.main.Controls.Add(fh);
+            this.main.Tag = fh;
+            fh.Show();
+        }
+
+        private void btnVentas_Click(object sender, EventArgs e)
+        {
+            abrirFormPanel(new FrmVentas());
         }
     }
 }

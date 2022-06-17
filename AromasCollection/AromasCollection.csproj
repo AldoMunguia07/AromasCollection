@@ -69,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\Conexion.cs" />
+    <Compile Include="Clases\DetalleFactura.cs" />
     <Compile Include="Clases\Factura.cs" />
     <Compile Include="Clases\Producto.cs" />
     <Compile Include="FrmFactura.cs">
@@ -89,6 +90,12 @@
     <Compile Include="FrmProductoFactura.Designer.cs">
       <DependentUpon>FrmProductoFactura.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmVentas.Designer.cs">
+      <DependentUpon>FrmVentas.cs</DependentUpon>
+    </Compile>
     <Compile Include="MenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,6 +112,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmProductoFactura.resx">
       <DependentUpon>FrmProductoFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmVentas.resx">
+      <DependentUpon>FrmVentas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
@@ -135,6 +145,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Database\AromasDB.sql" />
+    <None Include="Resources\reportes.png" />
+    <None Include="Resources\compras.png" />
+    <None Include="Resources\tags_categories_icon_145927.png" />
+    <None Include="Resources\pagos.png" />
+    <None Include="Resources\empleados.png" />
+    <None Include="Resources\clientes.png" />
+    <None Include="Resources\venta.png" />
+    <None Include="Resources\producto.png" />
+    <None Include="Resources\aromasLogo.png" />
+    <None Include="Resources\aromas.jpeg" />
     <None Include="Resources\res.png" />
     <None Include="Resources\minimazar.png" />
     <None Include="Resources\maxi.png" />
