@@ -30,6 +30,8 @@ namespace AromasCollection
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rbMayorista = new System.Windows.Forms.RadioButton();
+            this.rbDetalle = new System.Windows.Forms.RadioButton();
             this.btnProducto = new System.Windows.Forms.Button();
             this.btnQuitar = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -45,33 +47,36 @@ namespace AromasCollection
             this.label2 = new System.Windows.Forms.Label();
             this.txtCliente = new System.Windows.Forms.TextBox();
             this.txtNumFactura = new System.Windows.Forms.TextBox();
-            this.txtRtn = new System.Windows.Forms.TextBox();
+            this.txtCodigoCliente = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgCarrito = new System.Windows.Forms.DataGridView();
+            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Product = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnFacturar = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtDescuento = new System.Windows.Forms.TextBox();
             this.txtISV = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtSubtotal = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Product = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numDescuento = new System.Windows.Forms.NumericUpDown();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numCantidad)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCarrito)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numDescuento)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.rbMayorista);
+            this.groupBox1.Controls.Add(this.rbDetalle);
             this.groupBox1.Controls.Add(this.btnProducto);
             this.groupBox1.Controls.Add(this.btnQuitar);
             this.groupBox1.Controls.Add(this.label4);
@@ -86,6 +91,28 @@ namespace AromasCollection
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Agregar al carrito";
             // 
+            // rbMayorista
+            // 
+            this.rbMayorista.AutoSize = true;
+            this.rbMayorista.Location = new System.Drawing.Point(383, 73);
+            this.rbMayorista.Name = "rbMayorista";
+            this.rbMayorista.Size = new System.Drawing.Size(102, 17);
+            this.rbMayorista.TabIndex = 17;
+            this.rbMayorista.TabStop = true;
+            this.rbMayorista.Text = "Precio mayorista";
+            this.rbMayorista.UseVisualStyleBackColor = true;
+            // 
+            // rbDetalle
+            // 
+            this.rbDetalle.AutoSize = true;
+            this.rbDetalle.Location = new System.Drawing.Point(275, 73);
+            this.rbDetalle.Name = "rbDetalle";
+            this.rbDetalle.Size = new System.Drawing.Size(89, 17);
+            this.rbDetalle.TabIndex = 16;
+            this.rbDetalle.TabStop = true;
+            this.rbDetalle.Text = "Precio detalle";
+            this.rbDetalle.UseVisualStyleBackColor = true;
+            // 
             // btnProducto
             // 
             this.btnProducto.Location = new System.Drawing.Point(330, 25);
@@ -98,7 +125,7 @@ namespace AromasCollection
             // 
             // btnQuitar
             // 
-            this.btnQuitar.Location = new System.Drawing.Point(211, 126);
+            this.btnQuitar.Location = new System.Drawing.Point(163, 126);
             this.btnQuitar.Name = "btnQuitar";
             this.btnQuitar.Size = new System.Drawing.Size(106, 33);
             this.btnQuitar.TabIndex = 15;
@@ -117,7 +144,7 @@ namespace AromasCollection
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(71, 126);
+            this.btnAgregar.Location = new System.Drawing.Point(23, 126);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(109, 33);
             this.btnAgregar.TabIndex = 14;
@@ -136,9 +163,24 @@ namespace AromasCollection
             // numCantidad
             // 
             this.numCantidad.Location = new System.Drawing.Point(113, 70);
+            this.numCantidad.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            0});
+            this.numCantidad.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numCantidad.Name = "numCantidad";
             this.numCantidad.Size = new System.Drawing.Size(120, 20);
             this.numCantidad.TabIndex = 5;
+            this.numCantidad.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label5
             // 
@@ -158,7 +200,7 @@ namespace AromasCollection
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.txtCliente);
             this.groupBox2.Controls.Add(this.txtNumFactura);
-            this.groupBox2.Controls.Add(this.txtRtn);
+            this.groupBox2.Controls.Add(this.txtCodigoCliente);
             this.groupBox2.Location = new System.Drawing.Point(13, 21);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(474, 202);
@@ -174,6 +216,7 @@ namespace AromasCollection
             this.btnCliente.TabIndex = 9;
             this.btnCliente.Text = "Cliente";
             this.btnCliente.UseVisualStyleBackColor = true;
+            this.btnCliente.Click += new System.EventHandler(this.btnCliente_Click);
             // 
             // txtObservaciones
             // 
@@ -212,9 +255,10 @@ namespace AromasCollection
             // 
             // txtCliente
             // 
-            this.txtCliente.Location = new System.Drawing.Point(242, 64);
+            this.txtCliente.Location = new System.Drawing.Point(170, 64);
             this.txtCliente.Name = "txtCliente";
-            this.txtCliente.Size = new System.Drawing.Size(100, 20);
+            this.txtCliente.ReadOnly = true;
+            this.txtCliente.Size = new System.Drawing.Size(172, 20);
             this.txtCliente.TabIndex = 2;
             // 
             // txtNumFactura
@@ -224,12 +268,13 @@ namespace AromasCollection
             this.txtNumFactura.Size = new System.Drawing.Size(211, 20);
             this.txtNumFactura.TabIndex = 1;
             // 
-            // txtRtn
+            // txtCodigoCliente
             // 
-            this.txtRtn.Location = new System.Drawing.Point(131, 64);
-            this.txtRtn.Name = "txtRtn";
-            this.txtRtn.Size = new System.Drawing.Size(100, 20);
-            this.txtRtn.TabIndex = 1;
+            this.txtCodigoCliente.Location = new System.Drawing.Point(131, 64);
+            this.txtCodigoCliente.Name = "txtCodigoCliente";
+            this.txtCodigoCliente.ReadOnly = true;
+            this.txtCodigoCliente.Size = new System.Drawing.Size(33, 20);
+            this.txtCodigoCliente.TabIndex = 1;
             // 
             // panel1
             // 
@@ -268,80 +313,6 @@ namespace AromasCollection
             this.dgCarrito.Size = new System.Drawing.Size(1006, 223);
             this.dgCarrito.TabIndex = 1;
             // 
-            // btnFacturar
-            // 
-            this.btnFacturar.Location = new System.Drawing.Point(29, 505);
-            this.btnFacturar.Name = "btnFacturar";
-            this.btnFacturar.Size = new System.Drawing.Size(155, 39);
-            this.btnFacturar.TabIndex = 16;
-            this.btnFacturar.Text = "Facturar";
-            this.btnFacturar.UseVisualStyleBackColor = true;
-            this.btnFacturar.Click += new System.EventHandler(this.btnFacturar_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(546, 499);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(59, 13);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Descuento";
-            // 
-            // txtDescuento
-            // 
-            this.txtDescuento.Location = new System.Drawing.Point(538, 515);
-            this.txtDescuento.Name = "txtDescuento";
-            this.txtDescuento.Size = new System.Drawing.Size(75, 20);
-            this.txtDescuento.TabIndex = 6;
-            // 
-            // txtISV
-            // 
-            this.txtISV.Location = new System.Drawing.Point(657, 515);
-            this.txtISV.Name = "txtISV";
-            this.txtISV.Size = new System.Drawing.Size(75, 20);
-            this.txtISV.TabIndex = 7;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(682, 499);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(24, 13);
-            this.label7.TabIndex = 18;
-            this.label7.Text = "ISV";
-            // 
-            // txtSubtotal
-            // 
-            this.txtSubtotal.Location = new System.Drawing.Point(780, 515);
-            this.txtSubtotal.Name = "txtSubtotal";
-            this.txtSubtotal.Size = new System.Drawing.Size(75, 20);
-            this.txtSubtotal.TabIndex = 8;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(794, 499);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(46, 13);
-            this.label8.TabIndex = 20;
-            this.label8.Text = "Subtotal";
-            // 
-            // txtTotal
-            // 
-            this.txtTotal.Location = new System.Drawing.Point(905, 515);
-            this.txtTotal.Name = "txtTotal";
-            this.txtTotal.Size = new System.Drawing.Size(75, 20);
-            this.txtTotal.TabIndex = 9;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(927, 499);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(31, 13);
-            this.label9.TabIndex = 22;
-            this.label9.Text = "Total";
-            // 
             // Codigo
             // 
             this.Codigo.HeaderText = "Codigo";
@@ -372,19 +343,105 @@ namespace AromasCollection
             this.Total.Name = "Total";
             this.Total.ReadOnly = true;
             // 
+            // btnFacturar
+            // 
+            this.btnFacturar.Location = new System.Drawing.Point(29, 505);
+            this.btnFacturar.Name = "btnFacturar";
+            this.btnFacturar.Size = new System.Drawing.Size(155, 39);
+            this.btnFacturar.TabIndex = 16;
+            this.btnFacturar.Text = "Facturar";
+            this.btnFacturar.UseVisualStyleBackColor = true;
+            this.btnFacturar.Click += new System.EventHandler(this.btnFacturar_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(546, 499);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(59, 13);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Descuento";
+            // 
+            // txtISV
+            // 
+            this.txtISV.Location = new System.Drawing.Point(657, 515);
+            this.txtISV.Name = "txtISV";
+            this.txtISV.ReadOnly = true;
+            this.txtISV.Size = new System.Drawing.Size(75, 20);
+            this.txtISV.TabIndex = 7;
+            this.txtISV.Text = "0";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(682, 499);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(24, 13);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "ISV";
+            // 
+            // txtSubtotal
+            // 
+            this.txtSubtotal.Location = new System.Drawing.Point(780, 515);
+            this.txtSubtotal.Name = "txtSubtotal";
+            this.txtSubtotal.ReadOnly = true;
+            this.txtSubtotal.Size = new System.Drawing.Size(75, 20);
+            this.txtSubtotal.TabIndex = 8;
+            this.txtSubtotal.Text = "0";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(794, 499);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(46, 13);
+            this.label8.TabIndex = 20;
+            this.label8.Text = "Subtotal";
+            // 
+            // txtTotal
+            // 
+            this.txtTotal.Location = new System.Drawing.Point(905, 515);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.ReadOnly = true;
+            this.txtTotal.Size = new System.Drawing.Size(75, 20);
+            this.txtTotal.TabIndex = 9;
+            this.txtTotal.Text = "0";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(927, 499);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(31, 13);
+            this.label9.TabIndex = 22;
+            this.label9.Text = "Total";
+            // 
+            // numDescuento
+            // 
+            this.numDescuento.Location = new System.Drawing.Point(537, 515);
+            this.numDescuento.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
+            this.numDescuento.Name = "numDescuento";
+            this.numDescuento.Size = new System.Drawing.Size(75, 20);
+            this.numDescuento.TabIndex = 23;
+            this.numDescuento.ValueChanged += new System.EventHandler(this.numDescuento_ValueChanged);
+            // 
             // FrmFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(1031, 585);
+            this.Controls.Add(this.numDescuento);
             this.Controls.Add(this.txtTotal);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txtSubtotal);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtISV);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.txtDescuento);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnFacturar);
             this.Controls.Add(this.dgCarrito);
@@ -400,6 +457,7 @@ namespace AromasCollection
             this.groupBox2.PerformLayout();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgCarrito)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numDescuento)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -421,13 +479,12 @@ namespace AromasCollection
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtCliente;
         private System.Windows.Forms.TextBox txtNumFactura;
-        private System.Windows.Forms.TextBox txtRtn;
+        private System.Windows.Forms.TextBox txtCodigoCliente;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView dgCarrito;
         private System.Windows.Forms.Button btnFacturar;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtDescuento;
         private System.Windows.Forms.TextBox txtISV;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtSubtotal;
@@ -441,5 +498,8 @@ namespace AromasCollection
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Total;
+        private System.Windows.Forms.NumericUpDown numDescuento;
+        private System.Windows.Forms.RadioButton rbMayorista;
+        private System.Windows.Forms.RadioButton rbDetalle;
     }
 }

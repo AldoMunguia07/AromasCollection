@@ -9,16 +9,16 @@ using System.Windows.Forms;
 
 namespace AromasCollection.Clases
 {
-    public class Producto
+    public class Cliente
     {
         Conexion conexion = new Conexion();
         //PROPIEDADES
-        public int IdProducto { get; set; }
-        public string nombreProducto{ get; set; }
-        public string descripcion { get; set; }
-        public float precioDetalle { get; set; }
-        public float precioMayorista { get; set; }
-        public int idCategoria { get; set; }
+        public int IdCliente { get; set; }
+        public string Dni { get; set; }
+        public string Rtn { get; set; }
+        public string NombreCliente { get; set; }
+        public string ApellidoCliente { get; set; }
+
 
         public int Existencia { get; set; }
 
@@ -30,14 +30,14 @@ namespace AromasCollection.Clases
             {
                 conexion.sqlConnection.Open();
                 //Query para mostrar un zapato
-                SqlCommand sqlCommand = new SqlCommand("sp_Producto", conexion.sqlConnection);
+                SqlCommand sqlCommand = new SqlCommand("sp_Cliente", conexion.sqlConnection);
                 sqlCommand.CommandType = CommandType.StoredProcedure;
 
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
 
                 // Establecer los valores de los parámetros
 
-                sqlCommand.Parameters.AddWithValue("@accion", "mostrar");
+                sqlCommand.Parameters.AddWithValue("@accion", "mostrarEnFactura");
 
                 using (sqlDataAdapter)
                 {
@@ -61,20 +61,20 @@ namespace AromasCollection.Clases
             }
         }
 
-        public void BuscarProducto(DataGridView dataGrid, string valorBuscado)
+        public void BuscarCliente(DataGridView dataGrid, string valorBuscado)
         {
 
             try
             {
                 conexion.sqlConnection.Open();
                 //Query para mostrar un zapato
-                SqlCommand sqlCommand = new SqlCommand("sp_Producto", conexion.sqlConnection);
+                SqlCommand sqlCommand = new SqlCommand("sp_Cliente", conexion.sqlConnection);
                 sqlCommand.CommandType = CommandType.StoredProcedure;
 
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
 
                 // Establecer los valores de los parámetros
-                sqlCommand.Parameters.AddWithValue("@productoBuscado", valorBuscado);
+                sqlCommand.Parameters.AddWithValue("@clienteBuscado", valorBuscado);
                 sqlCommand.Parameters.AddWithValue("@accion", "buscar");
 
                 using (sqlDataAdapter)
@@ -98,9 +98,5 @@ namespace AromasCollection.Clases
                 conexion.sqlConnection.Close();
             }
         }
-
-
-
-
     }
 }

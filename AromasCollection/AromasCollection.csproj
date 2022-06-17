@@ -68,10 +68,17 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clases\Cliente.cs" />
     <Compile Include="Clases\Conexion.cs" />
     <Compile Include="Clases\DetalleFactura.cs" />
     <Compile Include="Clases\Factura.cs" />
     <Compile Include="Clases\Producto.cs" />
+    <Compile Include="FrmClienteFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmClienteFactura.Designer.cs">
+      <DependentUpon>FrmClienteFactura.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmFactura.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +90,12 @@
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmInicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmInicio.Designer.cs">
+      <DependentUpon>FrmInicio.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmProductoFactura.cs">
       <SubType>Form</SubType>
@@ -107,8 +120,14 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmClienteFactura.resx">
+      <DependentUpon>FrmClienteFactura.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmFactura.resx">
       <DependentUpon>FrmFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmInicio.resx">
+      <DependentUpon>FrmInicio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmProductoFactura.resx">
       <DependentUpon>FrmProductoFactura.cs</DependentUpon>

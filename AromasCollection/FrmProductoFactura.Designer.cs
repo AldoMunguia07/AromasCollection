@@ -31,12 +31,14 @@ namespace AromasCollection
         {
             this.btnAgregar = new System.Windows.Forms.Button();
             this.dgProductos = new System.Windows.Forms.DataGridView();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgProductos)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(443, 326);
+            this.btnAgregar.Location = new System.Drawing.Point(451, 358);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 23);
             this.btnAgregar.TabIndex = 0;
@@ -50,17 +52,36 @@ namespace AromasCollection
             this.dgProductos.AllowUserToDeleteRows = false;
             this.dgProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgProductos.Location = new System.Drawing.Point(12, 29);
+            this.dgProductos.Location = new System.Drawing.Point(12, 77);
             this.dgProductos.Name = "dgProductos";
             this.dgProductos.ReadOnly = true;
-            this.dgProductos.Size = new System.Drawing.Size(953, 271);
+            this.dgProductos.Size = new System.Drawing.Size(953, 264);
             this.dgProductos.TabIndex = 1;
+            // 
+            // txtBuscar
+            // 
+            this.txtBuscar.Location = new System.Drawing.Point(68, 38);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(478, 20);
+            this.txtBuscar.TabIndex = 2;
+            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(22, 41);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(40, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Buscar";
             // 
             // FrmProductoFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(977, 375);
+            this.ClientSize = new System.Drawing.Size(977, 410);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.dgProductos);
             this.Controls.Add(this.btnAgregar);
             this.Name = "FrmProductoFactura";
@@ -68,6 +89,7 @@ namespace AromasCollection
             this.Text = "FrmProductoFactura";
             ((System.ComponentModel.ISupportInitialize)(this.dgProductos)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -75,5 +97,7 @@ namespace AromasCollection
 
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.DataGridView dgProductos;
+        private System.Windows.Forms.TextBox txtBuscar;
+        private System.Windows.Forms.Label label1;
     }
 }

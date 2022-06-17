@@ -22,7 +22,7 @@ namespace AromasCollection.Clases
 
         //METODOS
 
-        public void AgregarFactura(DetalleFactura detalleFactura)
+        public void AgregarDetalleFactura(DetalleFactura detalleFactura)
         {
             try
             {

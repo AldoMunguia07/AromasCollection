@@ -15,21 +15,63 @@ namespace AromasCollection
     {
       
         Producto producto = new Producto();
+        Cliente cliente = new Cliente();
         Factura factura = new Factura();
         DetalleFactura detalleFactura = new DetalleFactura();
         public FrmFactura()
         {
             InitializeComponent();
+            rbDetalle.Checked = true;
 
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            int codigo = producto.IdProducto;
-            float precio = producto.precioDetalle;
-            float total = precio * float.Parse(numCantidad.Value.ToString());
-            dgCarrito.Rows.Add(codigo, txtProducto.Text, precio, numCantidad.Value, total);
-            limpiarAggProducto();
+            if(camposLlenosCarrito())
+            {
+                for (int i = 0; i < dgCarrito.Rows.Count; i++)
+                {
+                    if (producto.IdProducto == Convert.ToInt32(dgCarrito.Rows[i].Cells[0].Value))
+                    {
+                        MessageBox.Show("El producto ya está agregado al carrito", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        limpiarAggProducto();
+                        return;
+                    }
+                }
+
+                if (producto.Existencia >= numCantidad.Value)
+                {
+                    int codigo = producto.IdProducto;
+                    float precio = 0;
+
+                    if(rbDetalle.Checked)
+                    {
+                        precio = producto.precioDetalle;
+                    }
+                    else if(rbMayorista.Checked)
+                    {
+                        precio = producto.precioMayorista;
+                    }
+
+                    float total = precio * float.Parse(numCantidad.Value.ToString());
+                    dgCarrito.Rows.Add(codigo, txtProducto.Text, precio, numCantidad.Value, total);
+                    limpiarAggProducto();
+                    calculos();
+
+                }
+                else
+                {
+                    MessageBox.Show("Cantidad en inventario insuficiente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un producto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            
+
         }
 
         private void btnQuitar_Click(object sender, EventArgs e)
@@ -37,15 +79,22 @@ namespace AromasCollection
             if(dgCarrito.Rows.Count > 0)
             {
                 dgCarrito.Rows.Remove(dgCarrito.Rows[dgCarrito.SelectedCells[0].RowIndex]);
+                calculos();
             }
-            
-
-           /* for (int i = 0; i < dgCarrito.SelectedRows.Count; i++)
+            else
             {
-                dgCarrito.Rows.Remove(dgCarrito.SelectedRows[i]);
-            }*/
+                MessageBox.Show("Seleccione producto a quitar del carrito", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
-            
+
+
+
+            /* for (int i = 0; i < dgCarrito.SelectedRows.Count; i++)
+             {
+                 dgCarrito.Rows.Remove(dgCarrito.SelectedRows[i]);
+             }*/
+
+
         }
 
         private void btnProducto_Click(object sender, EventArgs e)
@@ -67,31 +116,54 @@ namespace AromasCollection
             producto = product;
         }
 
+        public void RecuperarValorAlCerrarCliente(Cliente client)
+        {
+            cliente = client;
+        }
+
         public void limpiarAggProducto()
         {
             txtProducto.Clear();
-            numCantidad.Value = 0;
+            numCantidad.Value = 1;
         }
 
         private void btnFacturar_Click(object sender, EventArgs e)
         {
-            obtenerValores();
-            factura.AgregarFactura(factura);
-
-
-            detalleFactura.IdFactura = factura.IdFactura;
-            detalleFactura.CodigoSAR = factura.CodigoSAR;
-            
-
-            for (int i = 0; i < dgCarrito.Rows.Count; i++)
+            if(camposLlenosFactura())
             {
+                if (dgCarrito.Rows.Count > 0)
+                {
+                    obtenerValores();
+                    factura.AgregarFactura(factura);
 
-                detalleFactura.IdProducto = Convert.ToInt32(dgCarrito.Rows[i].Cells[0].Value);
-                detalleFactura.Precio = float.Parse(dgCarrito.Rows[i].Cells[2].Value.ToString());
-                detalleFactura.Cantidad = Convert.ToInt32(dgCarrito.Rows[i].Cells[3].Value);
-                detalleFactura.AgregarFactura(detalleFactura);
-             
+
+                    detalleFactura.IdFactura = factura.IdFactura;
+                    detalleFactura.CodigoSAR = factura.CodigoSAR;
+
+
+                    for (int i = 0; i < dgCarrito.Rows.Count; i++)
+                    {
+
+                        detalleFactura.IdProducto = Convert.ToInt32(dgCarrito.Rows[i].Cells[0].Value);
+                        detalleFactura.Precio = float.Parse(dgCarrito.Rows[i].Cells[2].Value.ToString());
+                        detalleFactura.Cantidad = Convert.ToInt32(dgCarrito.Rows[i].Cells[3].Value);
+                        detalleFactura.AgregarDetalleFactura(detalleFactura);
+
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Debe añadir productos al carrito", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
+
             }
+            else
+            {
+                MessageBox.Show("Debe llenar los datos de la factura", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
 
 
 
@@ -99,12 +171,87 @@ namespace AromasCollection
 
         private void obtenerValores()
         {
-            factura.IdFactura = 1;
+            factura.IdFactura = int.Parse(txtNumFactura.Text);
             factura.CodigoSAR = 1;
-            factura.IdColaborador = 2;
-            factura.IdCliente = int.Parse(txtRtn.Text);
+            factura.IdColaborador = 1;
+            factura.IdCliente = int.Parse(txtCodigoCliente.Text);
             factura.FechaVenta = DateTime.Now;
+            factura.Descuento = int.Parse(numDescuento.Value.ToString());
             factura.Observaciones = txtObservaciones.Text;
+        }
+
+        private void calculos()
+        {
+            double subtotal = 0;
+
+            for (int i = 0; i < dgCarrito.Rows.Count; i++)
+            {
+                subtotal = subtotal + Convert.ToDouble(dgCarrito.Rows[i].Cells[4].Value);
+            }
+
+            int descuento = 0;
+
+            descuento = int.Parse(numDescuento.Value.ToString());
+
+            
+            double total = 0;
+            double isv = subtotal * 0.15;
+            total = subtotal + isv - descuento;
+
+            txtTotal.Text = total + "";
+            txtISV.Text = isv + "";
+            txtSubtotal.Text = subtotal + "";
+           
+
+        }
+
+        private bool camposLlenosCarrito()
+        {
+            if(txtProducto.Text != "" && numCantidad.Value != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private bool camposLlenosFactura()
+        {
+            if (txtNumFactura.Text != "" && txtCodigoCliente.Text != "")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private void numDescuento_ValueChanged(object sender, EventArgs e)
+        {
+            if(int.Parse(numDescuento.Value.ToString()) <= double.Parse(txtTotal.Text))
+            {
+                calculos();
+            }
+            else
+            {
+                MessageBox.Show("El descuento no puede ser mayor al total de la venta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+        }
+
+        private void btnCliente_Click(object sender, EventArgs e)
+        {
+            FrmClienteFactura frmClienteFactura = new FrmClienteFactura(this);
+            frmClienteFactura.ShowDialog();
+         
+            if (cliente.IdCliente > 0)
+            {
+                txtCliente.Text = String.Format("{0} -> {1} {2}", cliente.Rtn, cliente.NombreCliente, cliente.ApellidoCliente);
+                txtCodigoCliente.Text = cliente.IdCliente.ToString();
+            }
         }
     }
 }

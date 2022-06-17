@@ -16,6 +16,12 @@ namespace AromasCollection
         public MenuPrincipal()
         {
             InitializeComponent();
+            abrirFormPanel(new FrmInicio());
+        }
+
+        private void MenuPrincipal_Load(object sender, EventArgs e)
+        {
+            
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -73,5 +79,12 @@ namespace AromasCollection
         {
             abrirFormPanel(new FrmVentas());
         }
+
+        private void btnInicio_Click(object sender, EventArgs e)
+        {
+            abrirFormPanel(new FrmInicio());
+        }
+
+       
     }
 }

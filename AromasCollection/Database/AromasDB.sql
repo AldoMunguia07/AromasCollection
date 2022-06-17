@@ -8,7 +8,7 @@
 USE tempdb
 go
 
--- Crear la base de datos 
+-- Crear la base de datos DROP DATABASE AromasDB
 CREATE DATABASE AromasDB
 GO
 
@@ -31,6 +31,7 @@ CREATE TABLE Cliente
 		PRIMARY KEY CLUSTERED (idCliente)
 
 );
+GO
 
 CREATE TABLE Puesto
 (
@@ -41,7 +42,8 @@ CREATE TABLE Puesto
 	CONSTRAINT PK_Puesto_idPuesto
 		PRIMARY KEY CLUSTERED (idPuesto)
 
-)
+);
+GO
 
 
 CREATE TABLE Colaborador
@@ -61,7 +63,7 @@ CREATE TABLE Colaborador
 		FOREIGN KEY (idPuesto) REFERENCES Puesto(idPuesto),
 
 );
-
+GO
 
 CREATE TABLE Categoria
 (
@@ -71,6 +73,7 @@ CREATE TABLE Categoria
 	CONSTRAINT PK_Categoria_idCategoiria
 		PRIMARY KEY CLUSTERED (idCategoria)
 );
+GO
 
 CREATE TABLE Producto
 (
@@ -87,6 +90,7 @@ CREATE TABLE Producto
 	CONSTRAINT FK_Producto$Existe$Categoria
 		FOREIGN KEY (idCategoria) REFERENCES Categoria(idCategoria)
 );
+GO
 
 CREATE TABLE Lote
 (
@@ -104,8 +108,10 @@ CREATE TABLE Lote
 		FOREIGN KEY (idProducto) REFERENCES Producto(idProducto)
 
 );
+GO
 
 Create table SAR(	CodigoSAR INT NOT NULL IDENTITY,  	rangoInicial INT NOT NULL,	rangoFinal INT	NOT NULL, 	fechaRecepecion DATE NOT NULL,	fechaLimiteEmision DATE NOT NULL,	cai VARCHAR(200) NOT NULL,	estado BIT NOT NULL,	CONSTRAINT PK_CodigoSar_CodigoSar		PRIMARY KEY CLUSTERED (CodigoSar));
+GO
 
 
 CREATE TABLE Factura
@@ -115,6 +121,7 @@ CREATE TABLE Factura
 	idColaborador INT NOT NULL,
 	idCliente INT NOT NULL,
 	fechaVenta DATETIME NOT NULL,
+	descuento FLOAT NOT NULL,
 	observaciones VARCHAR(150) 
 
 	CONSTRAINT PK_Factura_idFactura
@@ -130,6 +137,7 @@ CREATE TABLE Factura
 
 
 );
+GO
 
 CREATE TABLE DetalleFactura
 (
@@ -151,7 +159,7 @@ CREATE TABLE DetalleFactura
 
 
 );
-
+GO
 
 CREATE TABLE Bitacora
 (
@@ -167,7 +175,8 @@ CREATE TABLE Bitacora
 	CONSTRAINT FK_Bitacora$Existe$Colaborador
 		FOREIGN KEY (idColaborador) REFERENCES Colaborador(idColaborador),
 
-)
+);
+GO
 
 
 --PROCEDIMIENTOS ALMACENADOS
@@ -178,6 +187,7 @@ CREATE PROCEDURE sp_Venta
 @idColaborador int = NULL,
 @idCliente int = NULL,
 @fechaVenta DATETIME = NULL,
+@descuento FLOAT = NULL,
 @observaciones nvarchar(150) = NULL,
 @accion nvarchar(50)
 
@@ -186,7 +196,7 @@ BEGIN
 	SET @fechaVenta = CONVERT(DATE, GETDATE());
 	IF @accion = 'insertar'
 		BEGIN
-			INSERT INTO Factura VALUES (@idFactura,@codigoSAR, @idColaborador, @idCliente, @fechaVenta, @observaciones)
+			INSERT INTO Factura VALUES (@idFactura,@codigoSAR, @idColaborador, @idCliente, @fechaVenta, @descuento, @observaciones)
 		END
 
 END
@@ -218,14 +228,15 @@ CREATE PROCEDURE sp_Producto
 @precioDetalle float = NULL,
 @precioMayorista float = NULL,
 @idCategoria int = NULL,
-@accion nvarchar(50)
+@accion nvarchar(50),
+@productoBuscado VARCHAR(150)  = NULL
 
 AS
 BEGIN
 	
 	IF @accion = 'insertar'
 		BEGIN
-			select * from Producto
+			--select * from Producto
 		END
 	ELSE IF @accion = 'mostrar'
 		BEGIN
@@ -234,7 +245,48 @@ BEGIN
 				FROM Producto p JOIN Categoria c
 				ON p.idCategoria = C.idCategoria
 		END
+	ELSE IF @accion = 'buscar'
+		BEGIN
+			  SELECT p.idProducto Codigo, p.nombreProducto Producto, p.descripcion Descripcion, p.precioDetalle 'Precio detalle', p.precioMayorista 'Precio mayorista', c.categoria Catgeoria,
+				(SELECT SUM(cantidad) FROM Lote WHERE idProducto = p.idProducto) - (SELECT ISNULL(SUM(cantidad), 0) FROM DetalleFactura WHERE idProducto = p.idProducto)  Existencia
+				FROM Producto p JOIN Categoria c
+				ON p.idCategoria = C.idCategoria
+				 WHERE  CONCAT(p.idProducto, ' ', p.nombreProducto, ' ', c.categoria) LIKE CONCAT('%', @productoBuscado,'%')
+		END
 
 END
 GO
+
+ALTER PROCEDURE sp_Cliente
+@idCliente int = NULL,
+@dni VARCHAR(15) = NULL,
+@rtn VARCHAR(15) = NULL,
+@nombreCliente VARCHAR(55) = NULL,
+@apellidoCliente VARCHAR(55) = NULL,
+@accion nvarchar(50),
+@clienteBuscado VARCHAR(150)  = NULL
+
+AS
+BEGIN
+	
+	IF @accion = 'insertar'
+		BEGIN
+			select * from Producto
+		END
+	ELSE IF @accion = 'mostrarEnFactura'
+		BEGIN
+			  SELECT idCliente Codigo, rtn RTN, CONCAT(nombreCliente, ' ', apellidoCliente) 'Nombre cliente', nombreCliente, apellidoCliente
+			  FROM Cliente
+		END
+	ELSE IF @accion = 'buscar'
+		BEGIN
+			  SELECT idCliente Codigo, rtn RTN, CONCAT(nombreCliente, ' ', apellidoCliente) 'Nombre cliente', nombreCliente, apellidoCliente
+			  FROM Cliente
+			  WHERE  CONCAT(nombreCliente, ' ', apellidoCliente, ' ', rtn, ' ', idCliente) LIKE CONCAT('%', @clienteBuscado,'%')
+		END
+
+END
+GO
+
+
 
