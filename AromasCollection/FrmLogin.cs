@@ -75,9 +75,11 @@ namespace AromasCollection
         {
             FrmMenuPrincipal frmMenuPrincipal = new FrmMenuPrincipal();        
  
+            
+            frmMenuPrincipal.Show();
+            frmMenuPrincipal.FormClosed += cerrarSesion;
             this.Hide();
-            frmMenuPrincipal.ShowDialog();
-            this.Show();
+
 
         }
 
@@ -91,6 +93,13 @@ namespace AromasCollection
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void cerrarSesion(object sender, FormClosedEventArgs e)
+        {
+            txtUsuario.Text = "Usuario";
+            txtContrasenia.Text = "Contraseña";
+            this.Show();
         }
     }
 }
