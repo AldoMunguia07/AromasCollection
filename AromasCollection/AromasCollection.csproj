@@ -155,6 +155,9 @@
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmProducto.resx">
+      <DependentUpon>FrmProducto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmProductoFactura.resx">
       <DependentUpon>FrmProductoFactura.cs</DependentUpon>
     </EmbeddedResource>

@@ -1,7 +1,12 @@
 /*
 	EQUIPO 2
 
-	Aldo Josué Munguía Hernández.............0607200100897	Carlos Daniel Amaya Montalván............0703199901926	David Antonio Mendoza....................0601199800243	Francisco Fernando Madrid Sikaffy........0512200100506	Jordy Josué Castillo Núñez...............0601200202272	Jorge Daniel Reyes García................0508200100052
+	Aldo Josué Munguía Hernández.............0607200100897
+	Carlos Daniel Amaya Montalván............0703199901926
+	David Antonio Mendoza....................0601199800243
+	Francisco Fernando Madrid Sikaffy........0512200100506
+	Jordy Josué Castillo Núñez...............0601200202272
+	Jorge Daniel Reyes García................0508200100052
 */
 
 
@@ -110,7 +115,19 @@ CREATE TABLE Lote
 );
 GO
 
-Create table SAR(	CodigoSAR INT NOT NULL IDENTITY,  	rangoInicial INT NOT NULL,	rangoFinal INT	NOT NULL, 	fechaRecepecion DATE NOT NULL,	fechaLimiteEmision DATE NOT NULL,	cai VARCHAR(200) NOT NULL,	estado BIT NOT NULL,	CONSTRAINT PK_CodigoSar_CodigoSar		PRIMARY KEY CLUSTERED (CodigoSar));
+Create table SAR(
+
+	CodigoSAR INT NOT NULL IDENTITY,  
+	rangoInicial INT NOT NULL,
+	rangoFinal INT	NOT NULL, 
+	fechaRecepecion DATE NOT NULL,
+	fechaLimiteEmision DATE NOT NULL,
+	cai VARCHAR(200) NOT NULL,
+	estado BIT NOT NULL,
+	CONSTRAINT PK_CodigoSar_CodigoSar
+		PRIMARY KEY CLUSTERED (CodigoSar)
+
+);
 GO
 
 
@@ -133,7 +150,8 @@ CREATE TABLE Factura
 	CONSTRAINT FK_Venta$Existe$Cliente
 		FOREIGN KEY (idCliente) REFERENCES Cliente(idCliente),
 
-	CONSTRAINT FK_FacturaVenta$Existe$SAR		FOREIGN KEY (CodigoSAR) REFERENCES SAR(CodigoSAR)
+	CONSTRAINT FK_FacturaVenta$Existe$SAR
+		FOREIGN KEY (CodigoSAR) REFERENCES SAR(CodigoSAR)
 
 
 );
@@ -251,6 +269,7 @@ GO
 CREATE PROCEDURE sp_Producto
 @idProducto int = NULL,
 @nombreProducto nvarchar(150) = NULL,
+@descripcion nvarchar(150) = NULL,
 @precioDetalle float = NULL,
 @precioMayorista float = NULL,
 @idCategoria int = NULL,
@@ -262,7 +281,13 @@ BEGIN
 	
 	IF @accion = 'insertar'
 		BEGIN
-			select * from Producto --Agregar el de insertar
+			INSERT INTO Producto VALUES (@nombreProducto, @precioDetalle, @precioMayorista, @idCategoria);
+		END
+	ELSE IF @accion = 'modificar'
+		BEGIN
+			  UPDATE Producto
+			  SET nombreProducto = @nombreProducto, descripcion = @descripcion, precioDetalle = @precioDetalle, precioMayorista = @precioMayorista, idCategoria = @idCategoria
+			  WHERE idProducto = @idProducto
 		END
 	ELSE IF @accion = 'mostrar'
 		BEGIN
