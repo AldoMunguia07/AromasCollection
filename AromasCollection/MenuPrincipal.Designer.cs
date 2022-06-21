@@ -264,6 +264,7 @@ namespace AromasCollection
             this.btnProductos.TabIndex = 3;
             this.btnProductos.Text = "Productos";
             this.btnProductos.UseVisualStyleBackColor = false;
+            this.btnProductos.Click += new System.EventHandler(this.btnProductos_Click);
             // 
             // btnCategorias
             // 
@@ -281,6 +282,7 @@ namespace AromasCollection
             this.btnCategorias.TabIndex = 1;
             this.btnCategorias.Text = "Categorias";
             this.btnCategorias.UseVisualStyleBackColor = false;
+            this.btnCategorias.Click += new System.EventHandler(this.btnCategorias_Click);
             // 
             // btnInicio
             // 
