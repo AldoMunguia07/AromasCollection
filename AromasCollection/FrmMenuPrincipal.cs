@@ -86,6 +86,15 @@ namespace AromasCollection
             abrirFormPanel(new FrmInicio());
         }
 
+        private void btnProductos_Click(object sender, EventArgs e)
+        {
+            abrirFormPanel(new FrmProducto());
+        }
+
+        private void btnCategorias_Click(object sender, EventArgs e)
+        {
+            abrirFormPanel(new FrmCategoria());
+        }
         private void main_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
