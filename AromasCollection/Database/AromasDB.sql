@@ -314,5 +314,46 @@ BEGIN
 END
 GO
 
+CREATE OR ALTER PROCEDURE [dbo].[sp_Categoria] 
+	-- Add the parameters for the stored procedure here
+	@idCategoria int = NULL,
+	@categoria varchar(30) = null,
+	@accion nvarchar(50),
+	@categoriaBusquedad varchar(50) = null
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
 
+    -- Insert statements for procedure here
+	BEGIN
+
+	IF @accion = 'insertar'
+		BEGIN
+			INSERT INTO [dbo].[Categoria]
+           ([categoria])
+			VALUES(@categoria)
+		END
+	ELSE IF @accion = 'mostrar'
+		BEGIN
+			SELECT C.idCategoria AS ID, C.categoria AS Categoria FROM Categoria AS C
+			ORDER BY C.idCategoria ASC
+		END
+	ELSE IF @accion = 'modificar'
+		BEGIN
+			UPDATE Categoria 
+			SET Categoria.categoria = @categoria
+			WHERE Categoria.idCategoria = @idCategoria
+		END
+
+	ELSE IF @accion = 'buscar'
+		BEGIN
+			SELECT C.idCategoria AS ID, C.categoria AS Categoria FROM Categoria AS C
+			WHERE CONCAT(C.idCategoria, ' ', C.categoria) LIKE CONCAT('%', @categoriaBusquedad,'%')
+		END
+
+	END
+END
+GO
 
