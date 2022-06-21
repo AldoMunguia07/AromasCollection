@@ -18,6 +18,7 @@ namespace AromasCollection
 
 
         bool editarEstado = false;
+        bool seleccionado = false;
 
         public FrmCategoria()
         {
@@ -48,7 +49,7 @@ namespace AromasCollection
             }
             else
             {
-                MessageBox.Show("Por favor, ingrese el nombre de la categoria");
+                MessageBox.Show("Por favor, ingrese el nombre de la categoria", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -74,6 +75,7 @@ namespace AromasCollection
         {
             Cleaner();
             editarEstado = false;
+            seleccionado = false;
 
             btnAgregar.Enabled = true;
             btnEditar.Enabled = true;
@@ -96,28 +98,38 @@ namespace AromasCollection
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            editarEstado = true;
+            if(seleccionado)
+            {
+                editarEstado = true;
 
-            btnEditar.Enabled = false;
-            btnAgregar.Enabled = false;
-            txtboxCategoria.Text = "";
+                btnEditar.Enabled = false;
+                btnAgregar.Enabled = false;
+              
 
-            btnGuardar.Enabled = true;
-            btnCancelar.Enabled = true;
-            txtboxCategoria.Enabled = true;
+                btnGuardar.Enabled = true;
+                btnCancelar.Enabled = true;
+                txtboxCategoria.Enabled = true;
+
+            }
+            else
+            {
+                MessageBox.Show("Por favor, selecione la categoria a modificar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
         }
 
         private void dgCategoria_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(editarEstado)
-            {
+            
                 DataGridViewRow row = dgCategoria.Rows[e.RowIndex];
 
                 txtboxCategoria.Text = row.Cells[1].Value.ToString();
 
                 categoria.idCategoria = int.Parse(row.Cells[0].Value.ToString());
                 categoria.categoria = row.Cells[1].Value.ToString();
-            }
+                seleccionado = true;
+
+
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -140,21 +152,27 @@ namespace AromasCollection
 
         private void modificarCategoria()
         {
+            categoria.categoria = txtboxCategoria.Text;
             if (validacion.verificarTextoLargo(categoria.categoria, 30))
             {
-                categoria.categoria = txtboxCategoria.Text;
+                
                 categoria.ModificarCategoria(categoria);
                 MasterCleaner();
             }
             else
             {
-                MessageBox.Show("Por favor, selecione la categoria a modificar.");
+                MessageBox.Show("Por favor, selecione la categoria a modificar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            (dgCategoria.DataSource as DataTable).DefaultView.RowFilter = "Categoria LIKE '%" + txtBuscar.Text + "%'";
+            categoria.BuscarCategoria(dgCategoria, txtBuscar.Text);
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            categoria.BuscarCategoria(dgCategoria, txtBuscar.Text);
         }
     }
 }

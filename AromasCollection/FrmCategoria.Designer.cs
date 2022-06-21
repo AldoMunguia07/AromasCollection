@@ -143,6 +143,7 @@
             // 
             this.dgCategoria.AllowUserToAddRows = false;
             this.dgCategoria.AllowUserToDeleteRows = false;
+            this.dgCategoria.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgCategoria.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dgCategoria.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgCategoria.Location = new System.Drawing.Point(304, 34);
@@ -161,6 +162,7 @@
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(369, 26);
             this.txtBuscar.TabIndex = 2;
+            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // label2
             // 
