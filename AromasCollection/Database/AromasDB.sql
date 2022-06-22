@@ -82,7 +82,7 @@ GO
 
 CREATE TABLE Producto
 (
-	idProducto INT NOT NULL,
+	idProducto INT NOT NULL IDENTITY,
 	nombreProducto VARCHAR(150) NOT NULL UNIQUE,
 	descripcion VARCHAR(255) NOT NULL,
 	precioDetalle FLOAT NOT NULL,
@@ -268,8 +268,8 @@ GO
 
 CREATE PROCEDURE sp_Producto
 @idProducto int = NULL,
-@nombreProducto varchar(150) = NULL,
-@descripcion varchar(255) = NULL,
+@nombreProducto nvarchar(150) = NULL,
+@descripcion nvarchar(150) = NULL,
 @precioDetalle float = NULL,
 @precioMayorista float = NULL,
 @idCategoria int = NULL,
@@ -281,38 +281,30 @@ BEGIN
 	
 	IF @accion = 'insertar'
 		BEGIN
-			INSERT INTO [dbo].[Producto]
-					   (
-					    [nombreProducto]
-					   ,[descripcion]
-					   ,[precioDetalle]
-					   ,[precioMayorista]
-					   ,[idCategoria])
-				 VALUES
-					   (@nombreProducto
-					   ,@descripcion
-					   ,@precioDetalle
-					   ,@precioMayorista
-					   ,@idCategoria)
+			INSERT INTO Producto VALUES (@nombreProducto, @descripcion, @precioDetalle, @precioMayorista, @idCategoria);
 		END
 	ELSE IF @accion = 'modificar'
 		BEGIN
-			UPDATE [dbo].[Producto]
-			   SET 
-				   [nombreProducto] = @nombreProducto
-				  ,[descripcion] = @descripcion
-				  ,[precioDetalle] = @precioDetalle
-				  ,[precioMayorista] = @precioMayorista
-				  ,[idCategoria] = @idCategoria
-			 WHERE Producto.idProducto = @idProducto
+			  UPDATE Producto
+			  SET nombreProducto = @nombreProducto, descripcion = @descripcion, precioDetalle = @precioDetalle, precioMayorista = @precioMayorista, idCategoria = @idCategoria
+			  WHERE idProducto = @idProducto
 		END
 	ELSE IF @accion = 'mostrar'
 		BEGIN
-			SELECT        Producto.idProducto, Producto.nombreProducto AS 'Producto', Producto.descripcion AS Descripcion, Producto.precioDetalle AS 'Precio Detalle', Producto.precioMayorista AS 'Precio Mayorista', Producto.idCategoria AS 'idCategoria', Categoria.categoria AS 'Categoria'
-			FROM            Producto INNER JOIN
-								   Categoria ON Producto.idCategoria = Categoria.idCategoria
-			ORDER BY Producto.idProducto ASC
+			  SELECT p.idProducto Codigo, p.nombreProducto Producto, p.descripcion Descripcion, p.precioDetalle 'Precio detalle', p.precioMayorista 'Precio mayorista',c.idCategoria, c.categoria Catgeoria,
+				(SELECT ISNULL(SUM(cantidad), 0) FROM Lote WHERE idProducto = p.idProducto) - (SELECT ISNULL(SUM(cantidad), 0) FROM DetalleFactura WHERE idProducto = p.idProducto)  Existencia
+				FROM Producto p JOIN Categoria c
+				ON p.idCategoria = C.idCategoria
 		END
+	ELSE IF @accion = 'buscar'
+		BEGIN
+			  SELECT p.idProducto Codigo, p.nombreProducto Producto, p.descripcion Descripcion, p.precioDetalle 'Precio detalle', p.precioMayorista 'Precio mayorista', c.idCategoria,c.categoria Catgeoria,
+				(SELECT ISNULL(SUM(cantidad), 0) FROM Lote WHERE idProducto = p.idProducto) - (SELECT ISNULL(SUM(cantidad), 0) FROM DetalleFactura WHERE idProducto = p.idProducto)  Existencia
+				FROM Producto p JOIN Categoria c
+				ON p.idCategoria = C.idCategoria
+				 WHERE  CONCAT(p.idProducto, ' ', p.nombreProducto, ' ', c.categoria) LIKE CONCAT('%', @productoBuscado,'%')
+		END
+
 END
 GO
 

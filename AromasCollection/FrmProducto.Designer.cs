@@ -171,21 +171,22 @@
             // 
             this.dgProducto.AllowUserToAddRows = false;
             this.dgProducto.AllowUserToDeleteRows = false;
+            this.dgProducto.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgProducto.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dgProducto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgProducto.Location = new System.Drawing.Point(320, 12);
+            this.dgProducto.Location = new System.Drawing.Point(370, 12);
             this.dgProducto.MultiSelect = false;
             this.dgProducto.Name = "dgProducto";
             this.dgProducto.ReadOnly = true;
             this.dgProducto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgProducto.Size = new System.Drawing.Size(597, 396);
+            this.dgProducto.Size = new System.Drawing.Size(706, 396);
             this.dgProducto.TabIndex = 1;
             this.dgProducto.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgProducto_CellMouseClick);
             // 
             // btnAgregar
             // 
             this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregar.Location = new System.Drawing.Point(520, 415);
+            this.btnAgregar.Location = new System.Drawing.Point(374, 424);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(119, 25);
             this.btnAgregar.TabIndex = 16;
@@ -196,7 +197,7 @@
             // btnEditar
             // 
             this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditar.Location = new System.Drawing.Point(660, 414);
+            this.btnEditar.Location = new System.Drawing.Point(514, 423);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(119, 26);
             this.btnEditar.TabIndex = 17;
@@ -207,7 +208,7 @@
             // btnLimpiar
             // 
             this.btnLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpiar.Location = new System.Drawing.Point(798, 415);
+            this.btnLimpiar.Location = new System.Drawing.Point(652, 424);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(119, 26);
             this.btnLimpiar.TabIndex = 18;
@@ -218,7 +219,7 @@
             // btnNuevoLote
             // 
             this.btnNuevoLote.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNuevoLote.Location = new System.Drawing.Point(660, 456);
+            this.btnNuevoLote.Location = new System.Drawing.Point(793, 423);
             this.btnNuevoLote.Name = "btnNuevoLote";
             this.btnNuevoLote.Size = new System.Drawing.Size(119, 26);
             this.btnNuevoLote.TabIndex = 19;
@@ -229,7 +230,7 @@
             // btnCancelar
             // 
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(798, 456);
+            this.btnCancelar.Location = new System.Drawing.Point(931, 423);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(119, 26);
             this.btnCancelar.TabIndex = 20;
@@ -242,7 +243,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(84)))), ((int)(((byte)(135)))));
-            this.ClientSize = new System.Drawing.Size(958, 547);
+            this.ClientSize = new System.Drawing.Size(1100, 612);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnNuevoLote);
             this.Controls.Add(this.btnLimpiar);

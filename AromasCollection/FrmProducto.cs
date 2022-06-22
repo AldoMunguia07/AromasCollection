@@ -30,7 +30,7 @@ namespace AromasCollection
         private void inicializarDatagrid()
         {
             producto.Mostrar(dgProducto);
-            dgProducto.Columns["idProducto"].Visible = false;
+           // dgProducto.Columns["Codigo"].Visible = false;
             dgProducto.Columns["idCategoria"].Visible = false;
         }
 
@@ -71,6 +71,7 @@ namespace AromasCollection
                 ObtenerParametros();
 
                 producto.AgregarProducto(producto);
+                Cleaner();
             }
         }
 
@@ -163,18 +164,23 @@ namespace AromasCollection
 
         private void dgProducto_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            DataGridViewRow row = dgProducto.Rows[e.RowIndex];
+           
+            if(e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dgProducto.Rows[e.RowIndex];
 
-            producto.IdProducto = int.Parse(row.Cells["idProducto"].Value.ToString());
-            producto.idCategoria = int.Parse(row.Cells["idCategoria"].Value.ToString());
+                producto.IdProducto = int.Parse(row.Cells["Codigo"].Value.ToString());
+                producto.idCategoria = int.Parse(row.Cells["idCategoria"].Value.ToString());
 
-            txtProductoNombre.Text = row.Cells["Producto"].Value.ToString();
-            txtDescripcion.Text = row.Cells["Descripcion"].Value.ToString();
-            txtPrecioDetalle.Text = row.Cells["Precio Detalle"].Value.ToString();
-            txtPrecioMayorista.Text = row.Cells["Precio Mayorista"].Value.ToString();
+                txtProductoNombre.Text = row.Cells["Producto"].Value.ToString();
+                txtDescripcion.Text = row.Cells["Descripcion"].Value.ToString();
+                txtPrecioDetalle.Text = row.Cells["Precio Detalle"].Value.ToString();
+                txtPrecioMayorista.Text = row.Cells["Precio Mayorista"].Value.ToString();
 
-            selecionActiva = true;
-            btnAgregar.Enabled = false;
+                selecionActiva = true;
+                btnAgregar.Enabled = false;
+            }
+            
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
