@@ -14,9 +14,11 @@ namespace AromasCollection
 {
     public partial class FrmMenuPrincipal : Form
     {
+        Colaborador miColaborador = new Colaborador();
         public FrmMenuPrincipal(Colaborador colaborador)
         {
             InitializeComponent();
+            miColaborador = colaborador;
             lblUser.Text = String.Format("{0} {1}", colaborador.NombreColaborador, colaborador.ApellidoColaborador );
             abrirFormPanel(new FrmInicio());
         }
@@ -101,6 +103,11 @@ namespace AromasCollection
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void btnMiCuenta_Click(object sender, EventArgs e)
+        {
+            abrirFormPanel(new FrmMiCuenta(miColaborador));
         }
     }
 }

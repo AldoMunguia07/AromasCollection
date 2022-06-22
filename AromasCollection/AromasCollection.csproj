@@ -112,6 +112,12 @@
     <Compile Include="FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmMiCuenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMiCuenta.Designer.cs">
+      <DependentUpon>FrmMiCuenta.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmProducto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,6 +162,9 @@
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmMiCuenta.resx">
+      <DependentUpon>FrmMiCuenta.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmProducto.resx">
       <DependentUpon>FrmProducto.cs</DependentUpon>
     </EmbeddedResource>
@@ -194,6 +203,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Database\AromasDB.sql" />
+    <None Include="Resources\miCunta.png" />
     <None Include="Resources\reportes.png" />
     <None Include="Resources\compras.png" />
     <None Include="Resources\tags_categories_icon_145927.png" />
