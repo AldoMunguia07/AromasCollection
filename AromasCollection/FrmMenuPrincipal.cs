@@ -8,14 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using AromasCollection.Clases;
 
 namespace AromasCollection
 {
     public partial class FrmMenuPrincipal : Form
     {
-        public FrmMenuPrincipal()
+        public FrmMenuPrincipal(Colaborador colaborador)
         {
             InitializeComponent();
+            lblUser.Text = String.Format("{0} {1}", colaborador.NombreColaborador, colaborador.ApellidoColaborador );
             abrirFormPanel(new FrmInicio());
         }
 

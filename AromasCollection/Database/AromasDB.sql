@@ -432,9 +432,9 @@ BEGIN
 				SET  estado = 0
 				WHERE idColaborador =  @idColaborador
 		END
-	ELSE IF @accion = 'obtenerUsuario'
+	ELSE IF @accion = 'obtenerColaborador'
 		BEGIN
-			SELECT idColaborador, nombreColaborador, apellidoColaborador, correo, usuario, CONVERT(VARCHAR,DECRYPTBYPASSPHRASE('ACecrypt02',contrasenia)) contasenia,
+			SELECT idColaborador, nombreColaborador, apellidoColaborador, correo, usuario, CONVERT(VARCHAR,DECRYPTBYPASSPHRASE('ACecrypt02',contrasenia)) contrasenia,
 			idPuesto, estado  
 			FROM Colaborador 
 			WHERE usuario = @usuario

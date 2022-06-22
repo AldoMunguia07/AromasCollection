@@ -8,11 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using AromasCollection.Clases;
 
 namespace AromasCollection
 {
     public partial class FrmLogin : Form
     {
+        Colaborador colaborador = new Colaborador();
         public FrmLogin()
         {
             InitializeComponent();
@@ -73,12 +75,30 @@ namespace AromasCollection
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            FrmMenuPrincipal frmMenuPrincipal = new FrmMenuPrincipal();        
- 
+            colaborador.BuscarColaborador(txtUsuario.Text.ToLower(), colaborador);
             
-            frmMenuPrincipal.Show();
-            frmMenuPrincipal.FormClosed += cerrarSesion;
-            this.Hide();
+            if (colaborador.Usuario != null)
+            {
+                if(colaborador.Usuario == txtUsuario.Text && colaborador.Contrasenia == txtContrasenia.Text && colaborador.Estado)
+                {
+                    FrmMenuPrincipal frmMenuPrincipal = new FrmMenuPrincipal(colaborador);
+
+
+                    frmMenuPrincipal.Show();
+                    frmMenuPrincipal.FormClosed += cerrarSesion;
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("El usuario y/o la contraseña no es correcta o el usuario está inactivo. Favor verificar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+                
+            else
+            {
+                MessageBox.Show("El usuario y/o la contraseña no es correcta o el usuario está inactivo. Favor verificar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
 
 
         }
@@ -99,6 +119,7 @@ namespace AromasCollection
         {
             txtUsuario.Text = "Usuario";
             txtContrasenia.Text = "Contraseña";
+            txtContrasenia.UseSystemPasswordChar = false;
             this.Show();
         }
     }
