@@ -56,6 +56,7 @@ CREATE TABLE Colaborador
 	idColaborador INT NOT NULL IDENTITY,
 	nombreColaborador VARCHAR(55) NOT NULL,
 	apellidoColaborador VARCHAR(55) NOT NULL,
+	correo VARCHAR(50) NOT NULL,
 	usuario VARCHAR(30) NOT NULL UNIQUE,
 	contrasenia VARBINARY(MAX) NOT NULL,
 	idPuesto INT NOT NULL,
@@ -197,6 +198,19 @@ CREATE TABLE Bitacora
 GO
 
 
+
+--INSERTS
+
+-- Datos tabla puesto
+INSERT INTO Puesto VALUES ('Administrador');
+
+INSERT INTO Puesto VALUES ('Doctor');
+
+
+-- Datos de un usuario tipo Administrador.
+
+INSERT INTO Colaborador VALUES ('Admin', 'Admin', 'admin@gmail.com', 'admin', (ENCRYPTBYPASSPHRASE('ACecrypt02','admin123')), 1, 1)
+GO
 --PROCEDIMIENTOS ALMACENADOS
 
 CREATE PROCEDURE sp_Venta
@@ -382,3 +396,49 @@ BEGIN
 END
 GO
 
+CREATE PROCEDURE sp_Colaborador
+@idColaborador INT = NULL,
+@nombreColaborador VARCHAR(55)   = NULL,
+@apellidoColaborador VARCHAR(55)  = NULL,
+@correo VARCHAR(50)  = NULL,
+@usuario VARCHAR(30) = NULL,
+@contrasenia VARCHAR(50) = NULL,
+@idPuesto INT   = NULL,
+@estado BIT  = NULL,
+@accion VARCHAR(50),
+@nombreEmpleado VARCHAR(80)  = NULL
+
+
+AS
+DECLARE @password VARBINARY(max)
+BEGIN
+	IF @accion = 'insertar'
+		BEGIN
+			SET @password = (ENCRYPTBYPASSPHRASE('ACecrypt02',@contrasenia));
+			INSERT INTO Colaborador VALUES (@nombreColaborador, @apellidoColaborador, @correo, @usuario, @password, @idPuesto, @estado)
+		END
+	ELSE IF @accion = 'modificar'
+		BEGIN
+			SET @password = (ENCRYPTBYPASSPHRASE('ACecrypt02',@contrasenia));
+			UPDATE Colaborador
+				SET nombreColaborador = @nombreColaborador, apellidoColaborador = @apellidoColaborador, correo = @correo, usuario = @usuario, 
+				contrasenia = @password, idPuesto = @idPuesto, estado = @estado
+				WHERE idColaborador =  idColaborador
+		END
+	ELSE IF @accion = 'desactivar'
+		BEGIN
+		
+			UPDATE Colaborador
+				SET  estado = 0
+				WHERE idColaborador =  @idColaborador
+		END
+	ELSE IF @accion = 'obtenerUsuario'
+		BEGIN
+			SELECT idColaborador, nombreColaborador, apellidoColaborador, correo, usuario, CONVERT(VARCHAR,DECRYPTBYPASSPHRASE('ACecrypt02',contrasenia)) contasenia,
+			idPuesto, estado  
+			FROM Colaborador 
+			WHERE usuario = @usuario
+		END
+	
+
+END
