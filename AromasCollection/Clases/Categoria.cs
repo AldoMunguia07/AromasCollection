@@ -12,9 +12,12 @@ namespace AromasCollection.Clases
     public class Categoria
     {
         Conexion conexion = new Conexion();
+        Bitacora bitacora = new Bitacora();
 
         public int idCategoria { get; set; }
         public string categoria { get; set; }
+
+        public int idColaborador { get; set; }
 
         public void Mostrar(DataGridView dataGrid)
         {
@@ -68,6 +71,8 @@ namespace AromasCollection.Clases
      
                 sqlCommand.Parameters.AddWithValue("@accion", "insertar");
 
+              
+                bitacora.DefinirIdColaborador(idColaborador, conexion.sqlConnection);
                 sqlCommand.ExecuteNonQuery();
             }
             catch (Exception ex)

@@ -97,7 +97,7 @@ namespace AromasCollection
 
         private void btnCategorias_Click(object sender, EventArgs e)
         {
-            abrirFormPanel(new FrmCategoria());
+            abrirFormPanel(new FrmCategoria(miColaborador));
         }
         private void main_MouseDown(object sender, MouseEventArgs e)
         {

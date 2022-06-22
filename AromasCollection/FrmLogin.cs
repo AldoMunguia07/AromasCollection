@@ -81,6 +81,10 @@ namespace AromasCollection
             {
                 if(colaborador.Usuario == txtUsuario.Text && colaborador.Contrasenia == txtContrasenia.Text && colaborador.Estado)
                 {
+                    Bitacora bitacora = new Bitacora();
+
+                   
+                   
                     FrmMenuPrincipal frmMenuPrincipal = new FrmMenuPrincipal(colaborador);
 
 

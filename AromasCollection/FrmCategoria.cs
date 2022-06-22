@@ -20,11 +20,16 @@ namespace AromasCollection
         bool editarEstado = false;
         bool seleccionado = false;
 
-        public FrmCategoria()
+        public FrmCategoria(Colaborador colaborador)
         {
             InitializeComponent();
 
             categoria.Mostrar(dgCategoria);
+
+            categoria.idColaborador = colaborador.IdColaborador;
+            
+
+
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
