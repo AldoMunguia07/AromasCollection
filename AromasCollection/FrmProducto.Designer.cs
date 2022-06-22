@@ -29,60 +29,85 @@
         private void InitializeComponent()
         {
             this.gbProductoInput = new System.Windows.Forms.GroupBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.cmbCategoria = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtPrecioMayorista = new System.Windows.Forms.TextBox();
+            this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtProductoNombre = new System.Windows.Forms.TextBox();
+            this.txtPrecioDetalle = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgProducto = new System.Windows.Forms.DataGridView();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnNuevoLote = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.gbProductoInput.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgProducto)).BeginInit();
             this.SuspendLayout();
             // 
             // gbProductoInput
             // 
             this.gbProductoInput.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.gbProductoInput.Controls.Add(this.textBox6);
-            this.gbProductoInput.Controls.Add(this.textBox2);
+            this.gbProductoInput.Controls.Add(this.cmbCategoria);
+            this.gbProductoInput.Controls.Add(this.label3);
+            this.gbProductoInput.Controls.Add(this.txtPrecioMayorista);
+            this.gbProductoInput.Controls.Add(this.txtDescripcion);
             this.gbProductoInput.Controls.Add(this.label2);
             this.gbProductoInput.Controls.Add(this.label6);
-            this.gbProductoInput.Controls.Add(this.textBox1);
-            this.gbProductoInput.Controls.Add(this.textBox5);
+            this.gbProductoInput.Controls.Add(this.txtProductoNombre);
+            this.gbProductoInput.Controls.Add(this.txtPrecioDetalle);
             this.gbProductoInput.Controls.Add(this.label5);
             this.gbProductoInput.Controls.Add(this.label1);
             this.gbProductoInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbProductoInput.Location = new System.Drawing.Point(26, 12);
             this.gbProductoInput.Name = "gbProductoInput";
-            this.gbProductoInput.Size = new System.Drawing.Size(277, 483);
+            this.gbProductoInput.Size = new System.Drawing.Size(277, 470);
             this.gbProductoInput.TabIndex = 0;
             this.gbProductoInput.TabStop = false;
             this.gbProductoInput.Text = "Aromas Collection";
             this.gbProductoInput.Enter += new System.EventHandler(this.gbProductoInput_Enter);
             // 
-            // textBox6
+            // cmbCategoria
             // 
-            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(10, 343);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(253, 26);
-            this.textBox6.TabIndex = 11;
-            this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
+            this.cmbCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbCategoria.FormattingEnabled = true;
+            this.cmbCategoria.Location = new System.Drawing.Point(10, 402);
+            this.cmbCategoria.Name = "cmbCategoria";
+            this.cmbCategoria.Size = new System.Drawing.Size(253, 28);
+            this.cmbCategoria.TabIndex = 13;
             // 
-            // textBox2
+            // label3
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(10, 122);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(253, 118);
-            this.textBox2.TabIndex = 3;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(6, 376);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(87, 20);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Categoria";
+            // 
+            // txtPrecioMayorista
+            // 
+            this.txtPrecioMayorista.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPrecioMayorista.Location = new System.Drawing.Point(10, 343);
+            this.txtPrecioMayorista.Name = "txtPrecioMayorista";
+            this.txtPrecioMayorista.Size = new System.Drawing.Size(253, 26);
+            this.txtPrecioMayorista.TabIndex = 11;
+            this.txtPrecioMayorista.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
+            // 
+            // txtDescripcion
+            // 
+            this.txtDescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDescripcion.Location = new System.Drawing.Point(10, 122);
+            this.txtDescripcion.Multiline = true;
+            this.txtDescripcion.Name = "txtDescripcion";
+            this.txtDescripcion.Size = new System.Drawing.Size(253, 118);
+            this.txtDescripcion.TabIndex = 3;
             // 
             // label2
             // 
@@ -105,21 +130,21 @@
             this.label6.Text = "Precio de Mayorista";
             this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
-            // textBox1
+            // txtProductoNombre
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(10, 61);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(253, 26);
-            this.textBox1.TabIndex = 1;
+            this.txtProductoNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProductoNombre.Location = new System.Drawing.Point(10, 61);
+            this.txtProductoNombre.Name = "txtProductoNombre";
+            this.txtProductoNombre.Size = new System.Drawing.Size(253, 26);
+            this.txtProductoNombre.TabIndex = 1;
             // 
-            // textBox5
+            // txtPrecioDetalle
             // 
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(10, 277);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(253, 26);
-            this.textBox5.TabIndex = 9;
+            this.txtPrecioDetalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPrecioDetalle.Location = new System.Drawing.Point(10, 277);
+            this.txtPrecioDetalle.Name = "txtPrecioDetalle";
+            this.txtPrecioDetalle.Size = new System.Drawing.Size(253, 26);
+            this.txtPrecioDetalle.TabIndex = 9;
             // 
             // label5
             // 
@@ -142,20 +167,27 @@
             this.label1.Text = "Nombre de Producto";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // dataGridView1
+            // dgProducto
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(347, 12);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(570, 396);
-            this.dataGridView1.TabIndex = 1;
+            this.dgProducto.AllowUserToAddRows = false;
+            this.dgProducto.AllowUserToDeleteRows = false;
+            this.dgProducto.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dgProducto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgProducto.Location = new System.Drawing.Point(320, 12);
+            this.dgProducto.MultiSelect = false;
+            this.dgProducto.Name = "dgProducto";
+            this.dgProducto.ReadOnly = true;
+            this.dgProducto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgProducto.Size = new System.Drawing.Size(597, 396);
+            this.dgProducto.TabIndex = 1;
+            this.dgProducto.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgProducto_CellMouseClick);
             // 
             // btnAgregar
             // 
             this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregar.Location = new System.Drawing.Point(660, 414);
+            this.btnAgregar.Location = new System.Drawing.Point(520, 415);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(119, 26);
+            this.btnAgregar.Size = new System.Drawing.Size(119, 25);
             this.btnAgregar.TabIndex = 16;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
@@ -164,7 +196,7 @@
             // btnEditar
             // 
             this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditar.Location = new System.Drawing.Point(798, 414);
+            this.btnEditar.Location = new System.Drawing.Point(660, 414);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(119, 26);
             this.btnEditar.TabIndex = 17;
@@ -175,7 +207,7 @@
             // btnLimpiar
             // 
             this.btnLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpiar.Location = new System.Drawing.Point(798, 456);
+            this.btnLimpiar.Location = new System.Drawing.Point(798, 415);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(119, 26);
             this.btnLimpiar.TabIndex = 18;
@@ -194,17 +226,29 @@
             this.btnNuevoLote.UseVisualStyleBackColor = true;
             this.btnNuevoLote.Click += new System.EventHandler(this.btnNuevoLote_Click);
             // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.Location = new System.Drawing.Point(798, 456);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(119, 26);
+            this.btnCancelar.TabIndex = 20;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
             // FrmProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(84)))), ((int)(((byte)(135)))));
-            this.ClientSize = new System.Drawing.Size(929, 547);
+            this.ClientSize = new System.Drawing.Size(958, 547);
+            this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnNuevoLote);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnAgregar);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgProducto);
             this.Controls.Add(this.gbProductoInput);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmProducto";
@@ -212,7 +256,7 @@
             this.Load += new System.EventHandler(this.FrmProducto_Load);
             this.gbProductoInput.ResumeLayout(false);
             this.gbProductoInput.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgProducto)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -220,18 +264,21 @@
         #endregion
 
         private System.Windows.Forms.GroupBox gbProductoInput;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtPrecioDetalle;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtDescripcion;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtProductoNombre;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtPrecioMayorista;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgProducto;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Button btnNuevoLote;
+        private System.Windows.Forms.ComboBox cmbCategoria;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnCancelar;
     }
 }

@@ -100,7 +100,68 @@ namespace AromasCollection.Clases
         }
 
 
+        public void AgregarProducto(Producto producto)
+        {
+            try
+            {
+                conexion.sqlConnection.Open();
 
+                SqlCommand sqlCommand = new SqlCommand("sp_Producto", conexion.sqlConnection);
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+
+                // Establecer los valores de los parámetros
+                sqlCommand.Parameters.AddWithValue("@nombreProducto", producto.nombreProducto);
+                sqlCommand.Parameters.AddWithValue("@descripcion", producto.descripcion);
+                sqlCommand.Parameters.AddWithValue("@precioDetalle", producto.precioDetalle);
+                sqlCommand.Parameters.AddWithValue("@precioMayorista", producto.precioMayorista);
+                sqlCommand.Parameters.AddWithValue("@idCategoria", producto.idCategoria);
+
+                sqlCommand.Parameters.AddWithValue("@accion", "insertar");
+
+                sqlCommand.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                // Cerrar la conexión
+                conexion.sqlConnection.Close();
+            }
+        }
+
+        public void ModificarProducto(Producto producto)
+        {
+            try
+            {
+                conexion.sqlConnection.Open();
+
+                SqlCommand sqlCommand = new SqlCommand("sp_Producto", conexion.sqlConnection);
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+
+                // Establecer los valores de los parámetros
+                sqlCommand.Parameters.AddWithValue("@idProducto", producto.IdProducto);
+                sqlCommand.Parameters.AddWithValue("@nombreProducto", producto.nombreProducto);
+                sqlCommand.Parameters.AddWithValue("@descripcion", producto.descripcion);
+                sqlCommand.Parameters.AddWithValue("@precioDetalle", producto.precioDetalle);
+                sqlCommand.Parameters.AddWithValue("@precioMayorista", producto.precioMayorista);
+                sqlCommand.Parameters.AddWithValue("@idCategoria", producto.idCategoria);
+
+                sqlCommand.Parameters.AddWithValue("@accion", "modificar");
+
+                sqlCommand.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                // Cerrar la conexión
+                conexion.sqlConnection.Close();
+            }
+        }
 
     }
 }
