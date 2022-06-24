@@ -130,7 +130,15 @@ namespace AromasCollection
 
         private void btnNuevoLote_Click(object sender, EventArgs e)
         {
-
+            
+            if (!selecionActiva)
+            {
+                MessageBox.Show("Por favor, selecione un producto");
+            }
+            else
+            {
+                new FrmLote(producto.IdProducto).ShowDialog();
+            }
         }
 
         private void btnEditar_Click(object sender, EventArgs e)

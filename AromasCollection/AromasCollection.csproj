@@ -75,6 +75,7 @@
     <Compile Include="Clases\Conexion.cs" />
     <Compile Include="Clases\DetalleFactura.cs" />
     <Compile Include="Clases\Factura.cs" />
+    <Compile Include="Clases\Lote.cs" />
     <Compile Include="Clases\Producto.cs" />
     <Compile Include="Clases\Validacion.cs" />
     <Compile Include="FrmCategoria.cs">
@@ -112,6 +113,12 @@
     </Compile>
     <Compile Include="FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLote.Designer.cs">
+      <DependentUpon>FrmLote.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmMiCuenta.cs">
       <SubType>Form</SubType>
@@ -162,6 +169,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLote.resx">
+      <DependentUpon>FrmLote.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMiCuenta.resx">
       <DependentUpon>FrmMiCuenta.cs</DependentUpon>

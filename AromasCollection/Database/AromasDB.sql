@@ -442,3 +442,41 @@ BEGIN
 	
 
 END
+GO
+ALTER PROCEDURE [dbo].[sp_Lote]
+	@idLote int = null,
+	@idProducto int = null,
+	@cantidad int = null,
+	@preciocompra float = null,
+	@fecha datetime = null,
+	@accion NVARCHAR(50)
+AS
+BEGIN
+	SET @fecha = GETDATE();
+	IF @accion = 'insertar'
+		BEGIN
+			INSERT INTO [dbo].[Lote]
+           (
+			[idProducto],
+			[cantidad],
+			[precioCompra],
+			[fecha]
+		   )
+			VALUES(@idProducto, @cantidad, @preciocompra, @fecha)
+		END
+	ELSE IF @accion = 'mostrar'
+		BEGIN
+			SELECT L.idLote Codigo, P.idProducto idProducto, L.cantidad Cantidad, L.precioCompra Costo, L.fecha Fecha 
+			FROM Lote L join Producto p
+			ON
+				L.idProducto = P.idProducto
+			WHERE L.idProducto = @idProducto
+		END
+	ELSE IF @accion = 'modificar'
+		BEGIN
+			UPDATE Lote 
+			SET idProducto = @idProducto, cantidad = @cantidad, precioCompra = @preciocompra, fecha = @fecha
+			WHERE Lote.idLote = @idLote
+		END
+END
+GO

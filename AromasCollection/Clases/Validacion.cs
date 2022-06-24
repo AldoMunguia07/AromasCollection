@@ -34,5 +34,18 @@ namespace AromasCollection.Clases
 
             return true;
         }
+
+        public bool verificarNumero(int numero)
+        {
+            string number = "123456";
+            if (number.All(char.IsDigit))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
