@@ -98,7 +98,7 @@ namespace AromasCollection
         {
             if (!selecionActiva)
             {
-                MessageBox.Show("Por favor, selecione un producto a modificar");
+                MessageBox.Show("Por favor, selecione un cliente para modificar");
             }
             else
             {
@@ -141,6 +141,23 @@ namespace AromasCollection
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
             cliente.BuscarCliente(dgvCliente, txtBuscar.Text);
+        }
+
+        private void txtID_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Validacion.SoloNumeros(e);
+        }
+        private void txtRTN_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Validacion.SoloNumeros(e);
+        }
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Validacion.SoloLetras(e);
+        }
+        private void txtApellido_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Validacion.SoloLetras(e);
         }
     }
 }

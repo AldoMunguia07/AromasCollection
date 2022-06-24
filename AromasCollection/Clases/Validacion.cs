@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace AromasCollection.Clases
 {
@@ -45,6 +46,47 @@ namespace AromasCollection.Clases
             else
             {
                 return false;
+            }
+        }
+
+        public static void SoloLetras(KeyPressEventArgs N)
+        {
+            if (Char.IsLetter(N.KeyChar))
+            {
+                N.Handled = false;
+            }
+            else if (Char.IsSeparator(N.KeyChar))
+            {
+                N.Handled = false;
+            }
+            else if (Char.IsControl(N.KeyChar))
+            {
+                N.Handled = false;
+            }
+            else
+            {
+                N.Handled = true;
+
+            }
+        }
+        public static void SoloNumeros(KeyPressEventArgs N)
+        {
+            if (Char.IsDigit(N.KeyChar))
+            {
+                N.Handled = false;
+            }
+            else if (Char.IsSeparator(N.KeyChar))
+            {
+                N.Handled = false;
+            }
+            else if (Char.IsControl(N.KeyChar))
+            {
+                N.Handled = false;
+            }
+            else
+            {
+                N.Handled = true;
+
             }
         }
     }

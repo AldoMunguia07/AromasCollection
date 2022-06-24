@@ -108,9 +108,12 @@ namespace AromasCollection
             // 
             this.txtApellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtApellido.Location = new System.Drawing.Point(13, 353);
+            this.txtApellido.MaxLength = 55;
             this.txtApellido.Name = "txtApellido";
+            this.txtApellido.ShortcutsEnabled = false;
             this.txtApellido.Size = new System.Drawing.Size(336, 30);
             this.txtApellido.TabIndex = 6;
+            this.txtApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApellido_KeyPress);
             // 
             // btnEditar
             // 
@@ -127,9 +130,12 @@ namespace AromasCollection
             // 
             this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombre.Location = new System.Drawing.Point(13, 260);
+            this.txtNombre.MaxLength = 55;
             this.txtNombre.Name = "txtNombre";
+            this.txtNombre.ShortcutsEnabled = false;
             this.txtNombre.Size = new System.Drawing.Size(336, 30);
             this.txtNombre.TabIndex = 5;
+            this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
             // 
             // btnAgregar
             // 
@@ -156,9 +162,12 @@ namespace AromasCollection
             // 
             this.txtRTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRTN.Location = new System.Drawing.Point(13, 156);
+            this.txtRTN.MaxLength = 15;
             this.txtRTN.Name = "txtRTN";
+            this.txtRTN.ShortcutsEnabled = false;
             this.txtRTN.Size = new System.Drawing.Size(336, 30);
             this.txtRTN.TabIndex = 3;
+            this.txtRTN.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRTN_KeyPress);
             // 
             // lbRTN
             // 
@@ -174,9 +183,11 @@ namespace AromasCollection
             // 
             this.txtID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtID.Location = new System.Drawing.Point(13, 78);
+            this.txtID.MaxLength = 15;
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(336, 30);
             this.txtID.TabIndex = 1;
+            this.txtID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtID_KeyPress);
             // 
             // lbID
             // 
