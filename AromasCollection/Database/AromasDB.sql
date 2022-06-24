@@ -443,7 +443,7 @@ BEGIN
 
 END
 GO
-ALTER PROCEDURE [dbo].[sp_Lote]
+Create OR PROCEDURE [dbo].[sp_Lote]
 	@idLote int = null,
 	@idProducto int = null,
 	@cantidad int = null,
@@ -480,3 +480,49 @@ BEGIN
 		END
 END
 GO
+--Procedimientos almacenados para clientes
+
+Create PROCEDURE sp_Clientes
+	@idCliente int = NULL,
+	@dni varchar(15) =  null,
+	@rtn varchar(15) = null,
+	@nombreCliente varchar(55) = null,
+	@apellidoCliente varchar(55) = null,
+	@accion varchar(55) = null,
+	@clienteBuscado varchar(150) = null
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	BEGIN
+
+	IF @accion = 'insertar'
+		BEGIN
+			INSERT INTO [dbo].[Cliente]
+           ([dni], 
+		   [rtn], 
+		   [nombreCliente], 
+		   [apellidoCliente])
+			VALUES(@dni, @rtn, @nombreCliente, @apellidoCliente)
+		END
+	ELSE IF @accion = 'mostrar'
+		BEGIN
+			Select Cl.idCliente, Cl.dni as Identidad, Cl.rtn as RTN, Cl.nombreCliente as Nombre, Cl.apellidoCliente as Apellido From Cliente Cl
+			Order by Cl.nombreCliente ASC
+		END
+	ELSE IF @accion = 'modificar'
+		BEGIN
+			UPDATE Cliente
+			SET dni=@dni, rtn=@rtn, nombreCliente=@nombreCliente, apellidoCliente=@apellidoCliente
+			WHERE Cliente.idCliente=@idCliente
+		END
+
+	ELSE IF @accion = 'buscar'
+		BEGIN
+			Select C.dni as Identidad, C.rtn as RTN, C.nombreCliente as Nombre, C.apellidoCliente as Apellido 
+			From Cliente C
+			Where CONCAT(C.nombreCliente, ' ', C.apellidoCliente, ' ', C.dni, ' ', C.rtn) LIKE CONCAT('%', @clienteBuscado,'%')
+		END
+	END
+END
