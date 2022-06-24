@@ -60,6 +60,73 @@ namespace AromasCollection.Clases
                 conexion.sqlConnection.Close();
             }
         }
+        public void MostrarCliente(DataGridView dataGrid)
+        {
+
+            try
+            {
+                conexion.sqlConnection.Open();
+
+                SqlCommand sqlCommand = new SqlCommand("sp_Clientes", conexion.sqlConnection);
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+
+                // Establecer los valores de los parámetros
+
+                sqlCommand.Parameters.AddWithValue("@accion", "mostrar");
+
+                using (sqlDataAdapter)
+                {
+                    DataTable dataTable = new DataTable();
+
+                    sqlDataAdapter.Fill(dataTable);
+
+                    dataGrid.DataSource = dataTable;
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                conexion.sqlConnection.Close();
+            }
+        }
+
+        public void AgregarCliente(Cliente cliente)
+        {
+            try
+            {
+                conexion.sqlConnection.Open();
+
+                SqlCommand sqlCommand = new SqlCommand("sp_Clientes", conexion.sqlConnection);
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+
+                // Establecer los valores de los parámetros
+                sqlCommand.Parameters.AddWithValue("@dni", cliente.Dni);
+                sqlCommand.Parameters.AddWithValue("@rtn", cliente.Rtn);
+                sqlCommand.Parameters.AddWithValue("@nombreCliente", cliente.NombreCliente);
+                sqlCommand.Parameters.AddWithValue("@apellidoCliente", cliente.ApellidoCliente);
+
+
+                sqlCommand.Parameters.AddWithValue("@accion", "insertar");
+                sqlCommand.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                // Cerrar la conexión
+                conexion.sqlConnection.Close();
+            }
+        }
 
         public void BuscarCliente(DataGridView dataGrid, string valorBuscado)
         {
@@ -68,7 +135,7 @@ namespace AromasCollection.Clases
             {
                 conexion.sqlConnection.Open();
                 //Query para mostrar un zapato
-                SqlCommand sqlCommand = new SqlCommand("sp_Cliente", conexion.sqlConnection);
+                SqlCommand sqlCommand = new SqlCommand("sp_Clientes", conexion.sqlConnection);
                 sqlCommand.CommandType = CommandType.StoredProcedure;
 
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
@@ -95,6 +162,36 @@ namespace AromasCollection.Clases
             }
             finally
             {
+                conexion.sqlConnection.Close();
+            }
+        }
+        public void ModificarCliente(Cliente cliente)
+        {
+            try
+            {
+                conexion.sqlConnection.Open();
+
+                SqlCommand sqlCommand = new SqlCommand("sp_Clientes", conexion.sqlConnection);
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+
+                // Establecer los valores de los parámetros
+                sqlCommand.Parameters.AddWithValue("@idCliente", cliente.IdCliente);
+                sqlCommand.Parameters.AddWithValue("@dni", cliente.Dni);
+                sqlCommand.Parameters.AddWithValue("@rtn", cliente.Rtn);
+                sqlCommand.Parameters.AddWithValue("@nombreCliente", cliente.NombreCliente);
+                sqlCommand.Parameters.AddWithValue("@apellidoCliente", cliente.ApellidoCliente);
+
+                sqlCommand.Parameters.AddWithValue("@accion", "modificar");
+
+                sqlCommand.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                // Cerrar la conexión
                 conexion.sqlConnection.Close();
             }
         }

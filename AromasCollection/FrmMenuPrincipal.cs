@@ -109,5 +109,10 @@ namespace AromasCollection
         {
             abrirFormPanel(new FrmMiCuenta(miColaborador));
         }
+
+        private void btnClientes_Click(object sender, EventArgs e)
+        {
+            abrirFormPanel(new FrmCliente());
+        }
     }
 }
