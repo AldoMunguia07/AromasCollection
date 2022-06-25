@@ -427,8 +427,15 @@ BEGIN
 		END
 		ELSE IF @accion = 'mostrar'
 		BEGIN
-			  SELECT c.nombreColaborador'Nombre',c.apellidoColaborador 'Apellido',c.correo'Correo',c.usuario 'Usuario', CONVERT(VARCHAR,DECRYPTBYPASSPHRASE('ACecrypt02',contrasenia)) 'Contraseña', (p.puesto) 'Puesto'
+			  SELECT c.idColaborador 'ID', c.nombreColaborador'Nombre',c.apellidoColaborador 'Apellido',c.correo'Correo',c.usuario 'Usuario', CONVERT(VARCHAR,DECRYPTBYPASSPHRASE('ACecrypt02',contrasenia)) 'Contraseña', (p.puesto) 'Puesto'
 				FROM Colaborador c JOIN Puesto p 
+				ON c.idPuesto = p.idPuesto		ORDER BY p.idPuesto ASC				
+				
+		END
+		ELSE IF @accion = 'mostrarPuesto'
+		BEGIN
+			  SELECT p.idPuesto, (p.puesto)
+				FROM Colaborador c full JOIN Puesto p 
 				ON c.idPuesto = p.idPuesto				
 				
 		END
