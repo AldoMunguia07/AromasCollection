@@ -20,6 +20,8 @@ namespace AromasCollection.Clases
         public int IdCliente{ get; set; }
         public DateTime FechaVenta { get; set; }
         public float Descuento { get; set; }
+
+        public bool EsVenta { get; set; }
         public string Observaciones { get; set; }
 
         //METODOS
@@ -115,6 +117,7 @@ namespace AromasCollection.Clases
                 sqlCommand.Parameters.AddWithValue("@idColaborador", factura.IdColaborador);
                 sqlCommand.Parameters.AddWithValue("@idCliente", factura.IdCliente);
                 sqlCommand.Parameters.AddWithValue("@descuento", factura.Descuento);
+                sqlCommand.Parameters.AddWithValue("@esVenta", factura.EsVenta);
                 sqlCommand.Parameters.AddWithValue("@observaciones", factura.Observaciones);
                 sqlCommand.Parameters.AddWithValue("@accion", "insertar");
 

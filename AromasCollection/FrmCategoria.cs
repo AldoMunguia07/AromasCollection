@@ -125,7 +125,8 @@ namespace AromasCollection
 
         private void dgCategoria_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+            if (e.RowIndex >= 0)
+            {
                 DataGridViewRow row = dgCategoria.Rows[e.RowIndex];
 
                 txtboxCategoria.Text = row.Cells[1].Value.ToString();
@@ -133,6 +134,10 @@ namespace AromasCollection
                 categoria.idCategoria = int.Parse(row.Cells[0].Value.ToString());
                 categoria.categoria = row.Cells[1].Value.ToString();
                 seleccionado = true;
+
+            }
+
+               
 
 
         }

@@ -140,6 +140,7 @@ CREATE TABLE Factura
 	idCliente INT NOT NULL,
 	fechaVenta DATETIME NOT NULL,
 	descuento FLOAT NOT NULL,
+	esVenta BIT NOT NULL,
 	observaciones VARCHAR(150) 
 
 	CONSTRAINT PK_Factura_idFactura
@@ -220,6 +221,7 @@ CREATE PROCEDURE sp_Venta
 @idCliente int = NULL,
 @fechaVenta DATETIME = NULL,
 @descuento FLOAT = NULL,
+@esVenta BIT = NULL,
 @observaciones nvarchar(150) = NULL,
 @accion nvarchar(50),
 @facturaBuscada VARCHAR(150)  = NULL
@@ -229,31 +231,34 @@ BEGIN
 	SET @fechaVenta = CONVERT(DATE, GETDATE());
 	IF @accion = 'insertar'
 		BEGIN
-			INSERT INTO Factura VALUES (@idFactura,@codigoSAR, @idColaborador, @idCliente, @fechaVenta, @descuento, @observaciones)
+			INSERT INTO Factura VALUES (@idFactura,@codigoSAR, @idColaborador, @idCliente, @fechaVenta, @descuento, @esVenta, @observaciones)
 		END
 	ELSE IF @accion = 'mostrar'
 		BEGIN
-			SELECT f.idFactura 'Código factura', f.fechaVenta 'Fecha venta', CONCAT(co.nombreColaborador, ' ', co.apellidoColaborador) Colaborador, CONCAT(c.nombreCliente,' ', c.apellidoCliente) Cliente, c.rtn 'RTN cliente',
-			SUM(df.cantidad * df.precio) Subtotal, (SUM(df.cantidad * df.precio) * 0.15) ISV, F.descuento Descuento, SUM(df.cantidad * df.precio) +  ((SUM(df.cantidad * df.precio) * 0.15) - f.descuento) Total,
+			SELECT f.idFactura 'Código factura', f.fechaVenta 'Fecha venta', CONCAT(co.nombreColaborador, ' ', co.apellidoColaborador) Colaborador, 
+			CONCAT(c.nombreCliente,' ', c.apellidoCliente) Cliente, c.rtn 'RTN cliente',
+			CASE WHEN esVenta = 1 THEN SUM(df.cantidad * df.precio) ELSE 0 END  Subtotal, CASE WHEN esVenta = 1 THEN (SUM(df.cantidad * df.precio) * 0.15) ELSE 0 END  ISV,
+			 CASE WHEN esVenta = 1 THEN F.descuento ELSE 0 END Descuento,  CASE WHEN esVenta = 1 THEN SUM(df.cantidad * df.precio) +  ((SUM(df.cantidad * df.precio) * 0.15) - f.descuento) ELSE  0 END Total,
 			f.observaciones Observaciones
 			FROM Factura f JOIN DetalleFactura df 
 			ON df.idFactura = f.idFactura
 			JOIN Cliente c ON c.idCliente = f.idCliente
 			JOIN Colaborador co on co.idColaborador = f.idColaborador
-			GROUP BY f.idFactura, f.fechaVenta, co.nombreColaborador, co.apellidoColaborador, c.nombreCliente, c.apellidoCliente, c.rtn, F.descuento, f.observaciones
-			
+			GROUP BY f.idFactura, f.fechaVenta, co.nombreColaborador, co.apellidoColaborador, c.nombreCliente, c.apellidoCliente, c.rtn, F.descuento, f.observaciones, f.esVenta
 		END
 		ELSE IF @accion = 'buscar'
 		BEGIN
-			SELECT f.idFactura 'Código factura', f.fechaVenta 'Fecha venta', CONCAT(co.nombreColaborador, ' ', co.apellidoColaborador) Colaborador, CONCAT(c.nombreCliente,' ', c.apellidoCliente) Cliente, c.rtn 'RTN cliente',
-			SUM(df.cantidad * df.precio) Subtotal, (SUM(df.cantidad * df.precio) * 0.15) ISV, F.descuento Descuento, SUM(df.cantidad * df.precio) +  ((SUM(df.cantidad * df.precio) * 0.15) - f.descuento) Total,
+			SELECT f.idFactura 'Código factura', f.fechaVenta 'Fecha venta', CONCAT(co.nombreColaborador, ' ', co.apellidoColaborador) Colaborador, 
+			CONCAT(c.nombreCliente,' ', c.apellidoCliente) Cliente, c.rtn 'RTN cliente',
+			CASE WHEN esVenta = 1 THEN SUM(df.cantidad * df.precio) ELSE 0 END  Subtotal, CASE WHEN esVenta = 1 THEN (SUM(df.cantidad * df.precio) * 0.15) ELSE 0 END  ISV,
+			 CASE WHEN esVenta = 1 THEN F.descuento ELSE 0 END Descuento,  CASE WHEN esVenta = 1 THEN SUM(df.cantidad * df.precio) +  ((SUM(df.cantidad * df.precio) * 0.15) - f.descuento) ELSE  0 END Total,
 			f.observaciones Observaciones
 			FROM Factura f JOIN DetalleFactura df 
 			ON df.idFactura = f.idFactura
 			JOIN Cliente c ON c.idCliente = f.idCliente
 			JOIN Colaborador co on co.idColaborador = f.idColaborador
 			WHERE  CONCAT(f.idFactura, ' ', f.fechaVenta, ' ', c.nombreCliente, ' ', c.apellidoCliente, ' ', c.rtn, co.nombreColaborador, ' ', co.apellidoColaborador) LIKE CONCAT('%', @facturaBuscada,'%')
-			GROUP BY f.idFactura, f.fechaVenta, co.nombreColaborador, co.apellidoColaborador, c.nombreCliente, c.apellidoCliente, c.rtn, F.descuento, f.observaciones
+			GROUP BY f.idFactura, f.fechaVenta, co.nombreColaborador, co.apellidoColaborador, c.nombreCliente, c.apellidoCliente, c.rtn, F.descuento, f.observaciones, f.esVenta
 			
 		END
 
@@ -457,7 +462,7 @@ BEGIN
 
 END
 GO
-Create OR PROCEDURE [dbo].[sp_Lote]
+Create PROCEDURE [dbo].[sp_Lote]
 	@idLote int = null,
 	@idProducto int = null,
 	@cantidad int = null,

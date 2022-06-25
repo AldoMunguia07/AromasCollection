@@ -22,6 +22,7 @@ namespace AromasCollection
         {
             InitializeComponent();
             rbDetalle.Checked = true;
+            rbNormal.Checked = true;
 
         }
 
@@ -127,32 +128,65 @@ namespace AromasCollection
             numCantidad.Value = 1;
         }
 
+        private void agregar()
+        {
+            obtenerValores();
+            factura.AgregarFactura(factura);
+
+
+            detalleFactura.IdFactura = factura.IdFactura;
+            detalleFactura.CodigoSAR = factura.CodigoSAR;
+
+
+            for (int i = 0; i < dgCarrito.Rows.Count; i++)
+            {
+
+                detalleFactura.IdProducto = Convert.ToInt32(dgCarrito.Rows[i].Cells[0].Value);
+                detalleFactura.Precio = float.Parse(dgCarrito.Rows[i].Cells[2].Value.ToString());
+                detalleFactura.Cantidad = Convert.ToInt32(dgCarrito.Rows[i].Cells[3].Value);
+                detalleFactura.AgregarDetalleFactura(detalleFactura);
+
+            }
+
+            MessageBox.Show("Venta realizada", "Aromas Colllection", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Close();
+        }
+
         private void btnFacturar_Click(object sender, EventArgs e)
         {
             if(camposLlenosFactura())
             {
                 if (dgCarrito.Rows.Count > 0)
                 {
-                    obtenerValores();
-                    factura.AgregarFactura(factura);
-
-
-                    detalleFactura.IdFactura = factura.IdFactura;
-                    detalleFactura.CodigoSAR = factura.CodigoSAR;
-
-
-                    for (int i = 0; i < dgCarrito.Rows.Count; i++)
+                    if(rbEnviosMall.Checked)
                     {
-
-                        detalleFactura.IdProducto = Convert.ToInt32(dgCarrito.Rows[i].Cells[0].Value);
-                        detalleFactura.Precio = float.Parse(dgCarrito.Rows[i].Cells[2].Value.ToString());
-                        detalleFactura.Cantidad = Convert.ToInt32(dgCarrito.Rows[i].Cells[3].Value);
-                        detalleFactura.AgregarDetalleFactura(detalleFactura);
+                        if (int.Parse(txtCodigoCliente.Text) == 1)
+                        {
+                            agregar();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Debe elegir el codigo 1 del cliente (Envios Mall)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else if(rbOtros.Checked)
+                    {
+                        if (int.Parse(txtCodigoCliente.Text) == 2)
+                        {
+                            agregar();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Debe elegir el codigo 2 del cliente (Otras Salidas)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                    {
+                        agregar();
 
                     }
-
-                    MessageBox.Show("Venta realizada", "Aromas Colllection", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
+                    
+ 
 
                 }
                 else
@@ -180,6 +214,14 @@ namespace AromasCollection
             factura.IdCliente = int.Parse(txtCodigoCliente.Text);
             factura.FechaVenta = DateTime.Now;
             factura.Descuento = int.Parse(numDescuento.Value.ToString());
+            if(rbNormal.Checked)
+            {
+                factura.EsVenta = true;
+            }
+            else
+            {
+                factura.EsVenta = false;
+            }
             factura.Observaciones = txtObservaciones.Text;
         }
 
@@ -201,9 +243,20 @@ namespace AromasCollection
             double isv = subtotal * 0.15;
             total = subtotal + isv - descuento;
 
-            txtTotal.Text = total + "";
-            txtISV.Text = isv + "";
-            txtSubtotal.Text = subtotal + "";
+            if (rbEnviosMall.Checked || rbOtros.Checked)
+            {
+                txtSubtotal.Text = "0";
+                txtISV.Text = "0";
+                txtTotal.Text = "0";
+            }
+            else
+            {
+                txtTotal.Text = total + "";
+                txtISV.Text = isv + "";
+                txtSubtotal.Text = subtotal + "";
+            }
+
+           
            
 
         }
@@ -255,6 +308,30 @@ namespace AromasCollection
                 txtCliente.Text = String.Format("{0} -> {1} {2}", cliente.Rtn, cliente.NombreCliente, cliente.ApellidoCliente);
                 txtCodigoCliente.Text = cliente.IdCliente.ToString();
             }
+        }
+
+        private void rbEnviosMall_CheckedChanged(object sender, EventArgs e)
+        {
+           
+            numDescuento.Value = 0;
+            numDescuento.Enabled = false;
+            calculos();
+
+        }
+
+        private void rbOtros_CheckedChanged(object sender, EventArgs e)
+        {
+         
+            numDescuento.Value = 0;
+            numDescuento.Enabled = false;
+            calculos();
+
+        }
+
+        private void rbNormal_CheckedChanged(object sender, EventArgs e)
+        {
+            numDescuento.Enabled = true;
+            calculos();
         }
     }
 }

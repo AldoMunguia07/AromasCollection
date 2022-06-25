@@ -39,12 +39,17 @@ namespace AromasCollection
             // 
             // btnNuevaVenta
             // 
+            this.btnNuevaVenta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(22)))), ((int)(((byte)(46)))));
+            this.btnNuevaVenta.FlatAppearance.BorderSize = 0;
+            this.btnNuevaVenta.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnNuevaVenta.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNuevaVenta.ForeColor = System.Drawing.Color.White;
             this.btnNuevaVenta.Location = new System.Drawing.Point(25, 55);
             this.btnNuevaVenta.Name = "btnNuevaVenta";
             this.btnNuevaVenta.Size = new System.Drawing.Size(142, 28);
             this.btnNuevaVenta.TabIndex = 0;
             this.btnNuevaVenta.Text = "Nueva venta";
-            this.btnNuevaVenta.UseVisualStyleBackColor = true;
+            this.btnNuevaVenta.UseVisualStyleBackColor = false;
             this.btnNuevaVenta.Click += new System.EventHandler(this.btnNuevaVenta_Click);
             // 
             // dgFacturas
@@ -62,30 +67,36 @@ namespace AromasCollection
             // 
             // btnDetalleVenta
             // 
+            this.btnDetalleVenta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(22)))), ((int)(((byte)(46)))));
+            this.btnDetalleVenta.FlatAppearance.BorderSize = 0;
+            this.btnDetalleVenta.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnDetalleVenta.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDetalleVenta.ForeColor = System.Drawing.Color.White;
             this.btnDetalleVenta.Location = new System.Drawing.Point(206, 55);
             this.btnDetalleVenta.Name = "btnDetalleVenta";
             this.btnDetalleVenta.Size = new System.Drawing.Size(142, 28);
             this.btnDetalleVenta.TabIndex = 2;
             this.btnDetalleVenta.Text = "Ver detalle de la venta";
-            this.btnDetalleVenta.UseVisualStyleBackColor = true;
+            this.btnDetalleVenta.UseVisualStyleBackColor = false;
             this.btnDetalleVenta.Click += new System.EventHandler(this.btnDetalleVenta_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft JhengHei", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(32, 132);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 19);
+            this.label1.Size = new System.Drawing.Size(58, 20);
             this.label1.TabIndex = 3;
             this.label1.Text = "Buscar";
             // 
             // txtBuscar
             // 
+            this.txtBuscar.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBuscar.Location = new System.Drawing.Point(93, 133);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(353, 20);
+            this.txtBuscar.Size = new System.Drawing.Size(353, 21);
             this.txtBuscar.TabIndex = 4;
             this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 

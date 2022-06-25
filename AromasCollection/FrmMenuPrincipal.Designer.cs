@@ -89,7 +89,7 @@ namespace AromasCollection
             this.menuIzquierdo.Dock = System.Windows.Forms.DockStyle.Left;
             this.menuIzquierdo.Location = new System.Drawing.Point(0, 38);
             this.menuIzquierdo.Name = "menuIzquierdo";
-            this.menuIzquierdo.Size = new System.Drawing.Size(200, 602);
+            this.menuIzquierdo.Size = new System.Drawing.Size(200, 662);
             this.menuIzquierdo.TabIndex = 1;
             // 
             // panel9
@@ -334,7 +334,7 @@ namespace AromasCollection
             this.main.Dock = System.Windows.Forms.DockStyle.Fill;
             this.main.Location = new System.Drawing.Point(200, 38);
             this.main.Name = "main";
-            this.main.Size = new System.Drawing.Size(840, 602);
+            this.main.Size = new System.Drawing.Size(1100, 662);
             this.main.TabIndex = 2;
             this.main.MouseDown += new System.Windows.Forms.MouseEventHandler(this.main_MouseDown);
             // 
@@ -343,7 +343,7 @@ namespace AromasCollection
             this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCerrar.Image = global::AromasCollection.Properties.Resources.cerrar;
-            this.btnCerrar.Location = new System.Drawing.Point(1003, 7);
+            this.btnCerrar.Location = new System.Drawing.Point(1263, 7);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(25, 25);
             this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -356,7 +356,7 @@ namespace AromasCollection
             this.btnMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMaximizar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMaximizar.Image = global::AromasCollection.Properties.Resources.maxi;
-            this.btnMaximizar.Location = new System.Drawing.Point(961, 7);
+            this.btnMaximizar.Location = new System.Drawing.Point(1221, 7);
             this.btnMaximizar.Name = "btnMaximizar";
             this.btnMaximizar.Size = new System.Drawing.Size(25, 25);
             this.btnMaximizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -369,7 +369,7 @@ namespace AromasCollection
             this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMinimizar.Image = global::AromasCollection.Properties.Resources.minimazar;
-            this.btnMinimizar.Location = new System.Drawing.Point(916, 7);
+            this.btnMinimizar.Location = new System.Drawing.Point(1176, 7);
             this.btnMinimizar.Name = "btnMinimizar";
             this.btnMinimizar.Size = new System.Drawing.Size(25, 25);
             this.btnMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -382,7 +382,7 @@ namespace AromasCollection
             this.btnRestaurar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRestaurar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRestaurar.Image = global::AromasCollection.Properties.Resources.res;
-            this.btnRestaurar.Location = new System.Drawing.Point(961, 7);
+            this.btnRestaurar.Location = new System.Drawing.Point(1221, 7);
             this.btnRestaurar.Name = "btnRestaurar";
             this.btnRestaurar.Size = new System.Drawing.Size(25, 25);
             this.btnRestaurar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -401,7 +401,7 @@ namespace AromasCollection
             this.titulo.Dock = System.Windows.Forms.DockStyle.Top;
             this.titulo.Location = new System.Drawing.Point(0, 0);
             this.titulo.Name = "titulo";
-            this.titulo.Size = new System.Drawing.Size(1040, 38);
+            this.titulo.Size = new System.Drawing.Size(1300, 38);
             this.titulo.TabIndex = 0;
             this.titulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.titulo_MouseDown);
             // 
@@ -409,7 +409,7 @@ namespace AromasCollection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1040, 640);
+            this.ClientSize = new System.Drawing.Size(1300, 700);
             this.Controls.Add(this.main);
             this.Controls.Add(this.menuIzquierdo);
             this.Controls.Add(this.titulo);

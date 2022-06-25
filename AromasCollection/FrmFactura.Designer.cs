@@ -65,6 +65,9 @@ namespace AromasCollection
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.numDescuento = new System.Windows.Forms.NumericUpDown();
+            this.rbNormal = new System.Windows.Forms.RadioButton();
+            this.rbEnviosMall = new System.Windows.Forms.RadioButton();
+            this.rbOtros = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numCantidad)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -429,12 +432,51 @@ namespace AromasCollection
             this.numDescuento.TabIndex = 23;
             this.numDescuento.ValueChanged += new System.EventHandler(this.numDescuento_ValueChanged);
             // 
+            // rbNormal
+            // 
+            this.rbNormal.AutoSize = true;
+            this.rbNormal.Location = new System.Drawing.Point(205, 518);
+            this.rbNormal.Name = "rbNormal";
+            this.rbNormal.Size = new System.Drawing.Size(87, 17);
+            this.rbNormal.TabIndex = 24;
+            this.rbNormal.TabStop = true;
+            this.rbNormal.Text = "Venta normal";
+            this.rbNormal.UseVisualStyleBackColor = true;
+            this.rbNormal.CheckedChanged += new System.EventHandler(this.rbNormal_CheckedChanged);
+            // 
+            // rbEnviosMall
+            // 
+            this.rbEnviosMall.AutoSize = true;
+            this.rbEnviosMall.Location = new System.Drawing.Point(298, 518);
+            this.rbEnviosMall.Name = "rbEnviosMall";
+            this.rbEnviosMall.Size = new System.Drawing.Size(78, 17);
+            this.rbEnviosMall.TabIndex = 25;
+            this.rbEnviosMall.TabStop = true;
+            this.rbEnviosMall.Text = "Envios mall";
+            this.rbEnviosMall.UseVisualStyleBackColor = true;
+            this.rbEnviosMall.CheckedChanged += new System.EventHandler(this.rbEnviosMall_CheckedChanged);
+            // 
+            // rbOtros
+            // 
+            this.rbOtros.AutoSize = true;
+            this.rbOtros.Location = new System.Drawing.Point(385, 518);
+            this.rbOtros.Name = "rbOtros";
+            this.rbOtros.Size = new System.Drawing.Size(50, 17);
+            this.rbOtros.TabIndex = 26;
+            this.rbOtros.TabStop = true;
+            this.rbOtros.Text = "Otros";
+            this.rbOtros.UseVisualStyleBackColor = true;
+            this.rbOtros.CheckedChanged += new System.EventHandler(this.rbOtros_CheckedChanged);
+            // 
             // FrmFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(1031, 585);
+            this.Controls.Add(this.rbOtros);
+            this.Controls.Add(this.rbEnviosMall);
+            this.Controls.Add(this.rbNormal);
             this.Controls.Add(this.numDescuento);
             this.Controls.Add(this.txtTotal);
             this.Controls.Add(this.label9);
@@ -501,5 +543,8 @@ namespace AromasCollection
         private System.Windows.Forms.NumericUpDown numDescuento;
         private System.Windows.Forms.RadioButton rbMayorista;
         private System.Windows.Forms.RadioButton rbDetalle;
+        private System.Windows.Forms.RadioButton rbNormal;
+        private System.Windows.Forms.RadioButton rbEnviosMall;
+        private System.Windows.Forms.RadioButton rbOtros;
     }
 }

@@ -32,7 +32,7 @@ namespace AromasCollection
                 producto.nombreProducto = dgProductos.SelectedRows[0].Cells[1].Value.ToString();
                 producto.precioDetalle = float.Parse(dgProductos.SelectedRows[0].Cells[3].Value.ToString());
                 producto.precioMayorista = float.Parse(dgProductos.SelectedRows[0].Cells[4].Value.ToString());
-                producto.Existencia = int.Parse(dgProductos.SelectedRows[0].Cells[6].Value.ToString());
+                producto.Existencia = int.Parse(dgProductos.SelectedRows[0].Cells[7].Value.ToString());
                 factura1.RecuperarValorAlCerrar(producto);
 
                  
