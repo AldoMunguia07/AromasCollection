@@ -1,12 +1,12 @@
 /*
 	EQUIPO 2
 
-	Aldo JosuÈ MunguÌa Hern·ndez.............0607200100897
-	Carlos Daniel Amaya Montalv·n............0703199901926
+	Aldo Josu√© Mungu√≠a Hern√°ndez.............0607200100897
+	Carlos Daniel Amaya Montalv√°n............0703199901926
 	David Antonio Mendoza....................0601199800243
 	Francisco Fernando Madrid Sikaffy........0512200100506
-	Jordy JosuÈ Castillo N˙Òez...............0601200202272
-	Jorge Daniel Reyes GarcÌa................0508200100052
+	Jordy Josu√© Castillo N√∫√±ez...............0601200202272
+	Jorge Daniel Reyes Garc√≠a................0508200100052
 */
 
 
@@ -233,7 +233,7 @@ BEGIN
 		END
 	ELSE IF @accion = 'mostrar'
 		BEGIN
-			SELECT f.idFactura 'CÛdigo factura', f.fechaVenta 'Fecha venta', CONCAT(co.nombreColaborador, ' ', co.apellidoColaborador) Colaborador, CONCAT(c.nombreCliente,' ', c.apellidoCliente) Cliente, c.rtn 'RTN cliente',
+			SELECT f.idFactura 'C√≥digo factura', f.fechaVenta 'Fecha venta', CONCAT(co.nombreColaborador, ' ', co.apellidoColaborador) Colaborador, CONCAT(c.nombreCliente,' ', c.apellidoCliente) Cliente, c.rtn 'RTN cliente',
 			SUM(df.cantidad * df.precio) Subtotal, (SUM(df.cantidad * df.precio) * 0.15) ISV, F.descuento Descuento, SUM(df.cantidad * df.precio) +  ((SUM(df.cantidad * df.precio) * 0.15) - f.descuento) Total,
 			f.observaciones Observaciones
 			FROM Factura f JOIN DetalleFactura df 
@@ -245,7 +245,7 @@ BEGIN
 		END
 		ELSE IF @accion = 'buscar'
 		BEGIN
-			SELECT f.idFactura 'CÛdigo factura', f.fechaVenta 'Fecha venta', CONCAT(co.nombreColaborador, ' ', co.apellidoColaborador) Colaborador, CONCAT(c.nombreCliente,' ', c.apellidoCliente) Cliente, c.rtn 'RTN cliente',
+			SELECT f.idFactura 'C√≥digo factura', f.fechaVenta 'Fecha venta', CONCAT(co.nombreColaborador, ' ', co.apellidoColaborador) Colaborador, CONCAT(c.nombreCliente,' ', c.apellidoCliente) Cliente, c.rtn 'RTN cliente',
 			SUM(df.cantidad * df.precio) Subtotal, (SUM(df.cantidad * df.precio) * 0.15) ISV, F.descuento Descuento, SUM(df.cantidad * df.precio) +  ((SUM(df.cantidad * df.precio) * 0.15) - f.descuento) Total,
 			f.observaciones Observaciones
 			FROM Factura f JOIN DetalleFactura df 
@@ -424,6 +424,13 @@ BEGIN
 				SET nombreColaborador = @nombreColaborador, apellidoColaborador = @apellidoColaborador, correo = @correo, usuario = @usuario, 
 				contrasenia = @password, idPuesto = @idPuesto, estado = @estado
 				WHERE idColaborador =  idColaborador
+		END
+		ELSE IF @accion = 'mostrar'
+		BEGIN
+			  SELECT c.nombreColaborador'Nombre',c.apellidoColaborador 'Apellido',c.correo'Correo',c.usuario 'Usuario', CONVERT(VARCHAR,DECRYPTBYPASSPHRASE('ACecrypt02',contrasenia)) 'Contrase√±a', (p.puesto) 'Puesto'
+				FROM Colaborador c JOIN Puesto p 
+				ON c.idPuesto = p.idPuesto				
+				
 		END
 	ELSE IF @accion = 'desactivar'
 		BEGIN
