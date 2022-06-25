@@ -87,28 +87,25 @@ namespace AromasCollection
             this.menuIzquierdo.Controls.Add(this.btnCategorias);
             this.menuIzquierdo.Controls.Add(this.btnInicio);
             this.menuIzquierdo.Dock = System.Windows.Forms.DockStyle.Left;
-            this.menuIzquierdo.Location = new System.Drawing.Point(0, 47);
-            this.menuIzquierdo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.menuIzquierdo.Location = new System.Drawing.Point(0, 38);
             this.menuIzquierdo.Name = "menuIzquierdo";
-            this.menuIzquierdo.Size = new System.Drawing.Size(267, 837);
+            this.menuIzquierdo.Size = new System.Drawing.Size(200, 602);
             this.menuIzquierdo.TabIndex = 1;
             // 
             // panel9
             // 
             this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(10)))), ((int)(((byte)(151)))));
-            this.panel9.Location = new System.Drawing.Point(1, 609);
-            this.panel9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel9.Location = new System.Drawing.Point(1, 495);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(7, 43);
+            this.panel9.Size = new System.Drawing.Size(5, 35);
             this.panel9.TabIndex = 16;
             // 
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(10)))), ((int)(((byte)(151)))));
-            this.panel8.Location = new System.Drawing.Point(-1, 190);
-            this.panel8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel8.Location = new System.Drawing.Point(-1, 154);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(263, 4);
+            this.panel8.Size = new System.Drawing.Size(197, 3);
             this.panel8.TabIndex = 3;
             // 
             // btnMiCuenta
@@ -121,10 +118,9 @@ namespace AromasCollection
             this.btnMiCuenta.ForeColor = System.Drawing.Color.White;
             this.btnMiCuenta.Image = global::AromasCollection.Properties.Resources.miCunta;
             this.btnMiCuenta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMiCuenta.Location = new System.Drawing.Point(8, 609);
-            this.btnMiCuenta.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnMiCuenta.Location = new System.Drawing.Point(6, 495);
             this.btnMiCuenta.Name = "btnMiCuenta";
-            this.btnMiCuenta.Size = new System.Drawing.Size(259, 43);
+            this.btnMiCuenta.Size = new System.Drawing.Size(194, 35);
             this.btnMiCuenta.TabIndex = 15;
             this.btnMiCuenta.Text = "Mi cuenta";
             this.btnMiCuenta.UseVisualStyleBackColor = false;
@@ -135,29 +131,26 @@ namespace AromasCollection
             this.lblUser.AutoSize = true;
             this.lblUser.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUser.ForeColor = System.Drawing.Color.White;
-            this.lblUser.Location = new System.Drawing.Point(3, 160);
-            this.lblUser.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblUser.Location = new System.Drawing.Point(2, 130);
             this.lblUser.Name = "lblUser";
-            this.lblUser.Size = new System.Drawing.Size(165, 23);
+            this.lblUser.Size = new System.Drawing.Size(133, 21);
             this.lblUser.TabIndex = 15;
             this.lblUser.Text = "Nombre Usuario";
             // 
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(10)))), ((int)(((byte)(151)))));
-            this.panel7.Location = new System.Drawing.Point(0, 673);
-            this.panel7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel7.Location = new System.Drawing.Point(0, 547);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(7, 43);
+            this.panel7.Size = new System.Drawing.Size(5, 35);
             this.panel7.TabIndex = 14;
             // 
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(10)))), ((int)(((byte)(151)))));
-            this.panel6.Location = new System.Drawing.Point(0, 551);
-            this.panel6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel6.Location = new System.Drawing.Point(0, 448);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(7, 43);
+            this.panel6.Size = new System.Drawing.Size(5, 35);
             this.panel6.TabIndex = 12;
             // 
             // btnReportes
@@ -170,10 +163,9 @@ namespace AromasCollection
             this.btnReportes.ForeColor = System.Drawing.Color.White;
             this.btnReportes.Image = global::AromasCollection.Properties.Resources.reportes;
             this.btnReportes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReportes.Location = new System.Drawing.Point(4, 673);
-            this.btnReportes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnReportes.Location = new System.Drawing.Point(3, 547);
             this.btnReportes.Name = "btnReportes";
-            this.btnReportes.Size = new System.Drawing.Size(259, 43);
+            this.btnReportes.Size = new System.Drawing.Size(194, 35);
             this.btnReportes.TabIndex = 13;
             this.btnReportes.Text = "Reportes";
             this.btnReportes.UseVisualStyleBackColor = false;
@@ -181,10 +173,9 @@ namespace AromasCollection
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(10)))), ((int)(((byte)(151)))));
-            this.panel5.Location = new System.Drawing.Point(0, 482);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel5.Location = new System.Drawing.Point(0, 392);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(7, 43);
+            this.panel5.Size = new System.Drawing.Size(5, 35);
             this.panel5.TabIndex = 10;
             // 
             // btnColaboradores
@@ -197,13 +188,13 @@ namespace AromasCollection
             this.btnColaboradores.ForeColor = System.Drawing.Color.White;
             this.btnColaboradores.Image = global::AromasCollection.Properties.Resources.empleados;
             this.btnColaboradores.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnColaboradores.Location = new System.Drawing.Point(4, 551);
-            this.btnColaboradores.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnColaboradores.Location = new System.Drawing.Point(3, 448);
             this.btnColaboradores.Name = "btnColaboradores";
-            this.btnColaboradores.Size = new System.Drawing.Size(259, 43);
+            this.btnColaboradores.Size = new System.Drawing.Size(194, 35);
             this.btnColaboradores.TabIndex = 11;
             this.btnColaboradores.Text = "Usuarios";
             this.btnColaboradores.UseVisualStyleBackColor = false;
+            this.btnColaboradores.Click += new System.EventHandler(this.btnColaboradores_Click);
             // 
             // btnVentas
             // 
@@ -215,10 +206,9 @@ namespace AromasCollection
             this.btnVentas.ForeColor = System.Drawing.Color.White;
             this.btnVentas.Image = global::AromasCollection.Properties.Resources.venta;
             this.btnVentas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVentas.Location = new System.Drawing.Point(4, 482);
-            this.btnVentas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnVentas.Location = new System.Drawing.Point(3, 392);
             this.btnVentas.Name = "btnVentas";
-            this.btnVentas.Size = new System.Drawing.Size(259, 43);
+            this.btnVentas.Size = new System.Drawing.Size(194, 35);
             this.btnVentas.TabIndex = 9;
             this.btnVentas.Text = "Ventas";
             this.btnVentas.UseVisualStyleBackColor = false;
@@ -227,10 +217,9 @@ namespace AromasCollection
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(10)))), ((int)(((byte)(151)))));
-            this.panel4.Location = new System.Drawing.Point(0, 420);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel4.Location = new System.Drawing.Point(0, 341);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(7, 43);
+            this.panel4.Size = new System.Drawing.Size(5, 35);
             this.panel4.TabIndex = 8;
             // 
             // btnSAR
@@ -243,10 +232,9 @@ namespace AromasCollection
             this.btnSAR.ForeColor = System.Drawing.Color.White;
             this.btnSAR.Image = global::AromasCollection.Properties.Resources.pagos;
             this.btnSAR.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSAR.Location = new System.Drawing.Point(4, 420);
-            this.btnSAR.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSAR.Location = new System.Drawing.Point(3, 341);
             this.btnSAR.Name = "btnSAR";
-            this.btnSAR.Size = new System.Drawing.Size(259, 43);
+            this.btnSAR.Size = new System.Drawing.Size(194, 35);
             this.btnSAR.TabIndex = 7;
             this.btnSAR.Text = "SAR";
             this.btnSAR.UseVisualStyleBackColor = false;
@@ -254,10 +242,9 @@ namespace AromasCollection
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(10)))), ((int)(((byte)(151)))));
-            this.panel3.Location = new System.Drawing.Point(0, 354);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Location = new System.Drawing.Point(0, 288);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(7, 43);
+            this.panel3.Size = new System.Drawing.Size(5, 35);
             this.panel3.TabIndex = 6;
             // 
             // btnClientes
@@ -270,10 +257,9 @@ namespace AromasCollection
             this.btnClientes.ForeColor = System.Drawing.Color.White;
             this.btnClientes.Image = global::AromasCollection.Properties.Resources.clientes;
             this.btnClientes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClientes.Location = new System.Drawing.Point(4, 354);
-            this.btnClientes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClientes.Location = new System.Drawing.Point(3, 288);
             this.btnClientes.Name = "btnClientes";
-            this.btnClientes.Size = new System.Drawing.Size(259, 43);
+            this.btnClientes.Size = new System.Drawing.Size(194, 35);
             this.btnClientes.TabIndex = 5;
             this.btnClientes.Text = "Clientes";
             this.btnClientes.UseVisualStyleBackColor = false;
@@ -282,19 +268,17 @@ namespace AromasCollection
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(10)))), ((int)(((byte)(151)))));
-            this.panel2.Location = new System.Drawing.Point(0, 292);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Location = new System.Drawing.Point(0, 237);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(7, 43);
+            this.panel2.Size = new System.Drawing.Size(5, 35);
             this.panel2.TabIndex = 4;
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(10)))), ((int)(((byte)(151)))));
-            this.panel1.Location = new System.Drawing.Point(1, 225);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Location = new System.Drawing.Point(1, 183);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(7, 43);
+            this.panel1.Size = new System.Drawing.Size(5, 35);
             this.panel1.TabIndex = 2;
             // 
             // btnProductos
@@ -307,10 +291,9 @@ namespace AromasCollection
             this.btnProductos.ForeColor = System.Drawing.Color.White;
             this.btnProductos.Image = global::AromasCollection.Properties.Resources.producto;
             this.btnProductos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnProductos.Location = new System.Drawing.Point(4, 292);
-            this.btnProductos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnProductos.Location = new System.Drawing.Point(3, 237);
             this.btnProductos.Name = "btnProductos";
-            this.btnProductos.Size = new System.Drawing.Size(259, 43);
+            this.btnProductos.Size = new System.Drawing.Size(194, 35);
             this.btnProductos.TabIndex = 3;
             this.btnProductos.Text = "Productos";
             this.btnProductos.UseVisualStyleBackColor = false;
@@ -326,10 +309,9 @@ namespace AromasCollection
             this.btnCategorias.ForeColor = System.Drawing.Color.White;
             this.btnCategorias.Image = global::AromasCollection.Properties.Resources.compras;
             this.btnCategorias.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCategorias.Location = new System.Drawing.Point(8, 225);
-            this.btnCategorias.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCategorias.Location = new System.Drawing.Point(6, 183);
             this.btnCategorias.Name = "btnCategorias";
-            this.btnCategorias.Size = new System.Drawing.Size(259, 43);
+            this.btnCategorias.Size = new System.Drawing.Size(194, 35);
             this.btnCategorias.TabIndex = 1;
             this.btnCategorias.Text = "Categorias";
             this.btnCategorias.UseVisualStyleBackColor = false;
@@ -338,10 +320,9 @@ namespace AromasCollection
             // btnInicio
             // 
             this.btnInicio.Image = global::AromasCollection.Properties.Resources.aromas;
-            this.btnInicio.Location = new System.Drawing.Point(4, 7);
-            this.btnInicio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnInicio.Location = new System.Drawing.Point(3, 6);
             this.btnInicio.Name = "btnInicio";
-            this.btnInicio.Size = new System.Drawing.Size(255, 132);
+            this.btnInicio.Size = new System.Drawing.Size(191, 107);
             this.btnInicio.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnInicio.TabIndex = 0;
             this.btnInicio.TabStop = false;
@@ -351,10 +332,9 @@ namespace AromasCollection
             // 
             this.main.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(84)))), ((int)(((byte)(135)))));
             this.main.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.main.Location = new System.Drawing.Point(267, 47);
-            this.main.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.main.Location = new System.Drawing.Point(200, 38);
             this.main.Name = "main";
-            this.main.Size = new System.Drawing.Size(1466, 837);
+            this.main.Size = new System.Drawing.Size(840, 602);
             this.main.TabIndex = 2;
             this.main.MouseDown += new System.Windows.Forms.MouseEventHandler(this.main_MouseDown);
             // 
@@ -363,10 +343,9 @@ namespace AromasCollection
             this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCerrar.Image = global::AromasCollection.Properties.Resources.cerrar;
-            this.btnCerrar.Location = new System.Drawing.Point(1684, 9);
-            this.btnCerrar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCerrar.Location = new System.Drawing.Point(1003, 7);
             this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(33, 31);
+            this.btnCerrar.Size = new System.Drawing.Size(25, 25);
             this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnCerrar.TabIndex = 0;
             this.btnCerrar.TabStop = false;
@@ -377,10 +356,9 @@ namespace AromasCollection
             this.btnMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMaximizar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMaximizar.Image = global::AromasCollection.Properties.Resources.maxi;
-            this.btnMaximizar.Location = new System.Drawing.Point(1628, 9);
-            this.btnMaximizar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnMaximizar.Location = new System.Drawing.Point(961, 7);
             this.btnMaximizar.Name = "btnMaximizar";
-            this.btnMaximizar.Size = new System.Drawing.Size(33, 31);
+            this.btnMaximizar.Size = new System.Drawing.Size(25, 25);
             this.btnMaximizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnMaximizar.TabIndex = 1;
             this.btnMaximizar.TabStop = false;
@@ -391,10 +369,9 @@ namespace AromasCollection
             this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMinimizar.Image = global::AromasCollection.Properties.Resources.minimazar;
-            this.btnMinimizar.Location = new System.Drawing.Point(1568, 9);
-            this.btnMinimizar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnMinimizar.Location = new System.Drawing.Point(916, 7);
             this.btnMinimizar.Name = "btnMinimizar";
-            this.btnMinimizar.Size = new System.Drawing.Size(33, 31);
+            this.btnMinimizar.Size = new System.Drawing.Size(25, 25);
             this.btnMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnMinimizar.TabIndex = 2;
             this.btnMinimizar.TabStop = false;
@@ -405,10 +382,9 @@ namespace AromasCollection
             this.btnRestaurar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRestaurar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRestaurar.Image = global::AromasCollection.Properties.Resources.res;
-            this.btnRestaurar.Location = new System.Drawing.Point(1628, 9);
-            this.btnRestaurar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRestaurar.Location = new System.Drawing.Point(961, 7);
             this.btnRestaurar.Name = "btnRestaurar";
-            this.btnRestaurar.Size = new System.Drawing.Size(33, 31);
+            this.btnRestaurar.Size = new System.Drawing.Size(25, 25);
             this.btnRestaurar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnRestaurar.TabIndex = 3;
             this.btnRestaurar.TabStop = false;
@@ -424,22 +400,20 @@ namespace AromasCollection
             this.titulo.Controls.Add(this.btnCerrar);
             this.titulo.Dock = System.Windows.Forms.DockStyle.Top;
             this.titulo.Location = new System.Drawing.Point(0, 0);
-            this.titulo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.titulo.Name = "titulo";
-            this.titulo.Size = new System.Drawing.Size(1733, 47);
+            this.titulo.Size = new System.Drawing.Size(1040, 38);
             this.titulo.TabIndex = 0;
             this.titulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.titulo_MouseDown);
             // 
             // FrmMenuPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1733, 884);
+            this.ClientSize = new System.Drawing.Size(1040, 640);
             this.Controls.Add(this.main);
             this.Controls.Add(this.menuIzquierdo);
             this.Controls.Add(this.titulo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmMenuPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MenuPrincipal";

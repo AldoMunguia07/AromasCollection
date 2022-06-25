@@ -90,6 +90,12 @@
     <Compile Include="FrmClienteFactura.Designer.cs">
       <DependentUpon>FrmClienteFactura.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmColaborador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmColaborador.Designer.cs">
+      <DependentUpon>FrmColaborador.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmFactura.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -160,6 +166,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmClienteFactura.resx">
       <DependentUpon>FrmClienteFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmColaborador.resx">
+      <DependentUpon>FrmColaborador.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmFactura.resx">
       <DependentUpon>FrmFactura.cs</DependentUpon>
