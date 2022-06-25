@@ -32,7 +32,9 @@ namespace AromasCollection
         private void inicializarDatagrid()
         {
             cliente.MostrarCliente(dgvCliente);
-            dgvCliente.Columns["idCliente"].Visible = false;
+            ocultarColumnas();
+
+
         }
         private void ObtenerParametros()
         {
@@ -127,11 +129,11 @@ namespace AromasCollection
             {
                 DataGridViewRow row = dgvCliente.Rows[e.RowIndex];
 
-                cliente.IdCliente = int.Parse(row.Cells["idCliente"].Value.ToString());
+                cliente.IdCliente = int.Parse(row.Cells["Codigo"].Value.ToString());
                 txtID.Text = row.Cells["Identidad"].Value.ToString();
                 txtRTN.Text = row.Cells["RTN"].Value.ToString();
-                txtNombre.Text = row.Cells["Nombre"].Value.ToString();
-                txtApellido.Text = row.Cells["Apellido"].Value.ToString();
+                txtNombre.Text = row.Cells["nombreCliente"].Value.ToString();
+                txtApellido.Text = row.Cells["apellidoCliente"].Value.ToString();
 
                 selecionActiva = true;
                 btnAgregar.Enabled = false;
@@ -141,6 +143,7 @@ namespace AromasCollection
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
             cliente.BuscarCliente(dgvCliente, txtBuscar.Text);
+            ocultarColumnas();
         }
 
         private void txtID_KeyPress(object sender, KeyPressEventArgs e)
@@ -158,6 +161,12 @@ namespace AromasCollection
         private void txtApellido_KeyPress(object sender, KeyPressEventArgs e)
         {
             Validacion.SoloLetras(e);
+        }
+
+        private void ocultarColumnas()
+        {
+            dgvCliente.Columns[4].Visible = false;
+            dgvCliente.Columns[5].Visible = false;
         }
     }
 }

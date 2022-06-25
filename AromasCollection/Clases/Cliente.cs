@@ -67,7 +67,7 @@ namespace AromasCollection.Clases
             {
                 conexion.sqlConnection.Open();
 
-                SqlCommand sqlCommand = new SqlCommand("sp_Clientes", conexion.sqlConnection);
+                SqlCommand sqlCommand = new SqlCommand("sp_Cliente", conexion.sqlConnection);
                 sqlCommand.CommandType = CommandType.StoredProcedure;
 
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
@@ -104,7 +104,7 @@ namespace AromasCollection.Clases
             {
                 conexion.sqlConnection.Open();
 
-                SqlCommand sqlCommand = new SqlCommand("sp_Clientes", conexion.sqlConnection);
+                SqlCommand sqlCommand = new SqlCommand("sp_Cliente", conexion.sqlConnection);
                 sqlCommand.CommandType = CommandType.StoredProcedure;
 
                 // Establecer los valores de los parámetros
@@ -135,7 +135,7 @@ namespace AromasCollection.Clases
             {
                 conexion.sqlConnection.Open();
                 //Query para mostrar un zapato
-                SqlCommand sqlCommand = new SqlCommand("sp_Clientes", conexion.sqlConnection);
+                SqlCommand sqlCommand = new SqlCommand("sp_Cliente", conexion.sqlConnection);
                 sqlCommand.CommandType = CommandType.StoredProcedure;
 
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
@@ -171,7 +171,7 @@ namespace AromasCollection.Clases
             {
                 conexion.sqlConnection.Open();
 
-                SqlCommand sqlCommand = new SqlCommand("sp_Clientes", conexion.sqlConnection);
+                SqlCommand sqlCommand = new SqlCommand("sp_Cliente", conexion.sqlConnection);
                 sqlCommand.CommandType = CommandType.StoredProcedure;
 
                 // Establecer los valores de los parámetros
