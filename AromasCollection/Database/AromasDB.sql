@@ -121,7 +121,7 @@ Create table SAR(
 	CodigoSAR INT NOT NULL IDENTITY,  
 	rangoInicial INT NOT NULL,
 	rangoFinal INT	NOT NULL, 
-	fechaRecepecion DATE NOT NULL,
+	fechaRecepcion DATE NOT NULL,
 	fechaLimiteEmision DATE NOT NULL,
 	cai VARCHAR(200) NOT NULL,
 	estado BIT NOT NULL,
@@ -327,7 +327,7 @@ BEGIN
 END
 GO
 
-ALTER PROCEDURE sp_Cliente
+CREATE PROCEDURE sp_Cliente
 @idCliente int = NULL,
 @dni VARCHAR(15) = NULL,
 @rtn VARCHAR(15) = NULL,
@@ -514,5 +514,390 @@ BEGIN
 			SET idProducto = @idProducto, cantidad = @cantidad, precioCompra = @preciocompra, fecha = @fecha
 			WHERE Lote.idLote = @idLote
 		END
+END
+GO
+CREATE PROCEDURE sp_SAR
+@codigoSAR int = NULL,  
+@rangoInicial int = NULL,
+@rangoFinal int	= NULL,
+@fechaRecepcion date = NULL,
+@fechaLimiteEmision date = NULL,
+@cai varchar(200) = NULL,
+@estado bit = NULL,
+@rangoBuscado varchar(200) =  NULL,
+@accion nvarchar(50)
+AS 
+BEGIN
+
+
+	IF @accion = 'insertarRango'
+	BEGIN
+		INSERT INTO [dbo].[SAR] VALUES (@rangoInicial, @rangoFinal,@fechaRecepcion ,@fechaLimiteEmision,@cai,@estado)
+	END
+
+	ELSE IF @accion = 'Buscar'
+	BEGIN
+		SELECT S.CodigoSAR 'Código', S.RangoInicial 'Valor Inicial', S.RangoFinal 'Valor Final', S.fechaRecepcion 'Fecha de Recepcion', S.FechaLimiteEmision 'Fecha Limite de Emision', 
+		S.cai 'Cai',S.estado 'Estado' from [dbo].[SAR] S WHERE S.estado = @estado AND CONCAT(S.CodigoSAR,' ', S.cai) LIKE CONCAT('%',@rangoBuscado,'%')
+	END
+
+	ELSE IF @accion = 'mostrar'
+	BEGIN
+		SELECT S.CodigoSAR 'Código', S.RangoInicial 'Valor Inicial', S.RangoFinal 'Valor Final', S.fechaRecepcion 'Fecha de Recepcion', S.FechaLimiteEmision 'Fecha Limite de Emision', 
+		S.cai 'Cai',S.estado 'Estado' from [dbo].[SAR] S WHERE S.estado = @estado
+	END
+
+	ELSE IF @accion = 'modificarRango'
+	BEGIN
+		UPDATE [dbo].[SAR]
+		SET rangoInicial = @rangoInicial, rangoFinal = @rangoFinal, fechaLimiteEmision = @fechaLimiteEmision, fechaRecepcion = @fechaRecepcion, cai = @cai ,estado = @estado
+		WHERE CodigoSAR = @codigoSAR
+	END
+
+	ELSE IF @accion = 'desactivarRango'
+	BEGIN
+		UPDATE [dbo].[SAR]
+		SET  estado = 0
+		WHERE CodigoSAR = @codigoSAR
+	END
+
+	ELSE IF @accion = 'CodigoSarActivo'
+	BEGIN 
+		select top 1 CodigoSAR from SAR WHERE estado = 1 ORDER BY CodigoSAR ASC
+	END
+	
+	ELSE IF @accion = 'ObtenerSAR'
+	BEGIN
+		select top 1 RangoInicial from SAR WHERE estado = 1 ORDER BY CodigoSAR ASC
+	END
+
+	ELSE IF @accion = 'PrimerFactura'
+	BEGIN 
+		select * from Factura where CodigoSAR = (select top 1 CodigoSAR from SAR WHERE estado = 1 ORDER BY CodigoSAR ASC)
+	END 
+
+	ELSE IF @accion = 'InsertarCodigoFactura'
+	BEGIN 
+		select top 1  idFactura+1 'Codigo' from Factura where CodigoSAR = (select top 1 CodigoSAR from SAR WHERE estado = 1 ORDER BY CodigoSAR ASC)
+		ORDER BY idFactura DESC
+	END
+
+	ELSE IF @accion = 'FechaLimiteEmision'
+	BEGIN 
+		select top 1  fechaLimiteEmision from SAR where estado = 1
+	END
+
+	ELSE IF @accion = 'CargarEstado'
+	BEGIN
+		SELECT '1' id, 'Activos' estado
+        UNION
+        SELECT '0', 'Inactivos'
+	END
+
+END
+GO
+
+CREATE PROCEDURE sp_bitacora@value sql_variant = NULL,@key sysname = NULL,@accion nvarchar(50)ASBEGIN	IF @accion = 'idColaborador'	begin	EXEC sp_set_session_context @key, @value	end	ELSE IF @accion = 'Mostrar'	BEGIN		select B.idBitacora 'Codigo de Registro', B.idColaborador'Codigo de Colaborador',CONCAT(C.nombreColaborador,' ', C.apellidoColaborador) 'Nombre del Colaborador', b.pcUsuario 'PC del Usuario',		B.accion 'Accion', B.fecha 'Fecha'		from Bitacora B INNER JOIN Colaborador C 		ON C.idColaborador = B.idColaborador		ORDER BY B.idBitacora DESC	ENDEND
+GO
+
+
+----------- Triggers
+
+CREATE TRIGGER ValidarRango
+ON FACTURA after insert
+AS
+
+BEGIN
+	if((select I.idFactura from inserted I) = (select S.RangoFinal from SAR S where S.estado = 1))
+	BEGIN 
+		UPDATE SAR set 
+			estado = 0
+		where estado = 1
+	END
+
+END
+GO
+
+/*
+
+*************Triggers para Bitacora*****************
+
+*/
+
+
+
+-------------------
+------------------- Categoria
+-------------------
+
+CREATE TRIGGER InsertarCategoria 
+ON Categoria AFTER INSERT
+AS
+BEGIN
+declare @id sql_variant
+	set @id = (select SESSION_CONTEXT(N'user_id'));
+	INSERT INTO Bitacora
+	select cast(@id as int), 
+SYSTEM_USER,
+CONCAT('Inserción de la categoria ', categoria,  ' con ID ', idCategoria),
+GETDATE()
+from inserted
+END
+GO
+
+CREATE TRIGGER ModificarCategoria
+ON Categoria AFTER UPDATE
+AS
+BEGIN
+declare @id sql_variant
+	set @id = (select SESSION_CONTEXT(N'user_id'));
+	INSERT INTO Bitacora
+select cast(@id as int), 
+SYSTEM_USER,
+CONCAT('Modificación de la categoria ', categoria,  ' con ID ', idCategoria),
+GETDATE()
+from inserted
+END
+GO
+
+---------------
+--------------- Cliente
+--------------- 
+
+CREATE TRIGGER InsertarCliente
+ON Cliente AFTER INSERT
+AS
+BEGIN
+declare @id sql_variant
+	set @id = (select SESSION_CONTEXT(N'user_id'));
+	INSERT INTO Bitacora
+	select cast(@id as int), 
+SYSTEM_USER,
+CONCAT('Inserción del cliente ', nombreCliente,' ' , apellidoCliente,  ' con ID ', idCliente),
+GETDATE()
+from inserted
+END
+GO
+
+CREATE TRIGGER ModificarCliente
+ON Cliente AFTER UPDATE
+AS
+BEGIN
+declare @id sql_variant
+	set @id = (select SESSION_CONTEXT(N'user_id'));
+	INSERT INTO Bitacora
+	select cast(@id as int), 
+SYSTEM_USER,
+CONCAT('Modificación del cliente ', nombreCliente,' ' , apellidoCliente,  ' con ID ', idCliente),
+GETDATE()
+from inserted
+END
+GO
+
+---------------
+--------------- Colaborador
+--------------- 
+
+CREATE TRIGGER InsertarColaborador
+ON Colaborador AFTER INSERT
+AS
+BEGIN
+declare @id sql_variant
+	set @id = (select SESSION_CONTEXT(N'user_id'));
+	INSERT INTO Bitacora
+	select cast(@id as int), 
+SYSTEM_USER,
+CONCAT('Inserción del colaborador ', nombreColaborador,' ' , apellidoColaborador,  ' con ID ', idColaborador),
+GETDATE()
+from inserted
+END
+GO
+
+
+CREATE TRIGGER ModificarColaborador
+ON Colaborador AFTER UPDATE
+AS
+BEGIN
+declare @id sql_variant
+	set @id = (select SESSION_CONTEXT(N'user_id'));
+	INSERT INTO Bitacora
+	select cast(@id as int), 
+SYSTEM_USER,
+CONCAT('Modificación del colaborador ', nombreColaborador,' ' , apellidoColaborador,  ' con ID ', idColaborador),
+GETDATE()
+from inserted
+END
+GO
+
+
+---------------
+--------------- Factura
+--------------- 
+
+CREATE TRIGGER InsertarFactura
+ON Factura AFTER INSERT
+AS
+BEGIN
+declare @id sql_variant
+	set @id = (select SESSION_CONTEXT(N'user_id'));
+	INSERT INTO Bitacora
+	select cast(@id as int), 
+SYSTEM_USER,
+CONCAT('Creación de la factura numero ', idFactura),
+GETDATE()
+from inserted
+END
+GO
+
+
+CREATE TRIGGER DesactivarFactura
+ON Factura AFTER UPDATE
+AS
+BEGIN
+declare @id sql_variant
+	set @id = (select SESSION_CONTEXT(N'user_id'));
+	INSERT INTO Bitacora
+	select cast(@id as int), 
+SYSTEM_USER,
+CONCAT('Anulación de la factura numero ', idFactura),
+GETDATE()
+from inserted
+END
+GO
+
+---------------
+--------------- Lote
+--------------- 
+
+CREATE TRIGGER InsertarLote
+ON Lote AFTER INSERT
+AS
+BEGIN
+declare @id sql_variant
+	set @id = (select SESSION_CONTEXT(N'user_id'));
+	INSERT INTO Bitacora
+	select cast(@id as int), 
+SYSTEM_USER,
+CONCAT('Inserción de un lote del articulo ', (select distinct P.nombreProducto from Producto P inner join Lote L on P.idProducto = L.idProducto WHERE P.idProducto = I.idProducto), ' con una existencia de ', I.cantidad,' al lote con ID ', I.idLote ),
+GETDATE()
+from inserted I
+END
+GO
+
+CREATE TRIGGER ModificarLote
+ON Lote AFTER UPDATE
+AS
+BEGIN
+declare @id sql_variant
+	set @id = (select SESSION_CONTEXT(N'user_id'));
+	INSERT INTO Bitacora
+	select cast(@id as int), 
+SYSTEM_USER,
+CONCAT('Modificación de un lote del articulo ', (select distinct P.nombreProducto from Producto P inner join Lote L on P.idProducto = L.idProducto WHERE P.idProducto = I.idProducto), ' con una existencia de ', I.cantidad,' al lote con ID ', I.idLote ),
+GETDATE()
+from inserted I
+END
+GO
+
+---------------
+--------------- Producto
+--------------- 
+
+CREATE TRIGGER InsertarProducto
+ON Producto AFTER INSERT
+AS
+BEGIN
+declare @id sql_variant
+	set @id = (select SESSION_CONTEXT(N'user_id'));
+	INSERT INTO Bitacora
+	select cast(@id as int), 
+SYSTEM_USER,
+CONCAT('Inserción del producto ', nombreProducto , ' con ID ', idProducto),
+GETDATE()
+from inserted I
+END
+GO
+
+
+CREATE TRIGGER ModificarProducto
+ON Producto AFTER UPDATE
+AS
+BEGIN
+declare @id sql_variant
+	set @id = (select SESSION_CONTEXT(N'user_id'));
+	INSERT INTO Bitacora
+	select cast(@id as int), 
+SYSTEM_USER,
+CONCAT('Modificación del producto ', nombreProducto , ' con ID ', idProducto),
+GETDATE()
+from inserted I
+END
+GO
+
+---------------
+--------------- Puesto
+--------------- 
+
+CREATE TRIGGER InsertarPuesto
+ON Puesto AFTER INSERT
+AS
+BEGIN
+declare @id sql_variant
+	set @id = (select SESSION_CONTEXT(N'user_id'));
+	INSERT INTO Bitacora
+	select cast(@id as int), 
+SYSTEM_USER,
+CONCAT('Inserción del puesto ', puesto , ' con ID ', idPuesto),
+GETDATE()
+from inserted I
+END
+GO
+
+CREATE TRIGGER ModificarPuesto
+ON Puesto AFTER UPDATE
+AS
+BEGIN
+declare @id sql_variant
+	set @id = (select SESSION_CONTEXT(N'user_id'));
+	INSERT INTO Bitacora
+	select cast(@id as int), 
+SYSTEM_USER,
+CONCAT('Modificación del puesto ', puesto , ' con ID ', idPuesto),
+GETDATE()
+from inserted I
+END
+GO
+
+---------------
+--------------- SAR
+--------------- 
+
+CREATE TRIGGER InsertarSAR
+ON SAR AFTER INSERT
+AS
+BEGIN
+declare @id sql_variant
+	set @id = (select SESSION_CONTEXT(N'user_id'));
+	INSERT INTO Bitacora
+	select cast(@id as int), 
+SYSTEM_USER,
+CONCAT('Inserción del rango ', rangoInicial, ' - ', rangoFinal , ' con ID ', CodigoSAR),
+GETDATE()
+from inserted I
+END
+GO
+
+CREATE TRIGGER ModificarSAR
+ON SAR AFTER UPDATE
+AS
+BEGIN
+declare @id sql_variant
+	set @id = (select SESSION_CONTEXT(N'user_id'));
+	INSERT INTO Bitacora
+	select cast(@id as int), 
+SYSTEM_USER,
+CONCAT('Modificación del rango ', rangoInicial, ' - ', rangoFinal , ' con ID ', CodigoSAR),
+GETDATE()
+from inserted I
 END
 GO

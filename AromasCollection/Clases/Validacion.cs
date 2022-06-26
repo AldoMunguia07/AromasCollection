@@ -89,5 +89,17 @@ namespace AromasCollection.Clases
 
             }
         }
+
+        public bool ValidarLlenosSAR(TextBox inicial, TextBox final, TextBox Cai)
+        {
+            if (inicial.Text != string.Empty && final.Text != string.Empty && Cai.Text != string.Empty)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

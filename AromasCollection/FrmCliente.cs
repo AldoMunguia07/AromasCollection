@@ -18,10 +18,12 @@ namespace AromasCollection
         Factura factura = new Factura();
         Validacion Validacion = new Validacion();
         bool selecionActiva = false;
-        public FrmCliente()
+        public FrmCliente(Colaborador colaborador)
         {
             InitializeComponent();
             inicializarDatagrid();
+
+            cliente.IdColaborador = colaborador.IdColaborador;
             //factura.IdFactura = 87;
             //factura.CodigoSAR = 1;
             //factura.IdColaborador = 2;

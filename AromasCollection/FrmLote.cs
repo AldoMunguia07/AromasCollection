@@ -18,11 +18,13 @@ namespace AromasCollection
         Lote lote = new Lote();
         bool selecionActiva = false;
         int codigo;
-        public FrmLote(int idProducto)
+        public FrmLote(int idProducto, Colaborador colaborador)
         {
             InitializeComponent();
             codigo = idProducto;
             lote.Mostrar(dgLote, idProducto);
+
+            lote.IdColaborador = colaborador.IdColaborador;
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)

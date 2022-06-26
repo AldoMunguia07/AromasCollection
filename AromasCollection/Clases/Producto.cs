@@ -12,6 +12,11 @@ namespace AromasCollection.Clases
     public class Producto
     {
         Conexion conexion = new Conexion();
+
+        Bitacora bitacora = new Bitacora();
+
+        
+
         //PROPIEDADES
         public int IdProducto { get; set; }
         public string nombreProducto{ get; set; }
@@ -21,6 +26,10 @@ namespace AromasCollection.Clases
         public int idCategoria { get; set; }
 
         public int Existencia { get; set; }
+
+
+
+        public int IdColaborador { get; set; }
 
         //METODOS
         public void Mostrar(DataGridView dataGrid)
@@ -118,6 +127,8 @@ namespace AromasCollection.Clases
 
                 sqlCommand.Parameters.AddWithValue("@accion", "insertar");
 
+                bitacora.DefinirIdColaborador(IdColaborador, conexion.sqlConnection);
+
                 sqlCommand.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -149,6 +160,11 @@ namespace AromasCollection.Clases
                 sqlCommand.Parameters.AddWithValue("@idCategoria", producto.idCategoria);
 
                 sqlCommand.Parameters.AddWithValue("@accion", "modificar");
+
+
+                bitacora.DefinirIdColaborador(IdColaborador, conexion.sqlConnection);
+
+
 
                 sqlCommand.ExecuteNonQuery();
             }

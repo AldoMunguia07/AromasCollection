@@ -18,11 +18,17 @@ namespace AromasCollection
         Cliente cliente = new Cliente();
         Factura factura = new Factura();
         DetalleFactura detalleFactura = new DetalleFactura();
-        public FrmFactura()
+        SAR sar = new SAR();
+      
+        public FrmFactura(Colaborador colaborador)
         {
             InitializeComponent();
             rbDetalle.Checked = true;
             rbNormal.Checked = true;
+            factura.IdColaborador = colaborador.IdColaborador;
+            codigoFacturacion();
+            txtNumFactura.Text = factura.IdFactura.ToString();
+            
 
         }
 
@@ -156,44 +162,58 @@ namespace AromasCollection
         {
             if(camposLlenosFactura())
             {
-                if (dgCarrito.Rows.Count > 0)
+                if (sar.CodigoSarActivo() != 0)
                 {
-                    if(rbEnviosMall.Checked)
+                    if (sar.FechaLimiteEmisionVencio())
                     {
-                        if (int.Parse(txtCodigoCliente.Text) == 1)
+                        if (dgCarrito.Rows.Count > 0)
                         {
-                            agregar();
+                            if (rbEnviosMall.Checked)
+                            {
+                                if (int.Parse(txtCodigoCliente.Text) == 1)
+                                {
+                                    agregar();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Debe elegir el codigo 1 del cliente (Envios Mall)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                            }
+                            else if (rbOtros.Checked)
+                            {
+                                if (int.Parse(txtCodigoCliente.Text) == 2)
+                                {
+                                    agregar();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Debe elegir el codigo 2 del cliente (Otras Salidas)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                            }
+                            else
+                            {
+                                agregar();
+
+                            }
                         }
                         else
                         {
-                            MessageBox.Show("Debe elegir el codigo 1 del cliente (Envios Mall)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                    else if(rbOtros.Checked)
-                    {
-                        if (int.Parse(txtCodigoCliente.Text) == 2)
-                        {
-                            agregar();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Debe elegir el codigo 2 del cliente (Otras Salidas)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Debe añadir productos al carrito", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     else
                     {
-                        agregar();
-
+                        sar.DesactivarRango(sar.CodigoSarActivo());
+                        MessageBox.Show("¡Se a sobrepasado la fecha limite de emisión del rango!", "SAR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
-                    
- 
-
                 }
                 else
                 {
-                    MessageBox.Show("Debe añadir productos al carrito", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("¡Ya no tiene rangos disponibles para su facturacion!, debe solicitar mas al SAR", "SAR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                
+
+
+
 
             }
             else
@@ -206,11 +226,29 @@ namespace AromasCollection
 
         }
 
+        private void codigoFacturacion()
+        {
+            if (sar.CodigoSarActivo() != 0)
+            {
+                factura.CodigoSAR = sar.CodigoSarActivo();
+
+                if (sar.PrimeraFactura())
+                {
+                    factura.IdFactura = sar.ObtenerRangoInicial();
+                }
+                else
+                {
+                    factura.IdFactura = sar.ObtenerCodigoFactura();
+                }
+            }
+        }
+
+
         private void obtenerValores()
         {
-            factura.IdFactura = int.Parse(txtNumFactura.Text);
-            factura.CodigoSAR = 1;
-            factura.IdColaborador = 1;
+
+            codigoFacturacion();
+    
             factura.IdCliente = int.Parse(txtCodigoCliente.Text);
             factura.FechaVenta = DateTime.Now;
             factura.Descuento = int.Parse(numDescuento.Value.ToString());
@@ -275,7 +313,7 @@ namespace AromasCollection
 
         private bool camposLlenosFactura()
         {
-            if (txtNumFactura.Text != "" && txtCodigoCliente.Text != "")
+            if (txtCodigoCliente.Text != "")
             {
                 return true;
             }

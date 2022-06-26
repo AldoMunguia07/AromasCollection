@@ -101,6 +101,8 @@ namespace AromasCollection.Clases
 
                 sqlCommand.Parameters.AddWithValue("@accion", "modificar");
 
+                bitacora.DefinirIdColaborador(idColaborador, conexion.sqlConnection);
+
                 sqlCommand.ExecuteNonQuery();
             }
             catch (Exception ex)

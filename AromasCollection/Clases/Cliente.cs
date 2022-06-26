@@ -12,12 +12,15 @@ namespace AromasCollection.Clases
     public class Cliente
     {
         Conexion conexion = new Conexion();
+        Bitacora bitacora = new Bitacora();
         //PROPIEDADES
         public int IdCliente { get; set; }
         public string Dni { get; set; }
         public string Rtn { get; set; }
         public string NombreCliente { get; set; }
         public string ApellidoCliente { get; set; }
+
+        public int IdColaborador { get; set; }
 
 
         public int Existencia { get; set; }
@@ -115,6 +118,9 @@ namespace AromasCollection.Clases
 
 
                 sqlCommand.Parameters.AddWithValue("@accion", "insertar");
+
+                bitacora.DefinirIdColaborador(IdColaborador, conexion.sqlConnection);
+
                 sqlCommand.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -182,6 +188,8 @@ namespace AromasCollection.Clases
                 sqlCommand.Parameters.AddWithValue("@apellidoCliente", cliente.ApellidoCliente);
 
                 sqlCommand.Parameters.AddWithValue("@accion", "modificar");
+
+                bitacora.DefinirIdColaborador(IdColaborador, conexion.sqlConnection);
 
                 sqlCommand.ExecuteNonQuery();
             }

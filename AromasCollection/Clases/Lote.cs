@@ -13,12 +13,17 @@ namespace AromasCollection.Clases
     {
         Conexion conexion = new Conexion();
 
+        Bitacora bitacora = new Bitacora();
+
         public int idLote { get; set; }
         public int idProducto { get; set; }
 
         public int cantidad { get; set; }
         public float precioCompra { get; set; }
         public DateTime fecha { get; set; }
+
+
+        public int IdColaborador { get; set; }
 
 
         public void AgregarLote(Lote lote)
@@ -36,6 +41,8 @@ namespace AromasCollection.Clases
                 sqlCommand.Parameters.AddWithValue("@preciocompra", lote.precioCompra);
 
                 sqlCommand.Parameters.AddWithValue("@accion", "insertar");
+
+                bitacora.DefinirIdColaborador(IdColaborador, conexion.sqlConnection);
 
                 sqlCommand.ExecuteNonQuery();
             }
@@ -104,6 +111,10 @@ namespace AromasCollection.Clases
                 sqlCommand.Parameters.AddWithValue("@preciocompra", lote.precioCompra);
 
                 sqlCommand.Parameters.AddWithValue("@accion", "modificar");
+
+
+                bitacora.DefinirIdColaborador(IdColaborador, conexion.sqlConnection);
+
 
                 sqlCommand.ExecuteNonQuery();
             }

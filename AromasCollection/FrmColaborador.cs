@@ -16,10 +16,11 @@ namespace AromasCollection
         Colaborador colaborador = new Colaborador();
         Validacion Validacion = new Validacion();
         bool selecionActiva = false;
-        public FrmColaborador()
+        public FrmColaborador(Colaborador uncolaborador)
         {
             InitializeComponent();
             InicializarDatagrid();
+            colaborador.IdColaborador = uncolaborador.IdColaborador;
             colaborador.CargarComboBoxEstado(cmbColaboradorPuesto);
 
         }

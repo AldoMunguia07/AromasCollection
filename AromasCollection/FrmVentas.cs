@@ -14,17 +14,21 @@ namespace AromasCollection
     public partial class FrmVentas : Form
     {
         Factura factura = new Factura();
-        public FrmVentas()
+
+        Colaborador miColaborador = new Colaborador();
+        public FrmVentas(Colaborador colaborador)
         {
             InitializeComponent();
             factura.Mostrar(dgFacturas);
+
+            miColaborador = colaborador;
 
         }
 
         private void btnNuevaVenta_Click(object sender, EventArgs e)
         {
             
-            new FrmFactura().ShowDialog();
+            new FrmFactura(miColaborador).ShowDialog();
             factura.Mostrar(dgFacturas);
         }
 

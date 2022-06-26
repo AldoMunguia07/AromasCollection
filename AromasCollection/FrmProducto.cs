@@ -17,12 +17,16 @@ namespace AromasCollection
         Producto producto = new Producto();
         Validacion Validacion = new Validacion();
         bool selecionActiva = false;
+        Colaborador miColaborador = new Colaborador();
 
-        public FrmProducto()
+        public FrmProducto(Colaborador colaborador)
         {
             InitializeComponent();
 
             categoria.CargarComboBoxEstado(cmbCategoria);
+
+            producto.IdColaborador = colaborador.IdColaborador;
+            miColaborador = colaborador;
             inicializarDatagrid();
 
         }
@@ -137,7 +141,7 @@ namespace AromasCollection
             }
             else
             {
-                new FrmLote(producto.IdProducto).ShowDialog();
+                new FrmLote(producto.IdProducto, miColaborador).ShowDialog();
             }
         }
 

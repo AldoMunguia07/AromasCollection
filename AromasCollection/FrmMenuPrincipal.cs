@@ -82,7 +82,7 @@ namespace AromasCollection
 
         private void btnVentas_Click(object sender, EventArgs e)
         {
-            abrirFormPanel(new FrmVentas());
+            abrirFormPanel(new FrmVentas(miColaborador));
         }
 
         private void btnInicio_Click(object sender, EventArgs e)
@@ -92,7 +92,7 @@ namespace AromasCollection
 
         private void btnProductos_Click(object sender, EventArgs e)
         {
-            abrirFormPanel(new FrmProducto());
+            abrirFormPanel(new FrmProducto(miColaborador));
         }
 
         private void btnCategorias_Click(object sender, EventArgs e)
@@ -112,12 +112,22 @@ namespace AromasCollection
 
         private void btnClientes_Click(object sender, EventArgs e)
         {
-            abrirFormPanel(new FrmCliente());
+            abrirFormPanel(new FrmCliente(miColaborador));
         }
 
         private void btnColaboradores_Click(object sender, EventArgs e)
         {
-            abrirFormPanel(new FrmColaborador());
+            abrirFormPanel(new FrmColaborador(miColaborador));
+        }
+
+        private void btnSAR_Click(object sender, EventArgs e)
+        {
+            abrirFormPanel(new FrmSAR(miColaborador));
+        }
+
+        private void btnBitacora_Click(object sender, EventArgs e)
+        {
+            abrirFormPanel(new FrmBitacora());
         }
     }
 }

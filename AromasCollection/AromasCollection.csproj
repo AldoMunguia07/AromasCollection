@@ -77,7 +77,14 @@
     <Compile Include="Clases\Factura.cs" />
     <Compile Include="Clases\Lote.cs" />
     <Compile Include="Clases\Producto.cs" />
+    <Compile Include="Clases\SAR.cs" />
     <Compile Include="Clases\Validacion.cs" />
+    <Compile Include="FrmBitacora.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBitacora.Designer.cs">
+      <DependentUpon>FrmBitacora.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmCategoria.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,6 +151,12 @@
     <Compile Include="FrmProductoFactura.Designer.cs">
       <DependentUpon>FrmProductoFactura.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmSAR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSAR.Designer.cs">
+      <DependentUpon>FrmSAR.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmVentas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -158,6 +171,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmBitacora.resx">
+      <DependentUpon>FrmBitacora.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmCliente.resx">
       <DependentUpon>FrmCliente.cs</DependentUpon>
     </EmbeddedResource>
@@ -191,6 +207,9 @@
     <EmbeddedResource Include="FrmProductoFactura.resx">
       <DependentUpon>FrmProductoFactura.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmSAR.resx">
+      <DependentUpon>FrmSAR.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmVentas.resx">
       <DependentUpon>FrmVentas.cs</DependentUpon>
     </EmbeddedResource>
@@ -223,6 +242,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Database\AromasDB.sql" />
+    <None Include="Resources\bitacora.png" />
     <None Include="Resources\miCunta.png" />
     <None Include="Resources\reportes.png" />
     <None Include="Resources\compras.png" />

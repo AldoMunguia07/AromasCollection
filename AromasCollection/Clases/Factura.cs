@@ -13,6 +13,9 @@ namespace AromasCollection.Clases
     {
         Conexion conexion = new Conexion();
 
+
+        Bitacora bitacora = new Bitacora();
+
         //PROPIEDADES
         public int IdFactura { get; set; }
         public int CodigoSAR { get; set; }
@@ -120,6 +123,8 @@ namespace AromasCollection.Clases
                 sqlCommand.Parameters.AddWithValue("@esVenta", factura.EsVenta);
                 sqlCommand.Parameters.AddWithValue("@observaciones", factura.Observaciones);
                 sqlCommand.Parameters.AddWithValue("@accion", "insertar");
+
+                bitacora.DefinirIdColaborador(IdColaborador, conexion.sqlConnection);
 
                 sqlCommand.ExecuteNonQuery();
 

@@ -14,6 +14,8 @@ namespace AromasCollection.Clases
     {
         Conexion conexion = new Conexion();
 
+        Bitacora bitacora = new Bitacora();
+
         public int IdColaborador { get; set; }
         public string NombreColaborador { get; set; }
         public string ApellidoColaborador { get; set; }
@@ -22,6 +24,7 @@ namespace AromasCollection.Clases
         public string Contrasenia { get; set; }
         public int IdPuesto { get; set; }
         public bool Estado { get; set; }
+
         public void Mostrar(DataGridView dataGrid)
         {
 
@@ -111,6 +114,9 @@ namespace AromasCollection.Clases
                 sqlCommand.Parameters.AddWithValue("@idPuesto", colaborador.IdPuesto);
                 sqlCommand.Parameters.AddWithValue("@estado", 1);
                 sqlCommand.Parameters.AddWithValue("@accion", "insertar");
+
+                bitacora.DefinirIdColaborador(IdColaborador, conexion.sqlConnection);
+
                 sqlCommand.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -143,6 +149,8 @@ namespace AromasCollection.Clases
                 sqlCommand.Parameters.AddWithValue("@estado", 1);
                 sqlCommand.Parameters.AddWithValue("@IdColaborador", colaborador.IdColaborador);
                 sqlCommand.Parameters.AddWithValue("@accion", "modificar");
+
+                bitacora.DefinirIdColaborador(IdColaborador, conexion.sqlConnection);
 
                 sqlCommand.ExecuteNonQuery();
             }
