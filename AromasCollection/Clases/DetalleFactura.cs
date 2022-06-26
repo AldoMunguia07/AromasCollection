@@ -56,5 +56,45 @@ namespace AromasCollection.Clases
             }
         }
 
+
+        public void Mostrar(DataGridView dataGrid, int codigoFactura)
+        {
+
+            try
+            {
+                conexion.sqlConnection.Open();
+                //Query para mostrar un zapato
+                SqlCommand sqlCommand = new SqlCommand("sp_detalleVenta", conexion.sqlConnection);
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+
+                // Establecer los valores de los parámetros
+
+                sqlCommand.Parameters.AddWithValue("@idFactura", codigoFactura);
+                sqlCommand.Parameters.AddWithValue("@accion", "mostrarDetalle");
+
+                using (sqlDataAdapter)
+                {
+                    DataTable dataTable = new DataTable();
+
+                    sqlDataAdapter.Fill(dataTable);
+
+                    dataGrid.DataSource = dataTable;
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                conexion.sqlConnection.Close();
+            }
+        }
+
     }
 }

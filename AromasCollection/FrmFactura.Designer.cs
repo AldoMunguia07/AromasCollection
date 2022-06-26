@@ -68,8 +68,6 @@ namespace AromasCollection
             this.rbNormal = new System.Windows.Forms.RadioButton();
             this.rbEnviosMall = new System.Windows.Forms.RadioButton();
             this.rbOtros = new System.Windows.Forms.RadioButton();
-            this.label10 = new System.Windows.Forms.Label();
-            this.lblCantidadNumerosDisponibles = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numCantidad)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -306,8 +304,6 @@ namespace AromasCollection
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.panel1.Controls.Add(this.lblCantidadNumerosDisponibles);
-            this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.panel2);
@@ -515,25 +511,6 @@ namespace AromasCollection
             this.rbOtros.UseVisualStyleBackColor = true;
             this.rbOtros.CheckedChanged += new System.EventHandler(this.rbOtros_CheckedChanged);
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(540, 352);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(259, 20);
-            this.label10.TabIndex = 10;
-            this.label10.Text = "Números disponibles para facturar: ";
-            // 
-            // lblCantidadNumerosDisponibles
-            // 
-            this.lblCantidadNumerosDisponibles.AutoSize = true;
-            this.lblCantidadNumerosDisponibles.Location = new System.Drawing.Point(802, 351);
-            this.lblCantidadNumerosDisponibles.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblCantidadNumerosDisponibles.Name = "lblCantidadNumerosDisponibles";
-            this.lblCantidadNumerosDisponibles.Size = new System.Drawing.Size(0, 20);
-            this.lblCantidadNumerosDisponibles.TabIndex = 11;
-            // 
             // FrmFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -565,7 +542,6 @@ namespace AromasCollection
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCarrito)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDescuento)).EndInit();
             this.ResumeLayout(false);
@@ -614,7 +590,5 @@ namespace AromasCollection
         private System.Windows.Forms.RadioButton rbNormal;
         private System.Windows.Forms.RadioButton rbEnviosMall;
         private System.Windows.Forms.RadioButton rbOtros;
-        private System.Windows.Forms.Label lblCantidadNumerosDisponibles;
-        private System.Windows.Forms.Label label10;
     }
 }
