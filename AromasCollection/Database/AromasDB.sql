@@ -280,6 +280,18 @@ BEGIN
 		BEGIN
 			INSERT INTO DetalleFactura VALUES (@idFactura,@codigoSAR, @idProducto, @precio, @cantidad)
 		END
+	ELSE IF @accion = 'mostrarDetalle'
+		BEGIN
+			select P.idProducto 'Codigo del Producto', P.nombreProducto 'Producto',DF.cantidad,
+			CASE WHEN esVenta = 1 THEN DF.precio ELSE 0 END  Precio,
+			CASE WHEN esVenta = 1 THEN SUM(DF.cantidad * DF.precio) ELSE 0 END  Subtotal
+			from Factura F INNER JOIN DetalleFactura DF 
+			ON F.idFactura = DF.idFactura
+			INNER JOIN Producto P 
+			ON P.idProducto = DF.idProducto
+			where F.idFactura = @idFactura
+			GROUP BY P.idProducto, P.nombreProducto, F.esVenta, DF.cantidad, DF.precio
+		END	
 
 END
 GO
