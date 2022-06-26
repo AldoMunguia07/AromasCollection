@@ -18,15 +18,17 @@ namespace AromasCollection
         bool seleccionado;
         Validacion validacion = new Validacion();
         DateTime fecha, fechaFLEmision;
+        bool cargado = false;
         public FrmSAR(Colaborador colaborador)
         {
             InitializeComponent();
 
-            sar.CargarComboBoxEstado(cmbEstado);
-            sar.CargarComboBoxEstado(cmbVerEstado);
-            sar.MostrarRangos(dgvSAR, Convert.ToInt32(cmbEstado.SelectedValue));
+           sar.CargarComboBoxEstado(cmbEstado);
+           sar.CargarComboBoxEstado(cmbVerEstado);
+           sar.MostrarRangos(dgvSAR, Convert.ToInt32(cmbEstado.SelectedValue));
 
             sar.IdColaborador = colaborador.IdColaborador;
+            cargado = true;
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -131,7 +133,10 @@ namespace AromasCollection
 
         private void cmbVerEstado_SelectedIndexChanged(object sender, EventArgs e)
         {
-            sar.MostrarRangos(dgvSAR, Convert.ToInt32(cmbVerEstado.SelectedValue));
+            if(cargado)
+            {
+                sar.MostrarRangos(dgvSAR, Convert.ToInt32(cmbVerEstado.SelectedValue));
+            }
             if (Convert.ToInt32(cmbVerEstado.SelectedValue) == 0)
             {
                 btnEliminar.Enabled = false;
@@ -141,7 +146,7 @@ namespace AromasCollection
                 btnEliminar.Enabled = true;
             }
 
-            LimpiarFormulario();
+           // LimpiarFormulario();
         }
 
         private void btnMofificar_Click(object sender, EventArgs e)

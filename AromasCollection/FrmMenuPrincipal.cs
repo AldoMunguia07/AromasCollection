@@ -21,6 +21,13 @@ namespace AromasCollection
             miColaborador = colaborador;
             lblUser.Text = String.Format("{0} {1}", colaborador.NombreColaborador, colaborador.ApellidoColaborador );
             abrirFormPanel(new FrmInicio());
+            if (colaborador.IdPuesto != 1)
+            {
+                btnColaboradores.Visible = false;
+                btnBitacora.Visible = false;
+                panel6.Visible = false;
+                panel10.Visible = false;
+            }
         }
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
