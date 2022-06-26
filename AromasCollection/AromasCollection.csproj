@@ -77,6 +77,7 @@
     <Compile Include="Clases\Factura.cs" />
     <Compile Include="Clases\Lote.cs" />
     <Compile Include="Clases\Producto.cs" />
+    <Compile Include="Clases\RecuperarContrasenia.cs" />
     <Compile Include="Clases\SAR.cs" />
     <Compile Include="Clases\Validacion.cs" />
     <Compile Include="FrmBitacora.cs">
@@ -157,6 +158,12 @@
     <Compile Include="FrmProductoFactura.Designer.cs">
       <DependentUpon>FrmProductoFactura.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmRecuperarContrasenia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRecuperarContrasenia.Designer.cs">
+      <DependentUpon>FrmRecuperarContrasenia.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmSAR.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -215,6 +222,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmProductoFactura.resx">
       <DependentUpon>FrmProductoFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRecuperarContrasenia.resx">
+      <DependentUpon>FrmRecuperarContrasenia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmSAR.resx">
       <DependentUpon>FrmSAR.cs</DependentUpon>

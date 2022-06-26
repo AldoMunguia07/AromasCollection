@@ -50,19 +50,17 @@ namespace AromasCollection
             this.panel1.Controls.Add(this.pictureBox3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(333, 406);
+            this.panel1.Size = new System.Drawing.Size(250, 330);
             this.panel1.TabIndex = 0;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             // 
             // pictureBox3
             // 
             this.pictureBox3.Image = global::AromasCollection.Properties.Resources.aromasLogo;
-            this.pictureBox3.Location = new System.Drawing.Point(15, 36);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox3.Location = new System.Drawing.Point(11, 29);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(284, 303);
+            this.pictureBox3.Size = new System.Drawing.Size(213, 246);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 0;
             this.pictureBox3.TabStop = false;
@@ -73,10 +71,9 @@ namespace AromasCollection
             this.txtUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtUsuario.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsuario.ForeColor = System.Drawing.Color.DimGray;
-            this.txtUsuario.Location = new System.Drawing.Point(464, 117);
-            this.txtUsuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtUsuario.Location = new System.Drawing.Point(348, 95);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(411, 32);
+            this.txtUsuario.Size = new System.Drawing.Size(309, 27);
             this.txtUsuario.TabIndex = 1;
             this.txtUsuario.Text = "Usuario";
             this.txtUsuario.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -89,10 +86,9 @@ namespace AromasCollection
             this.txtContrasenia.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtContrasenia.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtContrasenia.ForeColor = System.Drawing.Color.DimGray;
-            this.txtContrasenia.Location = new System.Drawing.Point(464, 206);
-            this.txtContrasenia.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtContrasenia.Location = new System.Drawing.Point(348, 167);
             this.txtContrasenia.Name = "txtContrasenia";
-            this.txtContrasenia.Size = new System.Drawing.Size(411, 32);
+            this.txtContrasenia.Size = new System.Drawing.Size(309, 27);
             this.txtContrasenia.TabIndex = 2;
             this.txtContrasenia.Text = "Contraseña";
             this.txtContrasenia.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -104,10 +100,9 @@ namespace AromasCollection
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.DimGray;
-            this.label1.Location = new System.Drawing.Point(341, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(256, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(265, 40);
+            this.label1.Size = new System.Drawing.Size(213, 33);
             this.label1.TabIndex = 3;
             this.label1.Text = "Inicio de sesión";
             // 
@@ -120,10 +115,9 @@ namespace AromasCollection
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.LightGray;
-            this.btnLogin.Location = new System.Drawing.Point(464, 290);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLogin.Location = new System.Drawing.Point(348, 236);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(412, 49);
+            this.btnLogin.Size = new System.Drawing.Size(309, 40);
             this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "Iniciar sesión";
             this.btnLogin.UseVisualStyleBackColor = false;
@@ -132,10 +126,9 @@ namespace AromasCollection
             // btnCerrar
             // 
             this.btnCerrar.Image = global::AromasCollection.Properties.Resources.cerrar;
-            this.btnCerrar.Location = new System.Drawing.Point(1012, 0);
-            this.btnCerrar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCerrar.Location = new System.Drawing.Point(759, 0);
             this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(24, 22);
+            this.btnCerrar.Size = new System.Drawing.Size(18, 18);
             this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnCerrar.TabIndex = 5;
             this.btnCerrar.TabStop = false;
@@ -144,10 +137,9 @@ namespace AromasCollection
             // btnMinimizar
             // 
             this.btnMinimizar.Image = global::AromasCollection.Properties.Resources.minimazar;
-            this.btnMinimizar.Location = new System.Drawing.Point(980, 0);
-            this.btnMinimizar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnMinimizar.Location = new System.Drawing.Point(735, 0);
             this.btnMinimizar.Name = "btnMinimizar";
-            this.btnMinimizar.Size = new System.Drawing.Size(24, 22);
+            this.btnMinimizar.Size = new System.Drawing.Size(18, 18);
             this.btnMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnMinimizar.TabIndex = 6;
             this.btnMinimizar.TabStop = false;
@@ -158,21 +150,21 @@ namespace AromasCollection
             this.linkLabel1.ActiveLinkColor = System.Drawing.Color.LightGray;
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.LinkColor = System.Drawing.Color.DimGray;
-            this.linkLabel1.Location = new System.Drawing.Point(571, 358);
-            this.linkLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.linkLabel1.Location = new System.Drawing.Point(428, 291);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(185, 16);
+            this.linkLabel1.Size = new System.Drawing.Size(149, 13);
             this.linkLabel1.TabIndex = 0;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "¿Has olvidado tu contraseña?";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // FrmLogin
             // 
             this.AcceptButton = this.btnLogin;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
-            this.ClientSize = new System.Drawing.Size(1040, 406);
+            this.ClientSize = new System.Drawing.Size(780, 330);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.btnMinimizar);
             this.Controls.Add(this.btnCerrar);
@@ -182,7 +174,6 @@ namespace AromasCollection
             this.Controls.Add(this.txtUsuario);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmLogin";
             this.Opacity = 0.9D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

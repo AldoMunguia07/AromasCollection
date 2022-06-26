@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -95,6 +96,27 @@ namespace AromasCollection.Clases
             if (inicial.Text != string.Empty && final.Text != string.Empty && Cai.Text != string.Empty)
             {
                 return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool emailCorrecto(String correo)
+        {
+            String expresion;
+            expresion = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+            if (Regex.IsMatch(correo, expresion))
+            {
+                if (Regex.Replace(correo, expresion, String.Empty).Length == 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             else
             {

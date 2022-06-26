@@ -156,7 +156,7 @@ namespace AromasCollection.Clases
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -214,5 +214,94 @@ namespace AromasCollection.Clases
                 conexion.sqlConnection.Close();
             }
         }
+
+        public bool ExisteUsuario(string user)
+        {
+            try
+            {
+
+                conexion.sqlConnection.Open();
+                
+                SqlCommand sqlCommand = new SqlCommand("sp_Colaborador", conexion.sqlConnection);
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+
+                using (sqlDataAdapter)
+                {
+                    sqlCommand.Parameters.AddWithValue("@usuario", user.ToLower());
+                    sqlCommand.Parameters.AddWithValue("@accion", "obtenerColaborador");
+
+                    DataTable dataTable = new DataTable();
+
+                    sqlDataAdapter.Fill(dataTable);
+
+
+
+                    if (dataTable.Rows.Count == 1) //Si el usuario existe retorna un true
+                    {
+                        return true;
+                    }
+
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                conexion.sqlConnection.Close();
+            }
+
+
+        }
+
+
+        public bool ExisteCorreo(string correo)
+        {
+            try
+            {
+
+                conexion.sqlConnection.Open();
+
+                SqlCommand sqlCommand = new SqlCommand("sp_Colaborador", conexion.sqlConnection);
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+
+                using (sqlDataAdapter)
+                {
+                    sqlCommand.Parameters.AddWithValue("@correo", correo.ToLower());
+                    sqlCommand.Parameters.AddWithValue("@accion", "obtenerColaboradorCorreo");
+
+                    DataTable dataTable = new DataTable();
+
+                    sqlDataAdapter.Fill(dataTable);
+
+
+
+                    if (dataTable.Rows.Count == 1) //Si el correo existe retorna un true
+                    {
+                        return true;
+                    }
+
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                conexion.sqlConnection.Close();
+            }
+
+
+        }
+
+
     }
 }

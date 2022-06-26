@@ -41,6 +41,7 @@ namespace AromasCollection
             this.label5 = new System.Windows.Forms.Label();
             this.btnModificar = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
+            this.chckVerPas = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
@@ -152,6 +153,7 @@ namespace AromasCollection
             this.btnModificar.TabIndex = 10;
             this.btnModificar.Text = "Actualizar datos";
             this.btnModificar.UseVisualStyleBackColor = false;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // label6
             // 
@@ -164,12 +166,26 @@ namespace AromasCollection
             this.label6.TabIndex = 12;
             this.label6.Text = "Mi cuenta";
             // 
+            // chckVerPas
+            // 
+            this.chckVerPas.AutoSize = true;
+            this.chckVerPas.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chckVerPas.ForeColor = System.Drawing.Color.White;
+            this.chckVerPas.Location = new System.Drawing.Point(272, 431);
+            this.chckVerPas.Name = "chckVerPas";
+            this.chckVerPas.Size = new System.Drawing.Size(109, 20);
+            this.chckVerPas.TabIndex = 13;
+            this.chckVerPas.Text = "Ver contraseña";
+            this.chckVerPas.UseVisualStyleBackColor = true;
+            this.chckVerPas.CheckedChanged += new System.EventHandler(this.chckVerPas_CheckedChanged);
+            // 
             // FrmMiCuenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(84)))), ((int)(((byte)(135)))));
             this.ClientSize = new System.Drawing.Size(1084, 641);
+            this.Controls.Add(this.chckVerPas);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.txtUsuario);
@@ -204,5 +220,6 @@ namespace AromasCollection
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.CheckBox chckVerPas;
     }
 }

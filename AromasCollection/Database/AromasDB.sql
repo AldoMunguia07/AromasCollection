@@ -56,7 +56,7 @@ CREATE TABLE Colaborador
 	idColaborador INT NOT NULL IDENTITY,
 	nombreColaborador VARCHAR(55) NOT NULL,
 	apellidoColaborador VARCHAR(55) NOT NULL,
-	correo VARCHAR(50) NOT NULL,
+	correo VARCHAR(50) NOT NULL UNIQUE,
 	usuario VARCHAR(30) NOT NULL UNIQUE,
 	contrasenia VARBINARY(MAX) NOT NULL,
 	idPuesto INT NOT NULL,
@@ -66,7 +66,8 @@ CREATE TABLE Colaborador
 		PRIMARY KEY CLUSTERED (idColaborador),
 
 	CONSTRAINT FK_Empleado$Existe$Puesto
-		FOREIGN KEY (idPuesto) REFERENCES Puesto(idPuesto),
+		FOREIGN KEY (idPuesto) REFERENCES Puesto(idPuesto)
+
 
 );
 GO
@@ -457,7 +458,7 @@ BEGIN
 			UPDATE Colaborador
 				SET nombreColaborador = @nombreColaborador, apellidoColaborador = @apellidoColaborador, correo = @correo, usuario = @usuario, 
 				contrasenia = @password, idPuesto = @idPuesto, estado = @estado
-				WHERE idColaborador =  idColaborador
+				WHERE idColaborador =  @idColaborador
 		END
 		ELSE IF @accion = 'mostrar'
 		BEGIN
@@ -486,6 +487,20 @@ BEGIN
 			idPuesto, estado  
 			FROM Colaborador 
 			WHERE usuario = @usuario
+		END
+	ELSE IF @accion = 'obtenerColaboradorCorreo'
+		BEGIN
+			SELECT idColaborador, nombreColaborador, apellidoColaborador, correo, usuario, CONVERT(VARCHAR,DECRYPTBYPASSPHRASE('ACecrypt02',contrasenia)) contrasenia,
+			idPuesto, estado  
+			FROM Colaborador 
+			WHERE correo = @correo
+		END
+	ELSE IF @accion = 'recuperarPass'
+		BEGIN
+			SET @password = (ENCRYPTBYPASSPHRASE('ACecrypt02',@contrasenia));
+			UPDATE Colaborador
+				SET  contrasenia = @password
+				WHERE idColaborador =  @idColaborador
 		END
 	
 

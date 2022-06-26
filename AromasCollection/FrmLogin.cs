@@ -126,5 +126,16 @@ namespace AromasCollection
             txtContrasenia.UseSystemPasswordChar = false;
             this.Show();
         }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+            FrmRecuperarContrasenia frmRecuperarContrasenia = new FrmRecuperarContrasenia();
+
+
+            frmRecuperarContrasenia.Show();
+            frmRecuperarContrasenia.FormClosed += cerrarSesion;
+            this.Hide();
+        }
     }
 }

@@ -87,6 +87,12 @@ namespace AromasCollection
             fh.Show();
         }
 
+        public void RecuperarValorAlCerrar(Colaborador colaborador)
+        {
+            miColaborador = colaborador;
+            lblUser.Text = String.Format("{0} {1}", miColaborador.NombreColaborador, miColaborador.ApellidoColaborador);
+        }
+
         private void btnVentas_Click(object sender, EventArgs e)
         {
             abrirFormPanel(new FrmVentas(miColaborador));
@@ -114,7 +120,11 @@ namespace AromasCollection
 
         private void btnMiCuenta_Click(object sender, EventArgs e)
         {
-            abrirFormPanel(new FrmMiCuenta(miColaborador));
+            FrmMiCuenta frmMiCuenta = new FrmMiCuenta(miColaborador, this);
+            abrirFormPanel(frmMiCuenta);
+           
+
+
         }
 
         private void btnClientes_Click(object sender, EventArgs e)
@@ -135,6 +145,7 @@ namespace AromasCollection
         private void btnBitacora_Click(object sender, EventArgs e)
         {
             abrirFormPanel(new FrmBitacora());
+            
         }
     }
 }
