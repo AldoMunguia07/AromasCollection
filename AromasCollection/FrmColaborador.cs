@@ -153,5 +153,10 @@ namespace AromasCollection
         {
             MasterCleaner();
         }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            colaborador.BuscarColaborador(dgvColaborador, txtBuscar.Text);
+        }
     }
 }

@@ -47,6 +47,8 @@ namespace AromasCollection
             this.label1 = new System.Windows.Forms.Label();
             this.dgvColaborador = new System.Windows.Forms.DataGridView();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.lbBuscar = new System.Windows.Forms.Label();
             this.gbProductoInput.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvColaborador)).BeginInit();
             this.SuspendLayout();
@@ -58,7 +60,7 @@ namespace AromasCollection
             this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnLimpiar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLimpiar.ForeColor = System.Drawing.Color.White;
-            this.btnLimpiar.Location = new System.Drawing.Point(666, 483);
+            this.btnLimpiar.Location = new System.Drawing.Point(652, 515);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(119, 26);
             this.btnLimpiar.TabIndex = 23;
@@ -73,7 +75,7 @@ namespace AromasCollection
             this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEditar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditar.ForeColor = System.Drawing.Color.White;
-            this.btnEditar.Location = new System.Drawing.Point(528, 482);
+            this.btnEditar.Location = new System.Drawing.Point(514, 514);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(119, 26);
             this.btnEditar.TabIndex = 22;
@@ -88,7 +90,7 @@ namespace AromasCollection
             this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAgregar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregar.ForeColor = System.Drawing.Color.White;
-            this.btnAgregar.Location = new System.Drawing.Point(388, 483);
+            this.btnAgregar.Location = new System.Drawing.Point(374, 515);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(119, 25);
             this.btnAgregar.TabIndex = 21;
@@ -239,7 +241,7 @@ namespace AromasCollection
             this.dgvColaborador.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvColaborador.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dgvColaborador.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvColaborador.Location = new System.Drawing.Point(348, 71);
+            this.dgvColaborador.Location = new System.Drawing.Point(332, 109);
             this.dgvColaborador.MultiSelect = false;
             this.dgvColaborador.Name = "dgvColaborador";
             this.dgvColaborador.ReadOnly = true;
@@ -255,7 +257,7 @@ namespace AromasCollection
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCancelar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
-            this.btnCancelar.Location = new System.Drawing.Point(803, 484);
+            this.btnCancelar.Location = new System.Drawing.Point(789, 516);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(119, 25);
@@ -264,12 +266,36 @@ namespace AromasCollection
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // txtBuscar
+            // 
+            this.txtBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBuscar.Location = new System.Drawing.Point(401, 78);
+            this.txtBuscar.Margin = new System.Windows.Forms.Padding(2);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(458, 26);
+            this.txtBuscar.TabIndex = 29;
+            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
+            // 
+            // lbBuscar
+            // 
+            this.lbBuscar.AutoSize = true;
+            this.lbBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbBuscar.ForeColor = System.Drawing.Color.White;
+            this.lbBuscar.Location = new System.Drawing.Point(332, 80);
+            this.lbBuscar.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbBuscar.Name = "lbBuscar";
+            this.lbBuscar.Size = new System.Drawing.Size(70, 20);
+            this.lbBuscar.TabIndex = 28;
+            this.lbBuscar.Text = "Buscar:";
+            // 
             // FrmColaborador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(84)))), ((int)(((byte)(135)))));
             this.ClientSize = new System.Drawing.Size(1100, 662);
+            this.Controls.Add(this.txtBuscar);
+            this.Controls.Add(this.lbBuscar);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.dgvColaborador);
             this.Controls.Add(this.btnLimpiar);
@@ -284,6 +310,7 @@ namespace AromasCollection
             this.gbProductoInput.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvColaborador)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -307,5 +334,7 @@ namespace AromasCollection
         private System.Windows.Forms.TextBox txtColaboradorApellido;
         private System.Windows.Forms.DataGridView dgvColaborador;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.TextBox txtBuscar;
+        private System.Windows.Forms.Label lbBuscar;
     }
 }

@@ -477,6 +477,13 @@ BEGIN
 				ON c.idPuesto = p.idPuesto				
 				
 		END
+		ELSE IF @accion = 'buscar'
+		BEGIN
+			Select C.nombreColaborador as Nombres, C.apellidoColaborador as Apellido, C.correo as Correo, 
+			C.usuario as Usuario 
+			From Colaborador C
+			Where CONCAT(C.nombreColaborador, ' ', C.apellidoColaborador, ' ', C.usuario) LIKE CONCAT('%', @colaboradorBuscado,'%')
+		END
 	ELSE IF @accion = 'desactivar'
 		BEGIN
 		
