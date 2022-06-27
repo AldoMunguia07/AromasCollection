@@ -31,6 +31,7 @@ CREATE TABLE Cliente
 	rtn VARCHAR(15) NOT NULL UNIQUE,
 	nombreCliente VARCHAR(55) NOT NULL,
 	apellidoCliente VARCHAR(55) NOT NULL,
+	estado BIT NOT NULL,
 
 	CONSTRAINT PK_Cliente_idCliente
 		PRIMARY KEY CLUSTERED (idCliente)
@@ -76,6 +77,7 @@ CREATE TABLE Categoria
 (
 	idCategoria INT NOT NULL IDENTITY,
 	categoria VARCHAR(30) NOT NULL UNIQUE,
+	estado BIT NOT NULL,
 
 	CONSTRAINT PK_Categoria_idCategoiria
 		PRIMARY KEY CLUSTERED (idCategoria)
@@ -90,6 +92,7 @@ CREATE TABLE Producto
 	precioDetalle FLOAT NOT NULL,
 	precioMayorista FLOAT NOT NULL,
 	idCategoria INT NOT NULL,
+	estado BIT NOT NULL,
 
 	CONSTRAINT PK_Producto_idProducto
 		PRIMARY KEY CLUSTERED (idProducto),
@@ -206,7 +209,7 @@ GO
 -- Datos tabla puesto
 INSERT INTO Puesto VALUES ('Administrador');
 
-INSERT INTO Puesto VALUES ('Doctor');
+INSERT INTO Puesto VALUES ('Colaborador');
 
 
 -- Datos de un usuario tipo Administrador.

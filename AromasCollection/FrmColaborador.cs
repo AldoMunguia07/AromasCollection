@@ -20,7 +20,7 @@ namespace AromasCollection
         {
             InitializeComponent();
             InicializarDatagrid();
-            colaborador.IdColaborador = uncolaborador.IdColaborador;
+            colaborador.IdColaboradorSAR = uncolaborador.IdColaborador;
             colaborador.CargarComboBoxEstado(cmbColaboradorPuesto);
 
         }

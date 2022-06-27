@@ -25,6 +25,11 @@ namespace AromasCollection.Clases
         public int IdPuesto { get; set; }
         public bool Estado { get; set; }
 
+
+
+
+        public int IdColaboradorSAR { get; set; }
+
         public void Mostrar(DataGridView dataGrid)
         {
 
@@ -115,7 +120,7 @@ namespace AromasCollection.Clases
                 sqlCommand.Parameters.AddWithValue("@estado", 1);
                 sqlCommand.Parameters.AddWithValue("@accion", "insertar");
 
-                bitacora.DefinirIdColaborador(IdColaborador, conexion.sqlConnection);
+                bitacora.DefinirIdColaborador(IdColaboradorSAR, conexion.sqlConnection);
 
                 sqlCommand.ExecuteNonQuery();
             }
@@ -150,7 +155,7 @@ namespace AromasCollection.Clases
                 sqlCommand.Parameters.AddWithValue("@IdColaborador", colaborador.IdColaborador);
                 sqlCommand.Parameters.AddWithValue("@accion", "modificar");
 
-                bitacora.DefinirIdColaborador(IdColaborador, conexion.sqlConnection);
+                bitacora.DefinirIdColaborador(IdColaboradorSAR, conexion.sqlConnection);
 
                 sqlCommand.ExecuteNonQuery();
             }
