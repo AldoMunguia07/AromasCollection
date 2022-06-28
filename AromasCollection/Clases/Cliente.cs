@@ -19,6 +19,7 @@ namespace AromasCollection.Clases
         public string Rtn { get; set; }
         public string NombreCliente { get; set; }
         public string ApellidoCliente { get; set; }
+        public bool Estado { get; set; }
 
         public int IdColaborador { get; set; }
 
@@ -63,7 +64,7 @@ namespace AromasCollection.Clases
                 conexion.sqlConnection.Close();
             }
         }
-        public void MostrarCliente(DataGridView dataGrid)
+        public void MostrarCliente(DataGridView dataGrid, int estado)
         {
 
             try
@@ -78,6 +79,7 @@ namespace AromasCollection.Clases
                 // Establecer los valores de los parámetros
 
                 sqlCommand.Parameters.AddWithValue("@accion", "mostrar");
+                sqlCommand.Parameters.AddWithValue("@estado", estado);
 
                 using (sqlDataAdapter)
                 {
@@ -115,6 +117,7 @@ namespace AromasCollection.Clases
                 sqlCommand.Parameters.AddWithValue("@rtn", cliente.Rtn);
                 sqlCommand.Parameters.AddWithValue("@nombreCliente", cliente.NombreCliente);
                 sqlCommand.Parameters.AddWithValue("@apellidoCliente", cliente.ApellidoCliente);
+                sqlCommand.Parameters.AddWithValue("@estado", cliente.Estado);
 
 
                 sqlCommand.Parameters.AddWithValue("@accion", "insertar");
@@ -134,7 +137,7 @@ namespace AromasCollection.Clases
             }
         }
 
-        public void BuscarCliente(DataGridView dataGrid, string valorBuscado)
+        public void BuscarCliente(DataGridView dataGrid, string valorBuscado, int estado)
         {
 
             try
@@ -148,6 +151,7 @@ namespace AromasCollection.Clases
 
                 // Establecer los valores de los parámetros
                 sqlCommand.Parameters.AddWithValue("@clienteBuscado", valorBuscado);
+                sqlCommand.Parameters.AddWithValue("@estado", estado);
                 sqlCommand.Parameters.AddWithValue("@accion", "buscar");
 
                 using (sqlDataAdapter)
@@ -186,6 +190,7 @@ namespace AromasCollection.Clases
                 sqlCommand.Parameters.AddWithValue("@rtn", cliente.Rtn);
                 sqlCommand.Parameters.AddWithValue("@nombreCliente", cliente.NombreCliente);
                 sqlCommand.Parameters.AddWithValue("@apellidoCliente", cliente.ApellidoCliente);
+                sqlCommand.Parameters.AddWithValue("@estado", cliente.Estado);
 
                 sqlCommand.Parameters.AddWithValue("@accion", "modificar");
 
@@ -202,6 +207,71 @@ namespace AromasCollection.Clases
                 // Cerrar la conexión
                 conexion.sqlConnection.Close();
             }
+        }
+        public void DesactivarCliente(Cliente cliente)
+        {
+            try
+            {
+                conexion.sqlConnection.Open();
+
+                SqlCommand sqlCommand = new SqlCommand("sp_Cliente", conexion.sqlConnection);
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+
+                // Establecer los valores de los parámetros
+                sqlCommand.Parameters.AddWithValue("@idCliente", cliente.IdCliente);
+                sqlCommand.Parameters.AddWithValue("@accion", "desactivarCliente");
+
+
+                bitacora.DefinirIdColaborador(IdColaborador, conexion.sqlConnection);
+
+                sqlCommand.ExecuteNonQuery();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                // Cerrar la conexión
+                conexion.sqlConnection.Close();
+            }
+        }
+        public void CargarComboBoxEstado(ComboBox comboBox)
+        {
+            try
+            {
+                conexion.sqlConnection.Open();
+
+                SqlCommand sqlCommand = new SqlCommand("sp_Cliente", conexion.sqlConnection);
+
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+
+                sqlCommand.Parameters.AddWithValue("@accion", "CargarEstado");
+
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+
+                using (sqlDataAdapter)
+                {
+                    DataTable dataTable = new DataTable();
+                    sqlDataAdapter.Fill(dataTable);
+                    comboBox.DisplayMember = "estado";
+                    comboBox.ValueMember = "id";
+                    comboBox.DataSource = dataTable.DefaultView;
+                }
+
+                conexion.sqlConnection.Close();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                conexion.sqlConnection.Close();
+            }
+
         }
     }
 }

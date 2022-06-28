@@ -18,25 +18,21 @@ namespace AromasCollection
         Factura factura = new Factura();
         Validacion Validacion = new Validacion();
         bool selecionActiva = false;
+        bool cargado = false;
         public FrmCliente(Colaborador colaborador)
         {
             InitializeComponent();
             inicializarDatagrid();
-
-            cliente.IdColaborador = colaborador.IdColaborador;
-            //factura.IdFactura = 87;
-            //factura.CodigoSAR = 1;
-            //factura.IdColaborador = 2;
-            //factura.IdCliente = 1;
-            //factura.Observaciones = "El cliente me miró feo";
-            // factura.AgregarFactura(factura);   
+            cliente.CargarComboBoxEstado(cmbEstado);
+            cliente.CargarComboBoxEstado(cmbEstados);
+            cargado = true;
+            cliente.IdColaborador = colaborador.IdColaborador; 
         }
         private void inicializarDatagrid()
         {
-            cliente.MostrarCliente(dgvCliente);
-            ocultarColumnas();
-
-
+            cliente.MostrarCliente(dgvCliente, Convert.ToInt32(cmbEstado.SelectedValue));
+            //dgvCliente.Columns["idCliente"].Visible = false;
+            dgvCliente.Columns["Codigo"].Visible = false;
         }
         private void ObtenerParametros()
         {
@@ -44,6 +40,7 @@ namespace AromasCollection
             cliente.Rtn = txtRTN.Text;
             cliente.NombreCliente = txtNombre.Text;
             cliente.ApellidoCliente = txtApellido.Text;
+            cliente.Estado = Convert.ToBoolean(Convert.ToInt32(cmbEstados.SelectedValue));
         }
         private bool VerificarParametros()
         {
@@ -132,10 +129,12 @@ namespace AromasCollection
                 DataGridViewRow row = dgvCliente.Rows[e.RowIndex];
 
                 cliente.IdCliente = int.Parse(row.Cells["Codigo"].Value.ToString());
+                
                 txtID.Text = row.Cells["Identidad"].Value.ToString();
                 txtRTN.Text = row.Cells["RTN"].Value.ToString();
-                txtNombre.Text = row.Cells["nombreCliente"].Value.ToString();
-                txtApellido.Text = row.Cells["apellidoCliente"].Value.ToString();
+                txtNombre.Text = row.Cells["Nombre"].Value.ToString();
+                txtApellido.Text = row.Cells["Apellido"].Value.ToString();
+                cmbEstados.SelectedValue = Convert.ToInt32(row.Cells["Estado"].Value);
 
                 selecionActiva = true;
                 btnAgregar.Enabled = false;
@@ -144,7 +143,7 @@ namespace AromasCollection
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
-            cliente.BuscarCliente(dgvCliente, txtBuscar.Text);
+            cliente.BuscarCliente(dgvCliente, txtBuscar.Text, Convert.ToInt32(cmbEstado.SelectedValue));
             ocultarColumnas();
         }
 
@@ -167,8 +166,37 @@ namespace AromasCollection
 
         private void ocultarColumnas()
         {
-            dgvCliente.Columns[4].Visible = false;
-            dgvCliente.Columns[5].Visible = false;
+            dgvCliente.Columns[0].Visible = false;
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (selecionActiva)
+            {
+                cliente.DesactivarCliente(cliente);
+                MasterCleaner();
+                inicializarDatagrid();
+            }
+            else
+            {
+                MessageBox.Show("Por favor, selecione un cliente para desactivar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void cmbEstado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cargado)
+            {
+                inicializarDatagrid();
+            }
+            if (Convert.ToInt32(cmbEstado.SelectedValue) == 0)
+            {
+                btnEliminar.Enabled = false;
+            }
+            else
+            {
+                btnEliminar.Enabled = true;
+            }
         }
     }
 }
