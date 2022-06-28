@@ -19,11 +19,13 @@ namespace AromasCollection.Clases
 
         //PROPIEDADES
         public int IdProducto { get; set; }
-        public string nombreProducto{ get; set; }
-        public string descripcion { get; set; }
-        public float precioDetalle { get; set; }
-        public float precioMayorista { get; set; }
-        public int idCategoria { get; set; }
+        public string NombreProducto { get; set; }
+        public string Descripcion { get; set; }
+        public float PrecioDetalle { get; set; }
+        public float PrecioMayorista { get; set; }
+        public int IdCategoria { get; set; }
+
+        public bool Estado { get; set; }
 
         public int Existencia { get; set; }
 
@@ -32,7 +34,7 @@ namespace AromasCollection.Clases
         public int IdColaborador { get; set; }
 
         //METODOS
-        public void Mostrar(DataGridView dataGrid)
+        public void Mostrar(DataGridView dataGrid, int estado)
         {
 
             try
@@ -47,6 +49,7 @@ namespace AromasCollection.Clases
                 // Establecer los valores de los parámetros
 
                 sqlCommand.Parameters.AddWithValue("@accion", "mostrar");
+                sqlCommand.Parameters.AddWithValue("@estado", estado);
 
                 using (sqlDataAdapter)
                 {
@@ -70,7 +73,7 @@ namespace AromasCollection.Clases
             }
         }
 
-        public void BuscarProducto(DataGridView dataGrid, string valorBuscado)
+        public void BuscarProducto(DataGridView dataGrid, string valorBuscado, int estado)
         {
 
             try
@@ -84,6 +87,7 @@ namespace AromasCollection.Clases
 
                 // Establecer los valores de los parámetros
                 sqlCommand.Parameters.AddWithValue("@productoBuscado", valorBuscado);
+                sqlCommand.Parameters.AddWithValue("@estado", estado);
                 sqlCommand.Parameters.AddWithValue("@accion", "buscar");
 
                 using (sqlDataAdapter)
@@ -119,11 +123,12 @@ namespace AromasCollection.Clases
                 sqlCommand.CommandType = CommandType.StoredProcedure;
 
                 // Establecer los valores de los parámetros
-                sqlCommand.Parameters.AddWithValue("@nombreProducto", producto.nombreProducto);
-                sqlCommand.Parameters.AddWithValue("@descripcion", producto.descripcion);
-                sqlCommand.Parameters.AddWithValue("@precioDetalle", producto.precioDetalle);
-                sqlCommand.Parameters.AddWithValue("@precioMayorista", producto.precioMayorista);
-                sqlCommand.Parameters.AddWithValue("@idCategoria", producto.idCategoria);
+                sqlCommand.Parameters.AddWithValue("@nombreProducto", producto.NombreProducto);
+                sqlCommand.Parameters.AddWithValue("@descripcion", producto.Descripcion);
+                sqlCommand.Parameters.AddWithValue("@precioDetalle", producto.PrecioDetalle);
+                sqlCommand.Parameters.AddWithValue("@precioMayorista", producto.PrecioMayorista);
+                sqlCommand.Parameters.AddWithValue("@idCategoria", producto.IdCategoria);
+                sqlCommand.Parameters.AddWithValue("@estado", producto.Estado);
 
                 sqlCommand.Parameters.AddWithValue("@accion", "insertar");
 
@@ -153,11 +158,12 @@ namespace AromasCollection.Clases
 
                 // Establecer los valores de los parámetros
                 sqlCommand.Parameters.AddWithValue("@idProducto", producto.IdProducto);
-                sqlCommand.Parameters.AddWithValue("@nombreProducto", producto.nombreProducto);
-                sqlCommand.Parameters.AddWithValue("@descripcion", producto.descripcion);
-                sqlCommand.Parameters.AddWithValue("@precioDetalle", producto.precioDetalle);
-                sqlCommand.Parameters.AddWithValue("@precioMayorista", producto.precioMayorista);
-                sqlCommand.Parameters.AddWithValue("@idCategoria", producto.idCategoria);
+                sqlCommand.Parameters.AddWithValue("@nombreProducto", producto.NombreProducto);
+                sqlCommand.Parameters.AddWithValue("@descripcion", producto.Descripcion);
+                sqlCommand.Parameters.AddWithValue("@precioDetalle", producto.PrecioDetalle);
+                sqlCommand.Parameters.AddWithValue("@precioMayorista", producto.PrecioMayorista);
+                sqlCommand.Parameters.AddWithValue("@idCategoria", producto.IdCategoria);
+                sqlCommand.Parameters.AddWithValue("@estado", producto.Estado);
 
                 sqlCommand.Parameters.AddWithValue("@accion", "modificar");
 
@@ -177,6 +183,73 @@ namespace AromasCollection.Clases
                 // Cerrar la conexión
                 conexion.sqlConnection.Close();
             }
+        }
+
+        public void DesactivarProducto(Producto producto)
+        {
+            try
+            {
+                conexion.sqlConnection.Open();
+
+                SqlCommand sqlCommand = new SqlCommand("sp_Producto", conexion.sqlConnection);
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+
+                // Establecer los valores de los parámetros
+                sqlCommand.Parameters.AddWithValue("@idProducto", producto.IdProducto);
+                sqlCommand.Parameters.AddWithValue("@accion", "desactivarProducto");
+
+
+                bitacora.DefinirIdColaborador(IdColaborador, conexion.sqlConnection);
+
+                sqlCommand.ExecuteNonQuery();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                // Cerrar la conexión
+                conexion.sqlConnection.Close();
+            }
+        }
+
+        public void CargarComboBoxEstado(ComboBox comboBox)
+        {
+            try
+            {
+                conexion.sqlConnection.Open();
+
+                SqlCommand sqlCommand = new SqlCommand("sp_Producto", conexion.sqlConnection);
+
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+
+                sqlCommand.Parameters.AddWithValue("@accion", "CargarEstado");
+
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+
+                using (sqlDataAdapter)
+                {
+                    DataTable dataTable = new DataTable();
+                    sqlDataAdapter.Fill(dataTable);
+                    comboBox.DisplayMember = "estado";
+                    comboBox.ValueMember = "id";
+                    comboBox.DataSource = dataTable.DefaultView;
+                }
+
+                conexion.sqlConnection.Close();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                conexion.sqlConnection.Close();
+            }
+
         }
 
     }

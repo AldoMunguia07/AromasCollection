@@ -13,7 +13,7 @@
 USE tempdb
 go
 
--- Crear la base de datos DROP DATABASE AromasDB
+-- Crear la base de datos USE tempdb DROP DATABASE AromasDB
 CREATE DATABASE AromasDB
 GO
 
@@ -308,6 +308,7 @@ CREATE PROCEDURE sp_Producto
 @precioDetalle float = NULL,
 @precioMayorista float = NULL,
 @idCategoria int = NULL,
+@estado bit = NULL,
 @accion nvarchar(50),
 @productoBuscado VARCHAR(150)  = NULL
 
@@ -316,29 +317,42 @@ BEGIN
 	
 	IF @accion = 'insertar'
 		BEGIN
-			INSERT INTO Producto VALUES (@nombreProducto, @descripcion, @precioDetalle, @precioMayorista, @idCategoria);
+			INSERT INTO Producto VALUES (@nombreProducto, @descripcion, @precioDetalle, @precioMayorista, @idCategoria, @estado);
 		END
 	ELSE IF @accion = 'modificar'
 		BEGIN
 			  UPDATE Producto
-			  SET nombreProducto = @nombreProducto, descripcion = @descripcion, precioDetalle = @precioDetalle, precioMayorista = @precioMayorista, idCategoria = @idCategoria
+			  SET nombreProducto = @nombreProducto, descripcion = @descripcion, precioDetalle = @precioDetalle, precioMayorista = @precioMayorista, idCategoria = @idCategoria, estado = @estado
 			  WHERE idProducto = @idProducto
 		END
 	ELSE IF @accion = 'mostrar'
 		BEGIN
 			  SELECT p.idProducto Codigo, p.nombreProducto Producto, p.descripcion Descripcion, p.precioDetalle 'Precio detalle', p.precioMayorista 'Precio mayorista',c.idCategoria, c.categoria Catgeoria,
-				(SELECT ISNULL(SUM(cantidad), 0) FROM Lote WHERE idProducto = p.idProducto) - (SELECT ISNULL(SUM(cantidad), 0) FROM DetalleFactura WHERE idProducto = p.idProducto)  Existencia
+				(SELECT ISNULL(SUM(cantidad), 0) FROM Lote WHERE idProducto = p.idProducto) - (SELECT ISNULL(SUM(cantidad), 0) FROM DetalleFactura WHERE idProducto = p.idProducto)  Existencia, p.estado Estado
 				FROM Producto p JOIN Categoria c
 				ON p.idCategoria = C.idCategoria
+				WHERE p.estado = @estado
 		END
 	ELSE IF @accion = 'buscar'
 		BEGIN
 			  SELECT p.idProducto Codigo, p.nombreProducto Producto, p.descripcion Descripcion, p.precioDetalle 'Precio detalle', p.precioMayorista 'Precio mayorista', c.idCategoria,c.categoria Catgeoria,
-				(SELECT ISNULL(SUM(cantidad), 0) FROM Lote WHERE idProducto = p.idProducto) - (SELECT ISNULL(SUM(cantidad), 0) FROM DetalleFactura WHERE idProducto = p.idProducto)  Existencia
+				(SELECT ISNULL(SUM(cantidad), 0) FROM Lote WHERE idProducto = p.idProducto) - (SELECT ISNULL(SUM(cantidad), 0) FROM DetalleFactura WHERE idProducto = p.idProducto)  Existencia, p.estado Estado
 				FROM Producto p JOIN Categoria c
 				ON p.idCategoria = C.idCategoria
-				 WHERE  CONCAT(p.idProducto, ' ', p.nombreProducto, ' ', c.categoria) LIKE CONCAT('%', @productoBuscado,'%')
+				 WHERE  CONCAT(p.idProducto, ' ', p.nombreProducto, ' ', c.categoria) LIKE CONCAT('%', @productoBuscado,'%') AND p.estado = @estado
 		END
+	ELSE IF @accion = 'CargarEstado'
+	BEGIN
+		SELECT '1' id, 'Activo' estado
+        UNION
+        SELECT '0', 'Inactivo'
+	END
+	ELSE IF @accion = 'desactivarProducto'
+	BEGIN
+		UPDATE Producto
+		SET  estado = 0
+		WHERE idProducto = @idProducto
+	END
 
 END
 GO
@@ -349,6 +363,7 @@ CREATE PROCEDURE sp_Cliente
 @rtn VARCHAR(15) = NULL,
 @nombreCliente VARCHAR(55) = NULL,
 @apellidoCliente VARCHAR(55) = NULL,
+@estado bit = NULL,
 @accion nvarchar(50),
 @clienteBuscado VARCHAR(150)  = NULL
 
@@ -357,18 +372,13 @@ BEGIN
 	
 	IF @accion = 'insertar'
 		BEGIN
-			INSERT INTO [dbo].[Cliente]
-           ([dni], 
-		   [rtn], 
-		   [nombreCliente], 
-		   [apellidoCliente])
-			VALUES(@dni, @rtn, @nombreCliente, @apellidoCliente)
+			INSERT INTO [dbo].[Cliente]	VALUES(@dni, @rtn, @nombreCliente, @apellidoCliente, @estado)
 		END
 
 	ELSE IF @accion = 'modificar'
 		BEGIN
 			UPDATE Cliente
-			SET dni=@dni, rtn=@rtn, nombreCliente=@nombreCliente, apellidoCliente=@apellidoCliente
+			SET dni=@dni, rtn=@rtn, nombreCliente=@nombreCliente, apellidoCliente=@apellidoCliente, estado = @estado
 			WHERE Cliente.idCliente=@idCliente
 		END
 	ELSE IF @accion = 'mostrarEnFactura'
@@ -380,13 +390,26 @@ BEGIN
 		BEGIN
 			  SELECT idCliente Codigo, dni Identidad, rtn RTN, CONCAT(nombreCliente, ' ', apellidoCliente) 'Nombre cliente', nombreCliente, apellidoCliente
 			  FROM Cliente
+			  WHERE estado = @estado
 		END
 	ELSE IF @accion = 'buscar'
 		BEGIN
 			  SELECT idCliente Codigo, dni Identidad, rtn RTN, CONCAT(nombreCliente, ' ', apellidoCliente) 'Nombre cliente', nombreCliente, apellidoCliente
 			  FROM Cliente
-			  WHERE  CONCAT(nombreCliente, ' ', apellidoCliente, ' ', rtn, ' ', idCliente) LIKE CONCAT('%', @clienteBuscado,'%')
+			  WHERE  CONCAT(nombreCliente, ' ', apellidoCliente, ' ', rtn, ' ', idCliente) LIKE CONCAT('%', @clienteBuscado,'%') AND estado = @estado
 		END
+	ELSE IF @accion = 'CargarEstado'
+	BEGIN
+		SELECT '1' id, 'Activos' estado
+        UNION
+        SELECT '0', 'Inactivos'
+	END
+	ELSE IF @accion = 'desactivarCliente'
+	BEGIN
+		UPDATE Cliente
+		SET  estado = 0
+		WHERE idCliente = @idCliente
+	END
 
 END
 GO
@@ -395,6 +418,7 @@ CREATE OR ALTER PROCEDURE [dbo].[sp_Categoria]
 	-- Add the parameters for the stored procedure here
 	@idCategoria int = NULL,
 	@categoria varchar(30) = null,
+	@estado bit = NULL,
 	@accion nvarchar(50),
 	@categoriaBusquedad varchar(50) = null
 AS
@@ -408,27 +432,38 @@ BEGIN
 
 	IF @accion = 'insertar'
 		BEGIN
-			INSERT INTO [dbo].[Categoria]
-           ([categoria])
-			VALUES(@categoria)
+			INSERT INTO [dbo].[Categoria] VALUES(@categoria, @estado)
 		END
 	ELSE IF @accion = 'mostrar'
 		BEGIN
-			SELECT C.idCategoria AS ID, C.categoria AS Categoria FROM Categoria AS C
+			SELECT C.idCategoria AS Codigo, C.categoria AS Categoria, C.estado Estado FROM Categoria AS C
+			WHERE estado =  @estado
 			ORDER BY C.idCategoria ASC
 		END
 	ELSE IF @accion = 'modificar'
 		BEGIN
 			UPDATE Categoria 
-			SET Categoria.categoria = @categoria
+			SET Categoria.categoria = @categoria, estado = @estado
 			WHERE Categoria.idCategoria = @idCategoria
 		END
 
 	ELSE IF @accion = 'buscar'
 		BEGIN
-			SELECT C.idCategoria AS ID, C.categoria AS Categoria FROM Categoria AS C
-			WHERE CONCAT(C.idCategoria, ' ', C.categoria) LIKE CONCAT('%', @categoriaBusquedad,'%')
+			SELECT C.idCategoria AS Codigo, C.categoria AS Categoria,  C.estado Estado FROM Categoria AS C
+			WHERE CONCAT(C.idCategoria, ' ', C.categoria) LIKE CONCAT('%', @categoriaBusquedad,'%') AND estado = @estado
 		END
+	ELSE IF @accion = 'CargarEstado'
+	BEGIN
+		SELECT '1' id, 'Activos' estado
+        UNION
+        SELECT '0', 'Inactivos'
+	END
+	ELSE IF @accion = 'desactivarCategoria'
+	BEGIN
+		UPDATE Categoria
+		SET  estado = 0
+		WHERE idCategoria = @idCategoria
+	END
 
 	END
 END
@@ -444,8 +479,8 @@ CREATE PROCEDURE sp_Colaborador
 @idPuesto INT   = NULL,
 @estado BIT  = NULL,
 @accion VARCHAR(50),
-@nombreEmpleado VARCHAR(80)  = NULL
-
+@nombreEmpleado VARCHAR(80)  = NULL,
+@colaboradorBuscado VARCHAR(80) = NULL
 
 AS
 DECLARE @password VARBINARY(max)
@@ -461,13 +496,15 @@ BEGIN
 			UPDATE Colaborador
 				SET nombreColaborador = @nombreColaborador, apellidoColaborador = @apellidoColaborador, correo = @correo, usuario = @usuario, 
 				contrasenia = @password, idPuesto = @idPuesto, estado = @estado
-				WHERE idColaborador =  @idColaborador
+				WHERE idColaborador =  @idColaborador AND estado = @estado
 		END
 		ELSE IF @accion = 'mostrar'
 		BEGIN
-			  SELECT c.idColaborador 'ID', c.nombreColaborador'Nombre',c.apellidoColaborador 'Apellido',c.correo'Correo',c.usuario 'Usuario', CONVERT(VARCHAR,DECRYPTBYPASSPHRASE('ACecrypt02',contrasenia)) 'Contraseña', (p.puesto) 'Puesto'
+			  SELECT c.idColaborador 'Codigo', c.nombreColaborador'Nombre',c.apellidoColaborador 'Apellido',c.correo'Correo',c.usuario 'Usuario', CONVERT(VARCHAR,DECRYPTBYPASSPHRASE('ACecrypt02',contrasenia)) 'Contraseña', (p.puesto) 'Puesto'
 				FROM Colaborador c JOIN Puesto p 
-				ON c.idPuesto = p.idPuesto		ORDER BY p.idPuesto ASC				
+				ON c.idPuesto = p.idPuesto	
+				WHERE estado = @estado
+				ORDER BY p.idPuesto ASC		
 				
 		END
 		ELSE IF @accion = 'mostrarPuesto'
@@ -512,6 +549,18 @@ BEGIN
 				SET  contrasenia = @password
 				WHERE idColaborador =  @idColaborador
 		END
+	ELSE IF @accion = 'CargarEstado'
+	BEGIN
+		SELECT '1' id, 'Activos' estado
+        UNION
+        SELECT '0', 'Inactivos'
+	END
+	ELSE IF @accion = 'desactivarColaborador'
+	BEGIN
+		UPDATE Colaborador
+		SET  estado = 0
+		WHERE idColaborador = @idColaborador
+	END
 	
 
 END

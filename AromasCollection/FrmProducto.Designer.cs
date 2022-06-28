@@ -45,6 +45,13 @@
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnNuevoLote = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cmbVerEstado = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.cmbEstado = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.btnEliminar = new System.Windows.Forms.Button();
             this.gbProductoInput.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgProducto)).BeginInit();
             this.SuspendLayout();
@@ -52,6 +59,8 @@
             // gbProductoInput
             // 
             this.gbProductoInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(84)))), ((int)(((byte)(135)))));
+            this.gbProductoInput.Controls.Add(this.label8);
+            this.gbProductoInput.Controls.Add(this.cmbEstado);
             this.gbProductoInput.Controls.Add(this.cmbCategoria);
             this.gbProductoInput.Controls.Add(this.label3);
             this.gbProductoInput.Controls.Add(this.txtPrecioMayorista);
@@ -66,7 +75,7 @@
             this.gbProductoInput.ForeColor = System.Drawing.Color.White;
             this.gbProductoInput.Location = new System.Drawing.Point(27, 66);
             this.gbProductoInput.Name = "gbProductoInput";
-            this.gbProductoInput.Size = new System.Drawing.Size(277, 470);
+            this.gbProductoInput.Size = new System.Drawing.Size(277, 534);
             this.gbProductoInput.TabIndex = 0;
             this.gbProductoInput.TabStop = false;
             this.gbProductoInput.Text = "Aromas Collection";
@@ -74,7 +83,6 @@
             // 
             // cmbCategoria
             // 
-            this.cmbCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCategoria.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCategoria.FormattingEnabled = true;
             this.cmbCategoria.Location = new System.Drawing.Point(10, 402);
@@ -259,12 +267,91 @@
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(387, 38);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(59, 19);
+            this.label4.TabIndex = 24;
+            this.label4.Text = "Estado";
+            // 
+            // cmbVerEstado
+            // 
+            this.cmbVerEstado.FormattingEnabled = true;
+            this.cmbVerEstado.Location = new System.Drawing.Point(452, 37);
+            this.cmbVerEstado.Name = "cmbVerEstado";
+            this.cmbVerEstado.Size = new System.Drawing.Size(112, 21);
+            this.cmbVerEstado.TabIndex = 23;
+            this.cmbVerEstado.SelectedIndexChanged += new System.EventHandler(this.cmbVerEstado_SelectedIndexChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(606, 38);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(60, 19);
+            this.label7.TabIndex = 22;
+            this.label7.Text = "Buscar";
+            // 
+            // txtBuscar
+            // 
+            this.txtBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBuscar.Location = new System.Drawing.Point(672, 34);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(289, 26);
+            this.txtBuscar.TabIndex = 21;
+            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
+            // 
+            // cmbEstado
+            // 
+            this.cmbEstado.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbEstado.FormattingEnabled = true;
+            this.cmbEstado.Location = new System.Drawing.Point(10, 476);
+            this.cmbEstado.Name = "cmbEstado";
+            this.cmbEstado.Size = new System.Drawing.Size(253, 29);
+            this.cmbEstado.TabIndex = 14;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(6, 454);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(59, 19);
+            this.label8.TabIndex = 15;
+            this.label8.Text = "Estado";
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(22)))), ((int)(((byte)(46)))));
+            this.btnEliminar.FlatAppearance.BorderSize = 0;
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnEliminar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminar.ForeColor = System.Drawing.Color.White;
+            this.btnEliminar.Location = new System.Drawing.Point(515, 509);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(119, 26);
+            this.btnEliminar.TabIndex = 25;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
             // FrmProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(84)))), ((int)(((byte)(135)))));
             this.ClientSize = new System.Drawing.Size(1100, 612);
+            this.Controls.Add(this.btnEliminar);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.cmbVerEstado);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnNuevoLote);
             this.Controls.Add(this.btnLimpiar);
@@ -280,6 +367,7 @@
             this.gbProductoInput.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgProducto)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -302,5 +390,12 @@
         private System.Windows.Forms.ComboBox cmbCategoria;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cmbVerEstado;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtBuscar;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox cmbEstado;
+        private System.Windows.Forms.Button btnEliminar;
     }
 }

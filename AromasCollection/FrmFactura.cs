@@ -53,11 +53,11 @@ namespace AromasCollection
 
                     if(rbDetalle.Checked)
                     {
-                        precio = producto.precioDetalle;
+                        precio = producto.PrecioDetalle;
                     }
                     else if(rbMayorista.Checked)
                     {
-                        precio = producto.precioMayorista;
+                        precio = producto.PrecioMayorista;
                     }
 
                     float total = precio * float.Parse(numCantidad.Value.ToString());
@@ -112,7 +112,7 @@ namespace AromasCollection
             frmProductoFactura.ShowDialog();
             if(producto.IdProducto.ToString() != null)
             {
-                txtProducto.Text = producto.nombreProducto;
+                txtProducto.Text = producto.NombreProducto;
             }
             
                  

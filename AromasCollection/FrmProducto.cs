@@ -18,22 +18,26 @@ namespace AromasCollection
         Validacion Validacion = new Validacion();
         bool selecionActiva = false;
         Colaborador miColaborador = new Colaborador();
-
+        bool cargado = false;
         public FrmProducto(Colaborador colaborador)
         {
             InitializeComponent();
 
-            categoria.CargarComboBoxEstado(cmbCategoria);
+            categoria.CargarComboCategoria(cmbCategoria, 1);
 
             producto.IdColaborador = colaborador.IdColaborador;
             miColaborador = colaborador;
+            producto.CargarComboBoxEstado(cmbVerEstado);
+            producto.CargarComboBoxEstado(cmbEstado);
             inicializarDatagrid();
+           
+            cargado = true;
 
         }
 
         private void inicializarDatagrid()
         {
-            producto.Mostrar(dgProducto);
+            producto.Mostrar(dgProducto, Convert.ToInt32(cmbVerEstado.SelectedValue));
            // dgProducto.Columns["Codigo"].Visible = false;
             dgProducto.Columns["idCategoria"].Visible = false;
         }
@@ -110,11 +114,12 @@ namespace AromasCollection
 
         private void ObtenerParametros()
         {
-            producto.nombreProducto = txtProductoNombre.Text;
-            producto.descripcion = txtDescripcion.Text;
-            producto.precioDetalle = float.Parse(txtPrecioDetalle.Text);
-            producto.idCategoria = (int)cmbCategoria.SelectedValue;
-            producto.precioMayorista = float.Parse(txtPrecioMayorista.Text);
+            producto.NombreProducto = txtProductoNombre.Text;
+            producto.Descripcion = txtDescripcion.Text;
+            producto.PrecioDetalle = float.Parse(txtPrecioDetalle.Text);
+            producto.IdCategoria = (int)cmbCategoria.SelectedValue;
+            producto.PrecioMayorista = float.Parse(txtPrecioMayorista.Text);
+            producto.Estado = Convert.ToBoolean(Convert.ToInt32(cmbEstado.SelectedValue));
             
         }
 
@@ -182,12 +187,13 @@ namespace AromasCollection
                 DataGridViewRow row = dgProducto.Rows[e.RowIndex];
 
                 producto.IdProducto = int.Parse(row.Cells["Codigo"].Value.ToString());
-                producto.idCategoria = int.Parse(row.Cells["idCategoria"].Value.ToString());
+                producto.IdCategoria = int.Parse(row.Cells["idCategoria"].Value.ToString());
 
                 txtProductoNombre.Text = row.Cells["Producto"].Value.ToString();
                 txtDescripcion.Text = row.Cells["Descripcion"].Value.ToString();
                 txtPrecioDetalle.Text = row.Cells["Precio Detalle"].Value.ToString();
                 txtPrecioMayorista.Text = row.Cells["Precio Mayorista"].Value.ToString();
+                cmbEstado.SelectedValue = Convert.ToInt32(row.Cells["Estado"].Value);
 
                 selecionActiva = true;
                 btnAgregar.Enabled = false;
@@ -198,6 +204,41 @@ namespace AromasCollection
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             MasterCleaner();
+        }
+
+        private void cmbVerEstado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cargado)
+            {
+                inicializarDatagrid();
+            }
+            if (Convert.ToInt32(cmbVerEstado.SelectedValue) == 0)
+            {
+                btnEliminar.Enabled = false;
+            }
+            else
+            {
+                btnEliminar.Enabled = true;
+            }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if(selecionActiva)
+            {
+                producto.DesactivarProducto(producto);
+                MasterCleaner();
+                inicializarDatagrid();
+            }
+            else
+            {
+                MessageBox.Show("Por favor, selecione un producto a desactivar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            producto.BuscarProducto(dgProducto, txtBuscar.Text, Convert.ToInt32(cmbVerEstado.SelectedValue));
         }
     }
 }

@@ -15,7 +15,7 @@ namespace AromasCollection
     {
         Validacion validacion = new Validacion();
         Categoria categoria = new Categoria();
-
+        bool cargado = false;
 
         bool editarEstado = false;
         bool seleccionado = false;
@@ -24,12 +24,15 @@ namespace AromasCollection
         {
             InitializeComponent();
 
-            categoria.Mostrar(dgCategoria);
-
-            categoria.idColaborador = colaborador.IdColaborador;
+            categoria.CargarComboBoxEstado(cmbEstado);
+            categoria.CargarComboBoxEstado(cmbVerEstado);
+            categoria.Mostrar(dgCategoria, Convert.ToInt32(cmbEstado.SelectedValue));
             
 
+            categoria.IdColaborador = colaborador.IdColaborador;
 
+
+            cargado = true;
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -48,6 +51,8 @@ namespace AromasCollection
             if (validacion.verificarTextoLargo(texto, 30))
             {
                 categoria.categoria = texto;
+                categoria.estado = Convert.ToBoolean(Convert.ToInt32(cmbEstado.SelectedValue));
+                MessageBox.Show(categoria.estado.ToString());
                 categoria.AgregarCategoria(categoria);
 
                 MasterCleaner();
@@ -65,7 +70,7 @@ namespace AromasCollection
 
         private void Cleaner()
         {
-            categoria.Mostrar(dgCategoria);
+            categoria.Mostrar(dgCategoria, Convert.ToInt32(cmbVerEstado.SelectedValue));
 
             foreach (Control ctr in gbCategoria.Controls)
             {
@@ -74,6 +79,7 @@ namespace AromasCollection
             }
 
             txtBuscar.Text = "";
+            cmbEstado.SelectedValue = 1;
         }
 
         private void MasterCleaner()
@@ -130,6 +136,7 @@ namespace AromasCollection
                 DataGridViewRow row = dgCategoria.Rows[e.RowIndex];
 
                 txtboxCategoria.Text = row.Cells[1].Value.ToString();
+                cmbEstado.SelectedValue = Convert.ToInt32(row.Cells[2].Value);
 
                 categoria.idCategoria = int.Parse(row.Cells[0].Value.ToString());
                 categoria.categoria = row.Cells[1].Value.ToString();
@@ -163,6 +170,7 @@ namespace AromasCollection
         private void modificarCategoria()
         {
             categoria.categoria = txtboxCategoria.Text;
+            categoria.estado = Convert.ToBoolean(Convert.ToInt32(cmbEstado.SelectedValue));
             if (validacion.verificarTextoLargo(categoria.categoria, 30))
             {
                 
@@ -177,12 +185,42 @@ namespace AromasCollection
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            categoria.BuscarCategoria(dgCategoria, txtBuscar.Text);
+            categoria.BuscarCategoria(dgCategoria, txtBuscar.Text, Convert.ToInt32(cmbVerEstado.SelectedValue));
         }
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
-            categoria.BuscarCategoria(dgCategoria, txtBuscar.Text);
+            categoria.BuscarCategoria(dgCategoria, txtBuscar.Text, Convert.ToInt32(cmbVerEstado.SelectedValue));
+        }
+
+        private void cmbVerEstado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cargado)
+            {
+                categoria.Mostrar(dgCategoria, Convert.ToInt32(cmbVerEstado.SelectedValue));
+            }
+            if (Convert.ToInt32(cmbVerEstado.SelectedValue) == 0)
+            {
+                btnEliminar.Enabled = false;
+            }
+            else
+            {
+                btnEliminar.Enabled = true;
+            }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (seleccionado)
+            {
+                categoria.DesactivarCategoria(categoria);
+                categoria.Mostrar(dgCategoria, Convert.ToInt32(cmbEstado.SelectedValue));
+                MasterCleaner();
+            }
+            else
+            {
+                MessageBox.Show("Por favor, selecione la categoria a Desactivar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }

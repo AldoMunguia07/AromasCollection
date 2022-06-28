@@ -17,7 +17,7 @@ namespace AromasCollection
         public FrmProductoFactura(FrmFactura factura)
         {
             InitializeComponent();
-            producto.Mostrar(dgProductos);
+            producto.Mostrar(dgProductos, 1);
             factura1 = factura;
 
 
@@ -29,9 +29,9 @@ namespace AromasCollection
              if(dgProductos.SelectedRows.Count > 0)
              {
                 producto.IdProducto = int.Parse(dgProductos.SelectedRows[0].Cells[0].Value.ToString());
-                producto.nombreProducto = dgProductos.SelectedRows[0].Cells[1].Value.ToString();
-                producto.precioDetalle = float.Parse(dgProductos.SelectedRows[0].Cells[3].Value.ToString());
-                producto.precioMayorista = float.Parse(dgProductos.SelectedRows[0].Cells[4].Value.ToString());
+                producto.NombreProducto = dgProductos.SelectedRows[0].Cells[1].Value.ToString();
+                producto.PrecioDetalle = float.Parse(dgProductos.SelectedRows[0].Cells[3].Value.ToString());
+                producto.PrecioMayorista = float.Parse(dgProductos.SelectedRows[0].Cells[4].Value.ToString());
                 producto.Existencia = int.Parse(dgProductos.SelectedRows[0].Cells[7].Value.ToString());
                 factura1.RecuperarValorAlCerrar(producto);
 
@@ -51,7 +51,7 @@ namespace AromasCollection
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
-            producto.BuscarProducto(dgProductos, txtBuscar.Text);
+            producto.BuscarProducto(dgProductos, txtBuscar.Text, 1);
         }
 
 
