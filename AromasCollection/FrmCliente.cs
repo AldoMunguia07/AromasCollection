@@ -22,17 +22,20 @@ namespace AromasCollection
         public FrmCliente(Colaborador colaborador)
         {
             InitializeComponent();
-            inicializarDatagrid();
+            
             cliente.CargarComboBoxEstado(cmbEstado);
             cliente.CargarComboBoxEstado(cmbEstados);
             cargado = true;
-            cliente.IdColaborador = colaborador.IdColaborador; 
+            cliente.IdColaborador = colaborador.IdColaborador;
+            inicializarDatagrid();
         }
         private void inicializarDatagrid()
         {
             cliente.MostrarCliente(dgvCliente, Convert.ToInt32(cmbEstado.SelectedValue));
             //dgvCliente.Columns["idCliente"].Visible = false;
-            dgvCliente.Columns["Codigo"].Visible = false;
+            ocultarColumnas();
+
+
         }
         private void ObtenerParametros()
         {
@@ -79,6 +82,7 @@ namespace AromasCollection
             }
             btnAgregar.Enabled = true;
             inicializarDatagrid();
+            cmbEstados.SelectedValue = 1;
         }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -132,8 +136,8 @@ namespace AromasCollection
                 
                 txtID.Text = row.Cells["Identidad"].Value.ToString();
                 txtRTN.Text = row.Cells["RTN"].Value.ToString();
-                txtNombre.Text = row.Cells["Nombre"].Value.ToString();
-                txtApellido.Text = row.Cells["Apellido"].Value.ToString();
+                txtNombre.Text = row.Cells["nombreCliente"].Value.ToString();
+                txtApellido.Text = row.Cells["apellidoCliente"].Value.ToString();
                 cmbEstados.SelectedValue = Convert.ToInt32(row.Cells["Estado"].Value);
 
                 selecionActiva = true;
@@ -166,7 +170,8 @@ namespace AromasCollection
 
         private void ocultarColumnas()
         {
-            dgvCliente.Columns[0].Visible = false;
+            dgvCliente.Columns[4].Visible = false;
+            dgvCliente.Columns[5].Visible = false;
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)

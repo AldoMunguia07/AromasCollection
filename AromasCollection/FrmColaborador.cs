@@ -27,7 +27,7 @@ namespace AromasCollection
         private void InicializarDatagrid()
         {
             colaborador.Mostrar(dgvColaborador);
-            dgvColaborador.Columns["ID"].Visible = false;
+            dgvColaborador.Columns["Codigo"].Visible = false;
         }
         private void ObtenerParametros()
         {

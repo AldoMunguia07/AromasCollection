@@ -27,43 +27,6 @@ namespace AromasCollection.Clases
         public int Existencia { get; set; }
 
         //METODOS
-        public void Mostrar(DataGridView dataGrid)
-        {
-
-            try
-            {
-                conexion.sqlConnection.Open();
-                //Query para mostrar un zapato
-                SqlCommand sqlCommand = new SqlCommand("sp_Cliente", conexion.sqlConnection);
-                sqlCommand.CommandType = CommandType.StoredProcedure;
-
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
-
-                // Establecer los valores de los parámetros
-
-                sqlCommand.Parameters.AddWithValue("@accion", "mostrarEnFactura");
-
-                using (sqlDataAdapter)
-                {
-                    DataTable dataTable = new DataTable();
-
-                    sqlDataAdapter.Fill(dataTable);
-
-                    dataGrid.DataSource = dataTable;
-
-                }
-
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                conexion.sqlConnection.Close();
-            }
-        }
         public void MostrarCliente(DataGridView dataGrid, int estado)
         {
 

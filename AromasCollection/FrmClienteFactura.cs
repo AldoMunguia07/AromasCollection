@@ -18,7 +18,7 @@ namespace AromasCollection
         public FrmClienteFactura(FrmFactura factura)
         {
             InitializeComponent();
-            cliente.Mostrar(dgClientes);
+            cliente.MostrarCliente(dgClientes, 1);
             ocultarColumnas();
 
 
@@ -32,8 +32,8 @@ namespace AromasCollection
             {
                 cliente.IdCliente = int.Parse(dgClientes.SelectedRows[0].Cells[0].Value.ToString());
                 cliente.Rtn = dgClientes.SelectedRows[0].Cells[1].Value.ToString();
-                cliente.NombreCliente = dgClientes.SelectedRows[0].Cells[3].Value.ToString();
-                cliente.ApellidoCliente = dgClientes.SelectedRows[0].Cells[4].Value.ToString();
+                cliente.NombreCliente = dgClientes.SelectedRows[0].Cells[4].Value.ToString();
+                cliente.ApellidoCliente = dgClientes.SelectedRows[0].Cells[5].Value.ToString();
 
 
                 factura1.RecuperarValorAlCerrarCliente(cliente);
@@ -50,13 +50,13 @@ namespace AromasCollection
 
         private void ocultarColumnas()
         {
-            dgClientes.Columns[3].Visible = false;
             dgClientes.Columns[4].Visible = false;
+            dgClientes.Columns[5].Visible = false;
         }
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
-            cliente.BuscarCliente(dgClientes, txtBuscar.Text);
+            cliente.BuscarCliente(dgClientes, txtBuscar.Text, 1);
             ocultarColumnas();
         }
     }

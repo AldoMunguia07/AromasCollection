@@ -381,20 +381,15 @@ BEGIN
 			SET dni=@dni, rtn=@rtn, nombreCliente=@nombreCliente, apellidoCliente=@apellidoCliente, estado = @estado
 			WHERE Cliente.idCliente=@idCliente
 		END
-	ELSE IF @accion = 'mostrarEnFactura'
-		BEGIN
-			  SELECT idCliente Codigo, dni Identidad, rtn RTN, CONCAT(nombreCliente, ' ', apellidoCliente) 'Nombre cliente', nombreCliente, apellidoCliente
-			  FROM Cliente
-		END
 		ELSE IF @accion = 'mostrar'
 		BEGIN
-			  SELECT idCliente Codigo, dni Identidad, rtn RTN, CONCAT(nombreCliente, ' ', apellidoCliente) 'Nombre cliente', nombreCliente, apellidoCliente
+			  SELECT idCliente Codigo, dni Identidad, rtn RTN, CONCAT(nombreCliente, ' ', apellidoCliente) 'Nombre cliente', nombreCliente, apellidoCliente, estado Estado
 			  FROM Cliente
 			  WHERE estado = @estado
 		END
 	ELSE IF @accion = 'buscar'
 		BEGIN
-			  SELECT idCliente Codigo, dni Identidad, rtn RTN, CONCAT(nombreCliente, ' ', apellidoCliente) 'Nombre cliente', nombreCliente, apellidoCliente
+			  SELECT idCliente Codigo, dni Identidad, rtn RTN, CONCAT(nombreCliente, ' ', apellidoCliente) 'Nombre cliente', nombreCliente, apellidoCliente, estado Estado
 			  FROM Cliente
 			  WHERE  CONCAT(nombreCliente, ' ', apellidoCliente, ' ', rtn, ' ', idCliente) LIKE CONCAT('%', @clienteBuscado,'%') AND estado = @estado
 		END
@@ -469,7 +464,7 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE sp_Colaborador
+ALTER PROCEDURE sp_Colaborador
 @idColaborador INT = NULL,
 @nombreColaborador VARCHAR(55)   = NULL,
 @apellidoColaborador VARCHAR(55)  = NULL,
@@ -503,7 +498,7 @@ BEGIN
 			  SELECT c.idColaborador 'Codigo', c.nombreColaborador'Nombre',c.apellidoColaborador 'Apellido',c.correo'Correo',c.usuario 'Usuario', CONVERT(VARCHAR,DECRYPTBYPASSPHRASE('ACecrypt02',contrasenia)) 'Contraseña', (p.puesto) 'Puesto'
 				FROM Colaborador c JOIN Puesto p 
 				ON c.idPuesto = p.idPuesto	
-				WHERE estado = @estado
+				--WHERE estado = @estado
 				ORDER BY p.idPuesto ASC		
 				
 		END
@@ -516,9 +511,9 @@ BEGIN
 		END
 		ELSE IF @accion = 'buscar'
 		BEGIN
-			Select C.nombreColaborador as Nombres, C.apellidoColaborador as Apellido, C.correo as Correo, 
-			C.usuario as Usuario 
-			From Colaborador C
+			SELECT c.idColaborador 'Codigo', c.nombreColaborador'Nombre',c.apellidoColaborador 'Apellido',c.correo'Correo',c.usuario 'Usuario', CONVERT(VARCHAR,DECRYPTBYPASSPHRASE('ACecrypt02',contrasenia)) 'Contraseña', (p.puesto) 'Puesto'
+				FROM Colaborador c JOIN Puesto p 
+				ON c.idPuesto = p.idPuesto	
 			Where CONCAT(C.nombreColaborador, ' ', C.apellidoColaborador, ' ', C.usuario) LIKE CONCAT('%', @colaboradorBuscado,'%')
 		END
 	ELSE IF @accion = 'desactivar'
