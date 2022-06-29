@@ -16,18 +16,22 @@ namespace AromasCollection
         Colaborador colaborador = new Colaborador();
         Validacion Validacion = new Validacion();
         bool selecionActiva = false;
+        bool cargado = false;
         public FrmColaborador(Colaborador uncolaborador)
         {
             InitializeComponent();
-            InicializarDatagrid();
             colaborador.IdColaboradorSAR = uncolaborador.IdColaborador;
-            colaborador.CargarComboBoxEstado(cmbColaboradorPuesto);
-
+            colaborador.CargarComboBoxPuesto(cmbColaboradorPuesto);
+            colaborador.CargarComboBoxEstado(cmbVerEstado);
+            colaborador.CargarComboBoxEstado(cmbEstado);
+            cargado = true;
+            InicializarDatagrid();
         }
         private void InicializarDatagrid()
         {
-            colaborador.Mostrar(dgvColaborador);
-            dgvColaborador.Columns["Codigo"].Visible = false;
+
+            colaborador.Mostrar(dgvColaborador, Convert.ToInt32(cmbVerEstado.SelectedValue));
+
         }
         private void ObtenerParametros()
         {
@@ -37,6 +41,7 @@ namespace AromasCollection
             colaborador.Usuario = txtColaboradorUsuario.Text;
             colaborador.Contrasenia = txtColaboradorContrasena.Text;
             colaborador.IdPuesto = int.Parse(cmbColaboradorPuesto.SelectedValue.ToString());
+            colaborador.Estado = Convert.ToBoolean(Convert.ToInt32(cmbEstado.SelectedValue));
         }
 
         private void MasterCleaner()
@@ -53,6 +58,9 @@ namespace AromasCollection
                     ctr.Text = "";
             }
             btnAgregar.Enabled = true;
+            cmbEstado.SelectedValue = 1;
+            cmbVerEstado.SelectedValue = 1;
+            cmbColaboradorPuesto.SelectedValue = 1;
             InicializarDatagrid();
         }
         private void FrmColaborador_Load(object sender, EventArgs e)
@@ -98,10 +106,10 @@ namespace AromasCollection
             return true;
         }
         private void btnAgregar_Click(object sender, EventArgs e)
-        {        
-                ObtenerParametros();
-                colaborador.AgregarColaborador(colaborador);
-                Cleaner();
+        {
+            ObtenerParametros();
+            colaborador.AgregarColaborador(colaborador);
+            Cleaner();
         }
 
         private void txtColaboradorApellido_KeyPress(object sender, KeyPressEventArgs e)
@@ -119,13 +127,15 @@ namespace AromasCollection
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dgvColaborador.Rows[e.RowIndex];
-                colaborador.IdColaborador = int.Parse(row.Cells["ID"].Value.ToString());
+                colaborador.IdColaborador = int.Parse(row.Cells["Codigo"].Value.ToString());
                 txtColaboradorNombre.Text = row.Cells["Nombre"].Value.ToString();
                 txtColaboradorApellido.Text = row.Cells["Apellido"].Value.ToString();
                 txtColaboradorCorreo.Text = row.Cells["Correo"].Value.ToString();
                 txtColaboradorUsuario.Text = row.Cells["Usuario"].Value.ToString();
                 txtColaboradorContrasena.Text = row.Cells["Contraseña"].Value.ToString();
-                cmbColaboradorPuesto.Text= row.Cells["Puesto"].Value.ToString();
+                cmbColaboradorPuesto.Text = row.Cells["Puesto"].Value.ToString();
+                cmbEstado.SelectedValue = Convert.ToInt32(row.Cells["Estado"].Value);
+
                 selecionActiva = true;
                 btnAgregar.Enabled = false;
             }
@@ -138,7 +148,7 @@ namespace AromasCollection
 
                 if (!selecionActiva)
                 {
-                    MessageBox.Show("Por favor, selecione un cliente para modificar");
+                    MessageBox.Show("Por favor, selecione un colaborador para modificar");
                 }
                 else
                 {
@@ -146,7 +156,7 @@ namespace AromasCollection
                     colaborador.ModificarColaborador(colaborador);
                     MasterCleaner();
                 }
-            }       
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -156,7 +166,43 @@ namespace AromasCollection
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
-            colaborador.BuscarColaborador(dgvColaborador, txtBuscar.Text);
+            colaborador.BuscarColaborador(dgvColaborador, txtBuscar.Text, Convert.ToInt32(cmbVerEstado.SelectedValue));
+        }
+
+        private void cmbEstado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (selecionActiva)
+            {
+                colaborador.DesactivarColaborador(colaborador);
+                MasterCleaner();
+                InicializarDatagrid();
+            }
+            else
+            {
+                MessageBox.Show("Por favor, selecione un usuario a desactivar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void cmbVerEstado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cargado)
+            {
+                InicializarDatagrid();
+            }
+
+            if (Convert.ToInt32(cmbVerEstado.SelectedValue) == 0)
+            {
+                btnEliminar.Enabled = false;
+            }
+            else
+            {
+                btnEliminar.Enabled = true;
+            }
         }
     }
 }

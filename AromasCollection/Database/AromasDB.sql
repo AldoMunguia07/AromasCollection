@@ -491,14 +491,14 @@ BEGIN
 			UPDATE Colaborador
 				SET nombreColaborador = @nombreColaborador, apellidoColaborador = @apellidoColaborador, correo = @correo, usuario = @usuario, 
 				contrasenia = @password, idPuesto = @idPuesto, estado = @estado
-				WHERE idColaborador =  @idColaborador AND estado = @estado
+				WHERE idColaborador =  @idColaborador
 		END
 		ELSE IF @accion = 'mostrar'
 		BEGIN
-			  SELECT c.idColaborador 'Codigo', c.nombreColaborador'Nombre',c.apellidoColaborador 'Apellido',c.correo'Correo',c.usuario 'Usuario', CONVERT(VARCHAR,DECRYPTBYPASSPHRASE('ACecrypt02',contrasenia)) 'Contraseña', (p.puesto) 'Puesto'
+			  SELECT c.idColaborador 'Codigo', c.nombreColaborador'Nombre',c.apellidoColaborador 'Apellido',c.correo'Correo',c.usuario 'Usuario', CONVERT(VARCHAR,DECRYPTBYPASSPHRASE('ACecrypt02',contrasenia)) 'Contraseña', (p.puesto) 'Puesto', c.estado 'Estado'
 				FROM Colaborador c JOIN Puesto p 
 				ON c.idPuesto = p.idPuesto	
-				--WHERE estado = @estado
+				WHERE estado = @estado
 				ORDER BY p.idPuesto ASC		
 				
 		END
@@ -514,7 +514,7 @@ BEGIN
 			SELECT c.idColaborador 'Codigo', c.nombreColaborador'Nombre',c.apellidoColaborador 'Apellido',c.correo'Correo',c.usuario 'Usuario', CONVERT(VARCHAR,DECRYPTBYPASSPHRASE('ACecrypt02',contrasenia)) 'Contraseña', (p.puesto) 'Puesto'
 				FROM Colaborador c JOIN Puesto p 
 				ON c.idPuesto = p.idPuesto	
-			Where CONCAT(C.nombreColaborador, ' ', C.apellidoColaborador, ' ', C.usuario) LIKE CONCAT('%', @colaboradorBuscado,'%')
+			Where CONCAT(C.nombreColaborador, ' ', C.apellidoColaborador, ' ', C.usuario) LIKE CONCAT('%', @colaboradorBuscado,'%') and c.estado=@estado
 		END
 	ELSE IF @accion = 'desactivar'
 		BEGIN

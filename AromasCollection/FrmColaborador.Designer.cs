@@ -49,6 +49,11 @@ namespace AromasCollection
             this.btnCancelar = new System.Windows.Forms.Button();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.lbBuscar = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cmbVerEstado = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.cmbEstado = new System.Windows.Forms.ComboBox();
+            this.btnEliminar = new System.Windows.Forms.Button();
             this.gbProductoInput.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvColaborador)).BeginInit();
             this.SuspendLayout();
@@ -60,7 +65,7 @@ namespace AromasCollection
             this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnLimpiar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLimpiar.ForeColor = System.Drawing.Color.White;
-            this.btnLimpiar.Location = new System.Drawing.Point(652, 515);
+            this.btnLimpiar.Location = new System.Drawing.Point(629, 515);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(119, 26);
             this.btnLimpiar.TabIndex = 23;
@@ -75,7 +80,7 @@ namespace AromasCollection
             this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEditar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditar.ForeColor = System.Drawing.Color.White;
-            this.btnEditar.Location = new System.Drawing.Point(514, 514);
+            this.btnEditar.Location = new System.Drawing.Point(491, 514);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(119, 26);
             this.btnEditar.TabIndex = 22;
@@ -90,7 +95,7 @@ namespace AromasCollection
             this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAgregar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregar.ForeColor = System.Drawing.Color.White;
-            this.btnAgregar.Location = new System.Drawing.Point(374, 515);
+            this.btnAgregar.Location = new System.Drawing.Point(351, 515);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(119, 25);
             this.btnAgregar.TabIndex = 21;
@@ -101,6 +106,8 @@ namespace AromasCollection
             // gbProductoInput
             // 
             this.gbProductoInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(84)))), ((int)(((byte)(135)))));
+            this.gbProductoInput.Controls.Add(this.label8);
+            this.gbProductoInput.Controls.Add(this.cmbEstado);
             this.gbProductoInput.Controls.Add(this.txtColaboradorContrasena);
             this.gbProductoInput.Controls.Add(this.label4);
             this.gbProductoInput.Controls.Add(this.txtColaboradorApellido);
@@ -125,7 +132,7 @@ namespace AromasCollection
             // txtColaboradorContrasena
             // 
             this.txtColaboradorContrasena.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtColaboradorContrasena.Location = new System.Drawing.Point(10, 316);
+            this.txtColaboradorContrasena.Location = new System.Drawing.Point(10, 305);
             this.txtColaboradorContrasena.Name = "txtColaboradorContrasena";
             this.txtColaboradorContrasena.Size = new System.Drawing.Size(253, 27);
             this.txtColaboradorContrasena.TabIndex = 16;
@@ -134,16 +141,16 @@ namespace AromasCollection
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(6, 293);
+            this.label4.Location = new System.Drawing.Point(6, 282);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(231, 19);
+            this.label4.Size = new System.Drawing.Size(98, 19);
             this.label4.TabIndex = 15;
-            this.label4.Text = "Contraseña del Colaborador";
+            this.label4.Text = "Contraseña";
             // 
             // txtColaboradorApellido
             // 
             this.txtColaboradorApellido.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtColaboradorApellido.Location = new System.Drawing.Point(10, 122);
+            this.txtColaboradorApellido.Location = new System.Drawing.Point(10, 111);
             this.txtColaboradorApellido.Name = "txtColaboradorApellido";
             this.txtColaboradorApellido.Size = new System.Drawing.Size(253, 27);
             this.txtColaboradorApellido.TabIndex = 14;
@@ -154,7 +161,7 @@ namespace AromasCollection
             this.cmbColaboradorPuesto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbColaboradorPuesto.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbColaboradorPuesto.FormattingEnabled = true;
-            this.cmbColaboradorPuesto.Location = new System.Drawing.Point(10, 381);
+            this.cmbColaboradorPuesto.Location = new System.Drawing.Point(10, 370);
             this.cmbColaboradorPuesto.Name = "cmbColaboradorPuesto";
             this.cmbColaboradorPuesto.Size = new System.Drawing.Size(253, 29);
             this.cmbColaboradorPuesto.TabIndex = 13;
@@ -163,16 +170,16 @@ namespace AromasCollection
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(6, 355);
+            this.label3.Location = new System.Drawing.Point(6, 344);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(87, 19);
+            this.label3.Size = new System.Drawing.Size(58, 19);
             this.label3.TabIndex = 12;
-            this.label3.Text = "Categoria";
+            this.label3.Text = "Puesto";
             // 
             // txtColaboradorCorreo
             // 
             this.txtColaboradorCorreo.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtColaboradorCorreo.Location = new System.Drawing.Point(10, 188);
+            this.txtColaboradorCorreo.Location = new System.Drawing.Point(10, 177);
             this.txtColaboradorCorreo.Name = "txtColaboradorCorreo";
             this.txtColaboradorCorreo.Size = new System.Drawing.Size(253, 27);
             this.txtColaboradorCorreo.TabIndex = 9;
@@ -180,7 +187,7 @@ namespace AromasCollection
             // txtColaboradorUsuario
             // 
             this.txtColaboradorUsuario.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtColaboradorUsuario.Location = new System.Drawing.Point(10, 254);
+            this.txtColaboradorUsuario.Location = new System.Drawing.Point(10, 243);
             this.txtColaboradorUsuario.Name = "txtColaboradorUsuario";
             this.txtColaboradorUsuario.Size = new System.Drawing.Size(253, 27);
             this.txtColaboradorUsuario.TabIndex = 11;
@@ -189,26 +196,26 @@ namespace AromasCollection
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(6, 99);
+            this.label2.Location = new System.Drawing.Point(6, 88);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(208, 19);
+            this.label2.Size = new System.Drawing.Size(75, 19);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Apellido del Colaborador";
+            this.label2.Text = "Apellido";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(6, 231);
+            this.label6.Location = new System.Drawing.Point(6, 220);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(198, 19);
+            this.label6.Size = new System.Drawing.Size(65, 19);
             this.label6.TabIndex = 10;
-            this.label6.Text = "Usuario del Colaborador";
+            this.label6.Text = "Usuario";
             // 
             // txtColaboradorNombre
             // 
             this.txtColaboradorNombre.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtColaboradorNombre.Location = new System.Drawing.Point(10, 61);
+            this.txtColaboradorNombre.Location = new System.Drawing.Point(10, 50);
             this.txtColaboradorNombre.Name = "txtColaboradorNombre";
             this.txtColaboradorNombre.Size = new System.Drawing.Size(253, 27);
             this.txtColaboradorNombre.TabIndex = 1;
@@ -218,21 +225,21 @@ namespace AromasCollection
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(6, 165);
+            this.label5.Location = new System.Drawing.Point(6, 154);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(194, 19);
+            this.label5.Size = new System.Drawing.Size(61, 19);
             this.label5.TabIndex = 8;
-            this.label5.Text = "Correo del Colaborador";
+            this.label5.Text = "Correo";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(6, 38);
+            this.label1.Location = new System.Drawing.Point(6, 27);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(206, 19);
+            this.label1.Size = new System.Drawing.Size(77, 19);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Nombre del Colaborador";
+            this.label1.Text = "Nombre ";
             // 
             // dgvColaborador
             // 
@@ -257,7 +264,7 @@ namespace AromasCollection
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCancelar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
-            this.btnCancelar.Location = new System.Drawing.Point(789, 516);
+            this.btnCancelar.Location = new System.Drawing.Point(896, 516);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(119, 25);
@@ -288,12 +295,72 @@ namespace AromasCollection
             this.lbBuscar.TabIndex = 28;
             this.lbBuscar.Text = "Buscar:";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(861, 81);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(59, 19);
+            this.label7.TabIndex = 31;
+            this.label7.Text = "Estado";
+            // 
+            // cmbVerEstado
+            // 
+            this.cmbVerEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbVerEstado.FormattingEnabled = true;
+            this.cmbVerEstado.Location = new System.Drawing.Point(926, 80);
+            this.cmbVerEstado.Name = "cmbVerEstado";
+            this.cmbVerEstado.Size = new System.Drawing.Size(112, 21);
+            this.cmbVerEstado.TabIndex = 30;
+            this.cmbVerEstado.SelectedIndexChanged += new System.EventHandler(this.cmbVerEstado_SelectedIndexChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(6, 402);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(59, 19);
+            this.label8.TabIndex = 18;
+            this.label8.Text = "Estado";
+            // 
+            // cmbEstado
+            // 
+            this.cmbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbEstado.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbEstado.FormattingEnabled = true;
+            this.cmbEstado.Location = new System.Drawing.Point(10, 424);
+            this.cmbEstado.Name = "cmbEstado";
+            this.cmbEstado.Size = new System.Drawing.Size(253, 29);
+            this.cmbEstado.TabIndex = 17;
+            this.cmbEstado.SelectedIndexChanged += new System.EventHandler(this.cmbEstado_SelectedIndexChanged);
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(22)))), ((int)(((byte)(46)))));
+            this.btnEliminar.FlatAppearance.BorderSize = 0;
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnEliminar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminar.ForeColor = System.Drawing.Color.White;
+            this.btnEliminar.Location = new System.Drawing.Point(761, 515);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(119, 26);
+            this.btnEliminar.TabIndex = 32;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
             // FrmColaborador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(84)))), ((int)(((byte)(135)))));
             this.ClientSize = new System.Drawing.Size(1100, 662);
+            this.Controls.Add(this.btnEliminar);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.cmbVerEstado);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.lbBuscar);
             this.Controls.Add(this.btnCancelar);
@@ -336,5 +403,10 @@ namespace AromasCollection
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.Label lbBuscar;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox cmbVerEstado;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox cmbEstado;
+        private System.Windows.Forms.Button btnEliminar;
     }
 }

@@ -25,11 +25,75 @@ namespace AromasCollection.Clases
         public int IdPuesto { get; set; }
         public bool Estado { get; set; }
 
-
-
-
         public int IdColaboradorSAR { get; set; }
-        public void BuscarColaborador(DataGridView dataGrid, string valorBuscado)
+
+        public void DesactivarColaborador(Colaborador colaborador)
+        {
+            try
+            {
+                conexion.sqlConnection.Open();
+
+                SqlCommand sqlCommand = new SqlCommand("sp_Colaborador", conexion.sqlConnection);
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+
+                // Establecer los valores de los parámetros
+                sqlCommand.Parameters.AddWithValue("@idProducto", colaborador.IdColaborador);
+                sqlCommand.Parameters.AddWithValue("@accion", "desactivar");
+
+
+                bitacora.DefinirIdColaborador(IdColaborador, conexion.sqlConnection);
+
+                sqlCommand.ExecuteNonQuery();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                // Cerrar la conexión
+                conexion.sqlConnection.Close();
+            }
+        }
+
+        public void CargarComboBoxEstado(ComboBox comboBox)
+        {
+            try
+            {
+                conexion.sqlConnection.Open();
+
+                SqlCommand sqlCommand = new SqlCommand("sp_Colaborador", conexion.sqlConnection);
+
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+
+                sqlCommand.Parameters.AddWithValue("@accion", "CargarEstado");
+
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+
+                using (sqlDataAdapter)
+                {
+                    DataTable dataTable = new DataTable();
+                    sqlDataAdapter.Fill(dataTable);
+                    comboBox.DisplayMember = "estado";
+                    comboBox.ValueMember = "id";
+                    comboBox.DataSource = dataTable.DefaultView;
+                }
+
+                conexion.sqlConnection.Close();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                conexion.sqlConnection.Close();
+            }
+
+        }
+        public void BuscarColaborador(DataGridView dataGrid, string valorBuscado, int estado)
         {
 
             try
@@ -43,6 +107,7 @@ namespace AromasCollection.Clases
 
                 // Establecer los valores de los parámetros
                 sqlCommand.Parameters.AddWithValue("@colaboradorBuscado", valorBuscado);
+                sqlCommand.Parameters.AddWithValue("@estado", estado);
                 sqlCommand.Parameters.AddWithValue("@accion", "buscar");
 
                 using (sqlDataAdapter)
@@ -66,7 +131,7 @@ namespace AromasCollection.Clases
                 conexion.sqlConnection.Close();
             }
         }
-        public void Mostrar(DataGridView dataGrid)
+        public void Mostrar(DataGridView dataGrid, int estado)
         {
 
             try
@@ -80,6 +145,7 @@ namespace AromasCollection.Clases
 
                 // Establecer los valores de los parámetros
                 sqlCommand.Parameters.AddWithValue("@accion", "mostrar");
+                sqlCommand.Parameters.AddWithValue("@estado", estado);
 
                 using (sqlDataAdapter)
                 {
@@ -102,7 +168,7 @@ namespace AromasCollection.Clases
                 conexion.sqlConnection.Close();
             }
         }
-        public void CargarComboBoxEstado(ComboBox comboBox)
+        public void CargarComboBoxPuesto(ComboBox comboBox)
         {
             try
             {
@@ -153,7 +219,7 @@ namespace AromasCollection.Clases
                 sqlCommand.Parameters.AddWithValue("@usuario", colaborador.Usuario);
                 sqlCommand.Parameters.AddWithValue("@contrasenia", colaborador.Contrasenia);
                 sqlCommand.Parameters.AddWithValue("@idPuesto", colaborador.IdPuesto);
-                sqlCommand.Parameters.AddWithValue("@estado", 1);
+                sqlCommand.Parameters.AddWithValue("@estado", colaborador.Estado);
                 sqlCommand.Parameters.AddWithValue("@accion", "insertar");
 
                 bitacora.DefinirIdColaborador(IdColaboradorSAR, conexion.sqlConnection);
@@ -187,10 +253,10 @@ namespace AromasCollection.Clases
                 sqlCommand.Parameters.AddWithValue("@usuario", colaborador.Usuario);
                 sqlCommand.Parameters.AddWithValue("@contrasenia", colaborador.Contrasenia);
                 sqlCommand.Parameters.AddWithValue("@idPuesto", colaborador.IdPuesto);
-                sqlCommand.Parameters.AddWithValue("@estado", 1);
+                sqlCommand.Parameters.AddWithValue("@estado", colaborador.Estado);
                 sqlCommand.Parameters.AddWithValue("@IdColaborador", colaborador.IdColaborador);
                 sqlCommand.Parameters.AddWithValue("@accion", "modificar");
-
+                
                 bitacora.DefinirIdColaborador(IdColaboradorSAR, conexion.sqlConnection);
 
                 sqlCommand.ExecuteNonQuery();
@@ -262,7 +328,7 @@ namespace AromasCollection.Clases
             {
 
                 conexion.sqlConnection.Open();
-                
+
                 SqlCommand sqlCommand = new SqlCommand("sp_Colaborador", conexion.sqlConnection);
                 sqlCommand.CommandType = CommandType.StoredProcedure;
 
