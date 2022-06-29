@@ -464,7 +464,7 @@ BEGIN
 END
 GO
 
-ALTER PROCEDURE sp_Colaborador
+CREATE PROCEDURE sp_Colaborador
 @idColaborador INT = NULL,
 @nombreColaborador VARCHAR(55)   = NULL,
 @apellidoColaborador VARCHAR(55)  = NULL,
@@ -678,7 +678,7 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE sp_bitacora@value sql_variant = NULL,@key sysname = NULL,@accion nvarchar(50)ASBEGIN	IF @accion = 'idColaborador'	begin	EXEC sp_set_session_context @key, @value	end	ELSE IF @accion = 'Mostrar'	BEGIN		select B.idBitacora 'Codigo de Registro', B.idColaborador'Codigo de Colaborador',CONCAT(C.nombreColaborador,' ', C.apellidoColaborador) 'Nombre del Colaborador', b.pcUsuario 'PC del Usuario',		B.accion 'Accion', B.fecha 'Fecha'		from Bitacora B INNER JOIN Colaborador C 		ON C.idColaborador = B.idColaborador		ORDER BY B.idBitacora DESC	ENDEND
+CREATE PROCEDURE sp_bitacora@value sql_variant = NULL,@key sysname = NULL,@buscado nvarchar(200) = NULL,@accion nvarchar(50)ASBEGIN	IF @accion = 'idColaborador'	begin	EXEC sp_set_session_context @key, @value	end	ELSE IF @accion = 'Mostrar'	BEGIN		select B.idBitacora 'Codigo de Registro', B.idColaborador'Codigo de Colaborador',CONCAT(C.nombreColaborador,' ', C.apellidoColaborador) 'Nombre del Colaborador', b.pcUsuario 'PC del Usuario',		B.accion 'Accion', B.fecha 'Fecha'		from Bitacora B INNER JOIN Colaborador C 		ON C.idColaborador = B.idColaborador		ORDER BY B.idBitacora DESC	END	ELSE IF @accion = 'Buscar'	BEGIN		select B.idBitacora 'Codigo de Registro', B.idColaborador'Codigo de Colaborador',CONCAT(C.nombreColaborador,' ', C.apellidoColaborador) 'Nombre del Colaborador', b.pcUsuario 'PC del Usuario',		B.accion 'Accion', B.fecha 'Fecha'		from Bitacora B INNER JOIN Colaborador C 		ON C.idColaborador = B.idColaborador		WHERE CONCAT(B.idColaborador, ' ', C.nombreColaborador, ' ', C.apellidoColaborador,' ' ,B.accion) LIKE CONCAT('%',@buscado,'%')		ORDER BY B.idBitacora DESC	ENDEND
 GO
 
 

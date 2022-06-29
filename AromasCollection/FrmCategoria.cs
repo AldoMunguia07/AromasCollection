@@ -52,7 +52,7 @@ namespace AromasCollection
             {
                 categoria.categoria = texto;
                 categoria.estado = Convert.ToBoolean(Convert.ToInt32(cmbEstado.SelectedValue));
-                MessageBox.Show(categoria.estado.ToString());
+               
                 categoria.AgregarCategoria(categoria);
 
                 MasterCleaner();

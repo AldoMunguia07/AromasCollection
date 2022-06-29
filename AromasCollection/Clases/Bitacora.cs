@@ -80,5 +80,48 @@ namespace AromasCollection.Clases
                 conexion.sqlConnection.Close();
             }
         }
+
+        public void MostrarBuscado(DataGridView dataGrid, string RangoBuscado)
+        {
+
+            try
+            {
+
+                conexion.sqlConnection.Open();
+
+
+                SqlCommand sqlCommand = new SqlCommand("sp_bitacora", conexion.sqlConnection);
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+
+                // Establecer los valores de los parámetros
+
+             
+                sqlCommand.Parameters.AddWithValue("@buscado", RangoBuscado);
+                sqlCommand.Parameters.AddWithValue("@accion", "Buscar");
+
+                using (sqlDataAdapter)
+                {
+                    DataTable dataTable = new DataTable();
+
+                    sqlDataAdapter.Fill(dataTable);
+
+                    dataGrid.DataSource = dataTable;
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            finally
+            {
+                conexion.sqlConnection.Close();
+            }
+        }
     }
 }

@@ -19,5 +19,10 @@ namespace AromasCollection
             InitializeComponent();
             bitacora.MostrarRegistros(dgvBitacora);
         }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            bitacora.MostrarBuscado(dgvBitacora, txtBuscar.Text);
+        }
     }
 }

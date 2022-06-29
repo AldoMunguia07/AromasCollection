@@ -37,7 +37,7 @@ namespace AromasCollection.Clases
                 sqlCommand.CommandType = CommandType.StoredProcedure;
 
                 // Establecer los valores de los parámetros
-                sqlCommand.Parameters.AddWithValue("@idProducto", colaborador.IdColaborador);
+                sqlCommand.Parameters.AddWithValue("@IdColaborador", colaborador.IdColaborador);
                 sqlCommand.Parameters.AddWithValue("@accion", "desactivar");
 
 

@@ -349,7 +349,6 @@ namespace AromasCollection
             dtpFLEmision.ResetText();
             txtCAI.Text = String.Empty;
             cmbEstado.SelectedValue = 1;
-            cmbVerEstado.SelectedValue = 1;
             estado = 1;
             seleccionado = false;
             fecha = new DateTime();
