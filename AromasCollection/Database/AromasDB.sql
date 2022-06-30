@@ -681,6 +681,34 @@ GO
 CREATE PROCEDURE sp_bitacora@value sql_variant = NULL,@key sysname = NULL,@buscado nvarchar(200) = NULL,@accion nvarchar(50)ASBEGIN	IF @accion = 'idColaborador'	begin	EXEC sp_set_session_context @key, @value	end	ELSE IF @accion = 'Mostrar'	BEGIN		select B.idBitacora 'Codigo de Registro', B.idColaborador'Codigo de Colaborador',CONCAT(C.nombreColaborador,' ', C.apellidoColaborador) 'Nombre del Colaborador', b.pcUsuario 'PC del Usuario',		B.accion 'Accion', B.fecha 'Fecha'		from Bitacora B INNER JOIN Colaborador C 		ON C.idColaborador = B.idColaborador		ORDER BY B.idBitacora DESC	END	ELSE IF @accion = 'Buscar'	BEGIN		select B.idBitacora 'Codigo de Registro', B.idColaborador'Codigo de Colaborador',CONCAT(C.nombreColaborador,' ', C.apellidoColaborador) 'Nombre del Colaborador', b.pcUsuario 'PC del Usuario',		B.accion 'Accion', B.fecha 'Fecha'		from Bitacora B INNER JOIN Colaborador C 		ON C.idColaborador = B.idColaborador		WHERE CONCAT(B.idColaborador, ' ', C.nombreColaborador, ' ', C.apellidoColaborador,' ' ,B.accion) LIKE CONCAT('%',@buscado,'%')		ORDER BY B.idBitacora DESC	ENDEND
 GO
 
+CREATE PROCEDURE sp_reportes@mes int = NULL,@anio int = NULL,@accion nvarchar(50)ASBEGIN	IF @accion = 'ventasMes'	begin		SELECT f.idFactura 'Código factura', f.fechaVenta 'Fecha venta', CONCAT(co.nombreColaborador, ' ', co.apellidoColaborador) Colaborador, 
+			CONCAT(c.nombreCliente,' ', c.apellidoCliente) Cliente, c.rtn 'RTN cliente',
+			CASE WHEN esVenta = 1 THEN SUM(df.cantidad * df.precio) ELSE 0 END  Subtotal, CASE WHEN esVenta = 1 THEN (SUM(df.cantidad * df.precio) * 0.15) ELSE 0 END  ISV,
+			 CASE WHEN esVenta = 1 THEN F.descuento ELSE 0 END Descuento,  CASE WHEN esVenta = 1 THEN SUM(df.cantidad * df.precio) +  ((SUM(df.cantidad * df.precio) * 0.15) - f.descuento) ELSE  0 END Total,
+			f.observaciones Observaciones
+			FROM Factura f JOIN DetalleFactura df 
+			ON df.idFactura = f.idFactura
+			JOIN Cliente c ON c.idCliente = f.idCliente
+			JOIN Colaborador co on co.idColaborador = f.idColaborador
+			WHERE MONTH(F.fechaVenta) = @mes
+			GROUP BY f.idFactura, f.fechaVenta, co.nombreColaborador, co.apellidoColaborador, c.nombreCliente, c.apellidoCliente, c.rtn, F.descuento, f.observaciones, f.esVenta		end	ELSE IF @accion = 'gananciasMes'	BEGIN	 			SELECT DATENAME(month,f.fechaVenta)'Mes',SUM(df.cantidad * df.precio) +  ((SUM(df.cantidad * df.precio) * 0.15) - SUM(f.descuento)) - (select SUM(L.precioCompra*L.cantidad) from Lote L) Ganancias
+			FROM Factura f JOIN DetalleFactura df 
+			ON df.idFactura = f.idFactura
+			JOIN Cliente c ON c.idCliente = f.idCliente
+			JOIN Colaborador co on co.idColaborador = f.idColaborador
+			WHERE YEAR(F.fechaVenta) = @anio
+			GROUP BY DATENAME(month,f.fechaVenta)		END	ELSE IF @accion = 'totalVentasyUnidades'	BEGIN	 			SELECT ISNULL(SUM(df.cantidad * df.precio) +  ((SUM(df.cantidad * df.precio) * 0.15) - SUM(f.descuento)),0) Ventas, ISNULL(SUM(df.cantidad),0) 'Unidades Vendias'
+			FROM Factura f JOIN DetalleFactura df 
+			ON df.idFactura = f.idFactura
+			JOIN Cliente c ON c.idCliente = f.idCliente
+			JOIN Colaborador co on co.idColaborador = f.idColaborador
+			WHERE MONTH(F.fechaVenta) = @mes				END	ELSE IF @accion = 'TotalExistencias'	BEGIN		SELECT p.idProducto Codigo, p.nombreProducto Producto,c.categoria Categoria,
+				(SELECT ISNULL(SUM(cantidad), 0) FROM Lote WHERE idProducto = p.idProducto) - (SELECT ISNULL(SUM(cantidad), 0) FROM DetalleFactura WHERE idProducto = p.idProducto)  Existencia
+				FROM Producto p JOIN Categoria c
+				ON p.idCategoria = C.idCategoria
+			ENDEND
+GO
+
 
 ----------- Triggers
 
