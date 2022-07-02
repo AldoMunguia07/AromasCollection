@@ -17,7 +17,7 @@ namespace AromasCollection
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new rFrmVentasPorMes());
+            Application.Run(new FrmLogin());
         }
     }
 }

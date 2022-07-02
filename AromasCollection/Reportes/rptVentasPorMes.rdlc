@@ -76,7 +76,7 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>2.5cm</Width>
+                  <Width>3.03349cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>2.5cm</Width>
@@ -122,6 +122,7 @@
                                   <Value>Codigo factura</Value>
                                   <Style>
                                     <FontFamily>Century Gothic</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
                                     <Color>White</Color>
                                   </Style>
                                 </TextRun>
@@ -158,6 +159,7 @@
                                   <Value>Fecha venta</Value>
                                   <Style>
                                     <FontFamily>Century Gothic</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
                                     <Color>White</Color>
                                   </Style>
                                 </TextRun>
@@ -194,6 +196,7 @@
                                   <Value>Colaborador</Value>
                                   <Style>
                                     <FontFamily>Century Gothic</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
                                     <Color>White</Color>
                                   </Style>
                                 </TextRun>
@@ -230,6 +233,7 @@
                                   <Value>Cliente</Value>
                                   <Style>
                                     <FontFamily>Century Gothic</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
                                     <Color>White</Color>
                                   </Style>
                                 </TextRun>
@@ -266,6 +270,7 @@
                                   <Value>Rtn cliente</Value>
                                   <Style>
                                     <FontFamily>Century Gothic</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
                                     <Color>White</Color>
                                   </Style>
                                 </TextRun>
@@ -302,6 +307,7 @@
                                   <Value>Subtotal</Value>
                                   <Style>
                                     <FontFamily>Century Gothic</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
                                     <Color>White</Color>
                                   </Style>
                                 </TextRun>
@@ -338,6 +344,7 @@
                                   <Value>ISV</Value>
                                   <Style>
                                     <FontFamily>Century Gothic</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
                                     <Color>White</Color>
                                   </Style>
                                 </TextRun>
@@ -374,6 +381,7 @@
                                   <Value>Descuento</Value>
                                   <Style>
                                     <FontFamily>Century Gothic</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
                                     <Color>White</Color>
                                   </Style>
                                 </TextRun>
@@ -410,6 +418,7 @@
                                   <Value>Total</Value>
                                   <Style>
                                     <FontFamily>Century Gothic</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
                                     <Color>White</Color>
                                   </Style>
                                 </TextRun>
@@ -446,6 +455,7 @@
                                   <Value>Observaciones</Value>
                                   <Style>
                                     <FontFamily>Century Gothic</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
                                     <Color>White</Color>
                                   </Style>
                                 </TextRun>
@@ -847,7 +857,7 @@
             <Top>2.03412cm</Top>
             <Left>0.91854cm</Left>
             <Height>1.2cm</Height>
-            <Width>25.58208cm</Width>
+            <Width>26.11557cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -891,7 +901,7 @@
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>2in</Height>
+        <Height>1.67708in</Height>
         <Style />
       </Body>
       <Width>10.88294in</Width>
@@ -970,7 +980,7 @@
           </Style>
         </PageHeader>
         <PageFooter>
-          <Height>4.55083cm</Height>
+          <Height>2.88396cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -991,7 +1001,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>TotalPages</rd:DefaultName>
-              <Top>2.55354cm</Top>
+              <Top>0.33104cm</Top>
               <Left>24.92604cm</Left>
               <Height>0.6cm</Height>
               <Width>2.5cm</Width>
@@ -1022,7 +1032,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>PageNumber</rd:DefaultName>
-              <Top>2.55354cm</Top>
+              <Top>0.33104cm</Top>
               <Left>21.67229cm</Left>
               <Height>0.6cm</Height>
               <Width>2.5cm</Width>
@@ -1054,7 +1064,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox45</rd:DefaultName>
-              <Top>2.55354cm</Top>
+              <Top>0.33104cm</Top>
               <Left>24.27812cm</Left>
               <Height>0.6cm</Height>
               <Width>0.64792cm</Width>
@@ -1071,7 +1081,7 @@
             </Textbox>
             <Rectangle Name="Rectangle2">
               <KeepTogether>true</KeepTogether>
-              <Top>3.66479cm</Top>
+              <Top>1.945cm</Top>
               <Height>0.88604cm</Height>
               <Width>27.64266cm</Width>
               <ZIndex>3</ZIndex>
@@ -1101,10 +1111,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Fecha</rd:DefaultName>
-              <Top>2.55509cm</Top>
+              <Top>0.33259cm</Top>
               <Left>2.27224cm</Left>
               <Height>0.6cm</Height>
-              <Width>2.91838cm</Width>
+              <Width>4.66463cm</Width>
               <ZIndex>4</ZIndex>
               <Style>
                 <Border>
@@ -1133,7 +1143,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox45</rd:DefaultName>
-              <Top>2.55509cm</Top>
+              <Top>0.33259cm</Top>
               <Left>0.78647cm</Left>
               <Height>0.6cm</Height>
               <Width>1.41521cm</Width>
@@ -1168,10 +1178,10 @@
   </ReportSections>
   <ReportParameters>
     <ReportParameter Name="Fecha">
-      <DataType>DateTime</DataType>
+      <DataType>String</DataType>
       <DefaultValue>
         <Values>
-          <Value>=DateTime.Now</Value>
+          <Value>=DateTime.Now.ToString</Value>
         </Values>
       </DefaultValue>
       <Prompt>ReportParameter1</Prompt>

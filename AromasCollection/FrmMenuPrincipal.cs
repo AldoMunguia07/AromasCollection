@@ -147,5 +147,10 @@ namespace AromasCollection
             abrirFormPanel(new FrmBitacora());
             
         }
+
+        private void btnReportes_Click(object sender, EventArgs e)
+        {
+            abrirFormPanel(new FrmReportes());
+        }
     }
 }

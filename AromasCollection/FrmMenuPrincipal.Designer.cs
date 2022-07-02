@@ -30,17 +30,17 @@ namespace AromasCollection
         private void InitializeComponent()
         {
             this.menuIzquierdo = new System.Windows.Forms.Panel();
+            this.btnColaboradores = new System.Windows.Forms.Button();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.btnMiCuenta = new System.Windows.Forms.Button();
+            this.panel9 = new System.Windows.Forms.Panel();
             this.btnBitacora = new System.Windows.Forms.Button();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.panel9 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.btnMiCuenta = new System.Windows.Forms.Button();
             this.lblUser = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
             this.btnReportes = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.btnColaboradores = new System.Windows.Forms.Button();
             this.btnVentas = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnSAR = new System.Windows.Forms.Button();
@@ -96,6 +96,58 @@ namespace AromasCollection
             this.menuIzquierdo.Size = new System.Drawing.Size(200, 662);
             this.menuIzquierdo.TabIndex = 1;
             // 
+            // btnColaboradores
+            // 
+            this.btnColaboradores.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(22)))), ((int)(((byte)(46)))));
+            this.btnColaboradores.FlatAppearance.BorderSize = 0;
+            this.btnColaboradores.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(10)))), ((int)(((byte)(151)))));
+            this.btnColaboradores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnColaboradores.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnColaboradores.ForeColor = System.Drawing.Color.White;
+            this.btnColaboradores.Image = global::AromasCollection.Properties.Resources.empleados;
+            this.btnColaboradores.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnColaboradores.Location = new System.Drawing.Point(6, 549);
+            this.btnColaboradores.Name = "btnColaboradores";
+            this.btnColaboradores.Size = new System.Drawing.Size(194, 35);
+            this.btnColaboradores.TabIndex = 11;
+            this.btnColaboradores.Text = "Usuarios";
+            this.btnColaboradores.UseVisualStyleBackColor = false;
+            this.btnColaboradores.Click += new System.EventHandler(this.btnColaboradores_Click);
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(10)))), ((int)(((byte)(151)))));
+            this.panel6.Location = new System.Drawing.Point(0, 549);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(5, 35);
+            this.panel6.TabIndex = 12;
+            // 
+            // btnMiCuenta
+            // 
+            this.btnMiCuenta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(22)))), ((int)(((byte)(46)))));
+            this.btnMiCuenta.FlatAppearance.BorderSize = 0;
+            this.btnMiCuenta.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(10)))), ((int)(((byte)(151)))));
+            this.btnMiCuenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMiCuenta.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMiCuenta.ForeColor = System.Drawing.Color.White;
+            this.btnMiCuenta.Image = global::AromasCollection.Properties.Resources.miCunta;
+            this.btnMiCuenta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMiCuenta.Location = new System.Drawing.Point(3, 444);
+            this.btnMiCuenta.Name = "btnMiCuenta";
+            this.btnMiCuenta.Size = new System.Drawing.Size(194, 35);
+            this.btnMiCuenta.TabIndex = 15;
+            this.btnMiCuenta.Text = "Mi cuenta";
+            this.btnMiCuenta.UseVisualStyleBackColor = false;
+            this.btnMiCuenta.Click += new System.EventHandler(this.btnMiCuenta_Click);
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(10)))), ((int)(((byte)(151)))));
+            this.panel9.Location = new System.Drawing.Point(-2, 444);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(5, 35);
+            this.panel9.TabIndex = 16;
+            // 
             // btnBitacora
             // 
             this.btnBitacora.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(22)))), ((int)(((byte)(46)))));
@@ -121,14 +173,6 @@ namespace AromasCollection
             this.panel10.Size = new System.Drawing.Size(5, 35);
             this.panel10.TabIndex = 17;
             // 
-            // panel9
-            // 
-            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(10)))), ((int)(((byte)(151)))));
-            this.panel9.Location = new System.Drawing.Point(-2, 444);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(5, 35);
-            this.panel9.TabIndex = 16;
-            // 
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(10)))), ((int)(((byte)(151)))));
@@ -136,24 +180,6 @@ namespace AromasCollection
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(197, 3);
             this.panel8.TabIndex = 3;
-            // 
-            // btnMiCuenta
-            // 
-            this.btnMiCuenta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(22)))), ((int)(((byte)(46)))));
-            this.btnMiCuenta.FlatAppearance.BorderSize = 0;
-            this.btnMiCuenta.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(10)))), ((int)(((byte)(151)))));
-            this.btnMiCuenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMiCuenta.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMiCuenta.ForeColor = System.Drawing.Color.White;
-            this.btnMiCuenta.Image = global::AromasCollection.Properties.Resources.miCunta;
-            this.btnMiCuenta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMiCuenta.Location = new System.Drawing.Point(3, 444);
-            this.btnMiCuenta.Name = "btnMiCuenta";
-            this.btnMiCuenta.Size = new System.Drawing.Size(194, 35);
-            this.btnMiCuenta.TabIndex = 15;
-            this.btnMiCuenta.Text = "Mi cuenta";
-            this.btnMiCuenta.UseVisualStyleBackColor = false;
-            this.btnMiCuenta.Click += new System.EventHandler(this.btnMiCuenta_Click);
             // 
             // lblUser
             // 
@@ -174,14 +200,6 @@ namespace AromasCollection
             this.panel7.Size = new System.Drawing.Size(5, 35);
             this.panel7.TabIndex = 14;
             // 
-            // panel6
-            // 
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(10)))), ((int)(((byte)(151)))));
-            this.panel6.Location = new System.Drawing.Point(0, 549);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(5, 35);
-            this.panel6.TabIndex = 12;
-            // 
             // btnReportes
             // 
             this.btnReportes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(22)))), ((int)(((byte)(46)))));
@@ -198,6 +216,7 @@ namespace AromasCollection
             this.btnReportes.TabIndex = 13;
             this.btnReportes.Text = "Reportes";
             this.btnReportes.UseVisualStyleBackColor = false;
+            this.btnReportes.Click += new System.EventHandler(this.btnReportes_Click);
             // 
             // panel5
             // 
@@ -206,24 +225,6 @@ namespace AromasCollection
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(5, 35);
             this.panel5.TabIndex = 10;
-            // 
-            // btnColaboradores
-            // 
-            this.btnColaboradores.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(22)))), ((int)(((byte)(46)))));
-            this.btnColaboradores.FlatAppearance.BorderSize = 0;
-            this.btnColaboradores.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(10)))), ((int)(((byte)(151)))));
-            this.btnColaboradores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnColaboradores.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnColaboradores.ForeColor = System.Drawing.Color.White;
-            this.btnColaboradores.Image = global::AromasCollection.Properties.Resources.empleados;
-            this.btnColaboradores.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnColaboradores.Location = new System.Drawing.Point(6, 549);
-            this.btnColaboradores.Name = "btnColaboradores";
-            this.btnColaboradores.Size = new System.Drawing.Size(194, 35);
-            this.btnColaboradores.TabIndex = 11;
-            this.btnColaboradores.Text = "Usuarios";
-            this.btnColaboradores.UseVisualStyleBackColor = false;
-            this.btnColaboradores.Click += new System.EventHandler(this.btnColaboradores_Click);
             // 
             // btnVentas
             // 

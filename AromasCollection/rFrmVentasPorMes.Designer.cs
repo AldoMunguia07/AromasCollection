@@ -64,20 +64,18 @@ namespace AromasCollection
             reportDataSource1.Value = this.sp_VentasXMesBindingSource;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "AromasCollection.Reportes.rptVentasPorMes.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(6, 63);
-            this.reportViewer1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.reportViewer1.Location = new System.Drawing.Point(4, 41);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(1790, 920);
+            this.reportViewer1.Size = new System.Drawing.Size(1045, 521);
             this.reportViewer1.TabIndex = 0;
             // 
             // cmbMeses
             // 
             this.cmbMeses.FormattingEnabled = true;
-            this.cmbMeses.Location = new System.Drawing.Point(297, 15);
-            this.cmbMeses.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cmbMeses.Location = new System.Drawing.Point(198, 10);
             this.cmbMeses.Name = "cmbMeses";
-            this.cmbMeses.Size = new System.Drawing.Size(180, 28);
+            this.cmbMeses.Size = new System.Drawing.Size(121, 21);
             this.cmbMeses.TabIndex = 2;
             // 
             // btnCargar
@@ -86,10 +84,9 @@ namespace AromasCollection
             this.btnCargar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCargar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCargar.ForeColor = System.Drawing.Color.White;
-            this.btnCargar.Location = new System.Drawing.Point(1006, 11);
-            this.btnCargar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnCargar.Location = new System.Drawing.Point(671, 7);
             this.btnCargar.Name = "btnCargar";
-            this.btnCargar.Size = new System.Drawing.Size(190, 40);
+            this.btnCargar.Size = new System.Drawing.Size(127, 26);
             this.btnCargar.TabIndex = 3;
             this.btnCargar.Text = "Cargar reporte";
             this.btnCargar.UseVisualStyleBackColor = false;
@@ -102,50 +99,47 @@ namespace AromasCollection
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(213, 22);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(142, 14);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(39, 20);
+            this.label1.Size = new System.Drawing.Size(27, 13);
             this.label1.TabIndex = 4;
             this.label1.Text = "Mes";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(627, 22);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(418, 14);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 20);
+            this.label2.Size = new System.Drawing.Size(26, 13);
             this.label2.TabIndex = 5;
             this.label2.Text = "Año";
             // 
             // ndAnio
             // 
-            this.ndAnio.Location = new System.Drawing.Point(675, 15);
-            this.ndAnio.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ndAnio.Location = new System.Drawing.Point(450, 10);
             this.ndAnio.Maximum = new decimal(new int[] {
             276447232,
             23283,
             0,
             0});
             this.ndAnio.Name = "ndAnio";
-            this.ndAnio.Size = new System.Drawing.Size(180, 26);
+            this.ndAnio.Size = new System.Drawing.Size(120, 20);
             this.ndAnio.TabIndex = 6;
             // 
             // rFrmVentasPorMes
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1796, 983);
+            this.ClientSize = new System.Drawing.Size(1048, 561);
             this.Controls.Add(this.ndAnio);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCargar);
             this.Controls.Add(this.cmbMeses);
             this.Controls.Add(this.reportViewer1);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "rFrmVentasPorMes";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "rFrmVentasPorMes";
             this.Load += new System.EventHandler(this.rFrmVentasPorMes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.sp_VentasXMesBindingSource)).EndInit();

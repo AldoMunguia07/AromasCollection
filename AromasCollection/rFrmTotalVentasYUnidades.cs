@@ -42,10 +42,17 @@ namespace AromasCollection
         {
             if (cmbMeses.SelectedIndex != null && ndAnio.Value != null)
             {
-               
+                // TODO: esta línea de código carga datos en la tabla 'AromasDBDataSet.sp_TotVentasYUnidades' Puede moverla o quitarla según sea necesario.
+                this.sp_TotVentasYUnidadesTableAdapter.Fill(this.AromasDBDataSet.sp_TotVentasYUnidades, cmbMeses.SelectedIndex, Convert.ToInt32(ndAnio.Value));
+
+                this.reportViewer1.RefreshReport();
+
             }
         }
 
-     
+        private void rFrmTotalVentasYUnidades_Load(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

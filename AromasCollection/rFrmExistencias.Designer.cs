@@ -29,11 +29,63 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.sp_TotalExistenciasBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.AromasDBDataSet = new AromasCollection.AromasDBDataSet();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.sp_TotalExistenciasTableAdapter = new AromasCollection.AromasDBDataSetTableAdapters.sp_TotalExistenciasTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.sp_TotalExistenciasBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AromasDBDataSet)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // sp_TotalExistenciasBindingSource
+            // 
+            this.sp_TotalExistenciasBindingSource.DataMember = "sp_TotalExistencias";
+            this.sp_TotalExistenciasBindingSource.DataSource = this.AromasDBDataSet;
+            // 
+            // AromasDBDataSet
+            // 
+            this.AromasDBDataSet.DataSetName = "AromasDBDataSet";
+            this.AromasDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // reportViewer1
+            // 
+            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            reportDataSource1.Name = "DataSet1";
+            reportDataSource1.Value = this.sp_TotalExistenciasBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "AromasCollection.Reportes.rptTotalExistencia.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(1048, 561);
+            this.reportViewer1.TabIndex = 0;
+            // 
+            // sp_TotalExistenciasTableAdapter
+            // 
+            this.sp_TotalExistenciasTableAdapter.ClearBeforeFill = true;
+            // 
+            // rFrmExistencias
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1048, 561);
+            this.Controls.Add(this.reportViewer1);
+            this.Name = "rFrmExistencias";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "rFrmExistencias";
+            this.Load += new System.EventHandler(this.rFrmExistencias_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.sp_TotalExistenciasBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AromasDBDataSet)).EndInit();
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private System.Windows.Forms.BindingSource sp_TotalExistenciasBindingSource;
+        private AromasDBDataSet AromasDBDataSet;
+        private AromasDBDataSetTableAdapters.sp_TotalExistenciasTableAdapter sp_TotalExistenciasTableAdapter;
     }
 }

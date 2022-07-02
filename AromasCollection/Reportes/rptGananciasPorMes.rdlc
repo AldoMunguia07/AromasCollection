@@ -7,7 +7,7 @@
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>ae309f78-7204-4b4e-8986-d754df0ba2aa</rd:DataSourceID>
+      <rd:DataSourceID>59281e20-a324-45a0-a0f9-7295c3e5e87b</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
@@ -28,7 +28,7 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>AromasDBDataSet</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\PCJC\Desktop\AromasCollection\AromasCollection\AromasDBDataSet.xsd</rd:SchemaPath>
+        <rd:SchemaPath>C:\Users\Dell\source\repos\AromasCollection\AromasCollection\AromasDBDataSet.xsd</rd:SchemaPath>
         <rd:TableName>sp_GananciasXMes</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
@@ -40,49 +40,14 @@
     <ReportSection>
       <Body>
         <ReportItems>
-          <Textbox Name="Textbox46">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Ganancias por mes</Value>
-                    <Style>
-                      <FontFamily>century gothic</FontFamily>
-                      <FontSize>18pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Center</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox46</rd:DefaultName>
-            <Top>0.42806cm</Top>
-            <Left>10.26266cm</Left>
-            <Height>1.17391cm</Height>
-            <Width>7.08896cm</Width>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
           <Tablix Name="Tablix1">
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>3.25847cm</Width>
+                  <Width>2.94979cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>3.50542cm</Width>
+                  <Width>3.58765cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -100,7 +65,8 @@
                                 <TextRun>
                                   <Value>Mes</Value>
                                   <Style>
-                                    <Color>#00ffffff</Color>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -115,7 +81,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>Black</BackgroundColor>
+                            <BackgroundColor>#35162e</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -135,7 +101,8 @@
                                 <TextRun>
                                   <Value>Ganancias</Value>
                                   <Style>
-                                    <Color>#00ffffff</Color>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -150,7 +117,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>Black</BackgroundColor>
+                            <BackgroundColor>#35162e</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -249,17 +216,52 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>GananciasPorMes</DataSetName>
-            <Top>2.54627cm</Top>
-            <Left>10.58773cm</Left>
+            <Top>2.06058cm</Top>
+            <Left>10.27685cm</Left>
             <Height>1.2cm</Height>
-            <Width>6.76389cm</Width>
-            <ZIndex>1</ZIndex>
+            <Width>6.53745cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
             </Style>
           </Tablix>
+          <Textbox Name="Textbox46">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Ganancias por mes</Value>
+                    <Style>
+                      <FontFamily>century gothic</FontFamily>
+                      <FontSize>18pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox46</rd:DefaultName>
+            <Top>0.17639cm</Top>
+            <Left>10.27685cm</Left>
+            <Height>1.17391cm</Height>
+            <Width>7.08896cm</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
         </ReportItems>
         <Height>2in</Height>
         <Style />
@@ -340,41 +342,10 @@
           </Style>
         </PageHeader>
         <PageFooter>
-          <Height>4.55083cm</Height>
+          <Height>2.54cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
-            <Textbox Name="TotalPages">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Globals!TotalPages</Value>
-                      <Style>
-                        <FontFamily>Century Gothic</FontFamily>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>TotalPages</rd:DefaultName>
-              <Top>2.55354cm</Top>
-              <Left>24.92604cm</Left>
-              <Height>0.6cm</Height>
-              <Width>2.5cm</Width>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
             <Textbox Name="PageNumber">
               <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
@@ -392,11 +363,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>PageNumber</rd:DefaultName>
-              <Top>2.55354cm</Top>
+              <Top>0.27135cm</Top>
               <Left>21.67229cm</Left>
               <Height>0.6cm</Height>
               <Width>2.5cm</Width>
-              <ZIndex>1</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -424,11 +394,11 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox45</rd:DefaultName>
-              <Top>2.55354cm</Top>
+              <Top>0.27135cm</Top>
               <Left>24.27812cm</Left>
               <Height>0.6cm</Height>
               <Width>0.64792cm</Width>
-              <ZIndex>2</ZIndex>
+              <ZIndex>1</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -441,10 +411,10 @@
             </Textbox>
             <Rectangle Name="Rectangle2">
               <KeepTogether>true</KeepTogether>
-              <Top>3.66479cm</Top>
+              <Top>1.65396cm</Top>
               <Height>0.88604cm</Height>
               <Width>27.64266cm</Width>
-              <ZIndex>3</ZIndex>
+              <ZIndex>2</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -452,30 +422,28 @@
                 <BackgroundColor>#ff0a97</BackgroundColor>
               </Style>
             </Rectangle>
-            <Textbox Name="Fecha">
+            <Textbox Name="TotalPages">
               <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Parameters!Fecha.Value</Value>
+                      <Value>=Globals!TotalPages</Value>
                       <Style>
                         <FontFamily>Century Gothic</FontFamily>
                       </Style>
                     </TextRun>
                   </TextRuns>
-                  <Style>
-                    <TextAlign>Left</TextAlign>
-                  </Style>
+                  <Style />
                 </Paragraph>
               </Paragraphs>
-              <rd:DefaultName>Fecha</rd:DefaultName>
-              <Top>2.55509cm</Top>
-              <Left>2.27224cm</Left>
+              <rd:DefaultName>TotalPages</rd:DefaultName>
+              <Top>0.27135cm</Top>
+              <Left>24.92604cm</Left>
               <Height>0.6cm</Height>
-              <Width>2.91838cm</Width>
-              <ZIndex>4</ZIndex>
+              <Width>2.5cm</Width>
+              <ZIndex>3</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -503,10 +471,40 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox45</rd:DefaultName>
-              <Top>2.55509cm</Top>
-              <Left>0.78647cm</Left>
+              <Top>0.6525cm</Top>
+              <Left>0.25497cm</Left>
               <Height>0.6cm</Height>
               <Width>1.41521cm</Width>
+              <ZIndex>4</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Fecha">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Parameters!Fecha.Value</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Fecha</rd:DefaultName>
+              <Top>0.6525cm</Top>
+              <Left>1.70546cm</Left>
+              <Height>0.6cm</Height>
+              <Width>4.53729cm</Width>
               <ZIndex>5</ZIndex>
               <Style>
                 <Border>
@@ -538,7 +536,7 @@
   </ReportSections>
   <ReportParameters>
     <ReportParameter Name="Fecha">
-      <DataType>DateTime</DataType>
+      <DataType>String</DataType>
       <DefaultValue>
         <Values>
           <Value>=DateTime.Now</Value>
@@ -702,5 +700,5 @@ JIAEkAASQAJIAAkgASSABJAAEkACSAAJIAEkgASQABJAAkgACSABJIAEkAASQAJIAAkgASSABJAAEkAC
     </EmbeddedImage>
   </EmbeddedImages>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
-  <rd:ReportID>a905c79b-6c8b-48a7-b842-7287fd1ec0c8</rd:ReportID>
+  <rd:ReportID>9aae2695-ccde-4c1f-9e04-f138166c2736</rd:ReportID>
 </Report>
