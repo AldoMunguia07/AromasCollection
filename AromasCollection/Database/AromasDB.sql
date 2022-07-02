@@ -696,7 +696,7 @@ SELECT f.idFactura, f.fechaVenta, CONCAT(co.nombreColaborador, ' ', co.apellidoC
 			ON df.idFactura = f.idFactura
 			JOIN Cliente c ON c.idCliente = f.idCliente
 			JOIN Colaborador co on co.idColaborador = f.idColaborador
-			--WHERE MONTH(F.fechaVenta) = @mes AND YEAR(F.fechaVenta) = @anio
+			WHERE MONTH(F.fechaVenta) = @mes AND YEAR(F.fechaVenta) = @anio
 			GROUP BY f.idFactura, f.fechaVenta, co.nombreColaborador, co.apellidoColaborador, c.nombreCliente, c.apellidoCliente, c.rtn, F.descuento, f.observaciones, f.esVenta
 
 END
@@ -712,7 +712,7 @@ AS
 			ON df.idFactura = f.idFactura
 			JOIN Cliente c ON c.idCliente = f.idCliente
 			JOIN Colaborador co on co.idColaborador = f.idColaborador
-			WHERE YEAR(F.fechaVenta) = @anio AND YEAR(F.fechaVenta) = @anio
+			WHERE YEAR(F.fechaVenta) = @anio
 			GROUP BY DATENAME(month,f.fechaVenta)
 
 	END
