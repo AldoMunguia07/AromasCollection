@@ -216,6 +216,15 @@ INSERT INTO Puesto VALUES ('Colaborador');
 
 INSERT INTO Colaborador VALUES ('Admin', 'Admin', 'admin@gmail.com', 'admin', (ENCRYPTBYPASSPHRASE('ACecrypt02','admin123')), 1, 1)
 GO
+
+-- Datos de clientes por defecto
+INSERT INTO Cliente VALUES ('1111111111111', '111111111111111', 'Envios', 'Mall', 1)
+GO
+
+INSERT INTO Cliente VALUES ('2222222222222', '222222222222222', 'Otras', 'Salidas', 1)
+GO
+
+
 --PROCEDIMIENTOS ALMACENADOS
 
 CREATE PROCEDURE sp_Venta
@@ -392,6 +401,18 @@ BEGIN
 			  SELECT idCliente Codigo, dni Identidad, rtn RTN, CONCAT(nombreCliente, ' ', apellidoCliente) 'Nombre cliente', nombreCliente, apellidoCliente, estado Estado
 			  FROM Cliente
 			  WHERE  CONCAT(nombreCliente, ' ', apellidoCliente, ' ', rtn, ' ', idCliente) LIKE CONCAT('%', @clienteBuscado,'%') AND estado = @estado
+		END
+   ELSE IF @accion = 'obtenerDNI'
+		BEGIN
+			SELECT idCliente Codigo, dni Identidad, rtn RTN, CONCAT(nombreCliente, ' ', apellidoCliente) 'Nombre cliente', nombreCliente, apellidoCliente, estado Estado
+			  FROM Cliente
+			  WHERE dni = @dni
+		END
+	ELSE IF @accion = 'obtenerRTN'
+		BEGIN
+			SELECT idCliente Codigo, dni Identidad, rtn RTN, CONCAT(nombreCliente, ' ', apellidoCliente) 'Nombre cliente', nombreCliente, apellidoCliente, estado Estado
+			  FROM Cliente
+			  WHERE rtn = @rtn
 		END
 	ELSE IF @accion = 'CargarEstado'
 	BEGIN
