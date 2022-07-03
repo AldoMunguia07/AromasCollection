@@ -33,7 +33,7 @@ namespace AromasCollection
             frmMenuPrincipal = frmMenu;
 
             txtContrasenia.UseSystemPasswordChar = true;
-
+            miColaborador.IdColaboradorSAR = colaborador.IdColaborador;
             usuario = txtUsuario.Text;
             correo = txtCorreo.Text;
         }
@@ -107,6 +107,7 @@ namespace AromasCollection
             miColaborador.Correo = txtCorreo.Text;
             miColaborador.Usuario = txtUsuario.Text;
             miColaborador.Contrasenia = txtContrasenia.Text;
+            miColaborador.Estado = true;
         }
 
         private void chckVerPas_CheckedChanged(object sender, EventArgs e)

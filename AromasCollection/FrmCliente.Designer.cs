@@ -75,9 +75,9 @@ namespace AromasCollection
             this.gbpClienteInput.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbpClienteInput.ForeColor = System.Drawing.Color.White;
             this.gbpClienteInput.Location = new System.Drawing.Point(80, 73);
-            this.gbpClienteInput.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbpClienteInput.Margin = new System.Windows.Forms.Padding(2);
             this.gbpClienteInput.Name = "gbpClienteInput";
-            this.gbpClienteInput.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbpClienteInput.Padding = new System.Windows.Forms.Padding(2);
             this.gbpClienteInput.Size = new System.Drawing.Size(277, 509);
             this.gbpClienteInput.TabIndex = 0;
             this.gbpClienteInput.TabStop = false;
@@ -90,7 +90,7 @@ namespace AromasCollection
             this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEliminar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminar.Location = new System.Drawing.Point(71, 466);
-            this.btnEliminar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnEliminar.Margin = new System.Windows.Forms.Padding(2);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(119, 25);
             this.btnEliminar.TabIndex = 9;
@@ -100,10 +100,11 @@ namespace AromasCollection
             // 
             // cmbEstados
             // 
+            this.cmbEstados.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEstados.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEstados.FormattingEnabled = true;
             this.cmbEstados.Location = new System.Drawing.Point(10, 336);
-            this.cmbEstados.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbEstados.Margin = new System.Windows.Forms.Padding(2);
             this.cmbEstados.Name = "cmbEstados";
             this.cmbEstados.Size = new System.Drawing.Size(156, 28);
             this.cmbEstados.TabIndex = 4;
@@ -126,7 +127,7 @@ namespace AromasCollection
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCancelar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.Location = new System.Drawing.Point(134, 428);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(119, 25);
             this.btnCancelar.TabIndex = 8;
@@ -141,7 +142,7 @@ namespace AromasCollection
             this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnLimpiar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLimpiar.Location = new System.Drawing.Point(10, 428);
-            this.btnLimpiar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLimpiar.Margin = new System.Windows.Forms.Padding(2);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(119, 25);
             this.btnLimpiar.TabIndex = 7;
@@ -164,7 +165,7 @@ namespace AromasCollection
             // 
             this.txtApellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtApellido.Location = new System.Drawing.Point(10, 267);
-            this.txtApellido.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtApellido.Margin = new System.Windows.Forms.Padding(2);
             this.txtApellido.MaxLength = 55;
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.ShortcutsEnabled = false;
@@ -179,7 +180,7 @@ namespace AromasCollection
             this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEditar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditar.Location = new System.Drawing.Point(134, 386);
-            this.btnEditar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnEditar.Margin = new System.Windows.Forms.Padding(2);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(119, 26);
             this.btnEditar.TabIndex = 6;
@@ -191,7 +192,7 @@ namespace AromasCollection
             // 
             this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombre.Location = new System.Drawing.Point(10, 194);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(2);
             this.txtNombre.MaxLength = 55;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.ShortcutsEnabled = false;
@@ -206,7 +207,7 @@ namespace AromasCollection
             this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAgregar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregar.Location = new System.Drawing.Point(10, 387);
-            this.btnAgregar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAgregar.Margin = new System.Windows.Forms.Padding(2);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(119, 25);
             this.btnAgregar.TabIndex = 5;
@@ -229,7 +230,7 @@ namespace AromasCollection
             // 
             this.txtRTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRTN.Location = new System.Drawing.Point(10, 124);
-            this.txtRTN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtRTN.Margin = new System.Windows.Forms.Padding(2);
             this.txtRTN.MaxLength = 15;
             this.txtRTN.Name = "txtRTN";
             this.txtRTN.ShortcutsEnabled = false;
@@ -252,7 +253,7 @@ namespace AromasCollection
             // 
             this.txtID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtID.Location = new System.Drawing.Point(10, 63);
-            this.txtID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtID.Margin = new System.Windows.Forms.Padding(2);
             this.txtID.MaxLength = 15;
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(253, 26);
@@ -303,7 +304,7 @@ namespace AromasCollection
             // 
             this.txtBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBuscar.Location = new System.Drawing.Point(439, 71);
-            this.txtBuscar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtBuscar.Margin = new System.Windows.Forms.Padding(2);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(361, 26);
             this.txtBuscar.TabIndex = 10;
@@ -311,10 +312,11 @@ namespace AromasCollection
             // 
             // cmbEstado
             // 
+            this.cmbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEstado.FormattingEnabled = true;
             this.cmbEstado.Location = new System.Drawing.Point(906, 70);
-            this.cmbEstado.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbEstado.Margin = new System.Windows.Forms.Padding(2);
             this.cmbEstado.Name = "cmbEstado";
             this.cmbEstado.Size = new System.Drawing.Size(102, 28);
             this.cmbEstado.TabIndex = 11;
