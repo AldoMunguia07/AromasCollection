@@ -42,9 +42,10 @@ namespace AromasCollection
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(62, 35);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 13);
+            this.label1.Size = new System.Drawing.Size(43, 16);
             this.label1.TabIndex = 7;
             this.label1.Text = "Buscar";
             // 
@@ -53,9 +54,10 @@ namespace AromasCollection
             this.txtBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBuscar.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBuscar.Location = new System.Drawing.Point(108, 32);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(478, 20);
+            this.txtBuscar.Size = new System.Drawing.Size(478, 21);
             this.txtBuscar.TabIndex = 0;
             this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
@@ -73,22 +75,28 @@ namespace AromasCollection
             this.dgClientes.ReadOnly = true;
             this.dgClientes.Size = new System.Drawing.Size(953, 264);
             this.dgClientes.TabIndex = 1;
+            this.dgClientes.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgClientes_CellMouseClick);
             // 
             // btnAgregar
             // 
             this.btnAgregar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnAgregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(22)))), ((int)(((byte)(46)))));
+            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAgregar.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregar.ForeColor = System.Drawing.Color.White;
             this.btnAgregar.Location = new System.Drawing.Point(491, 352);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 23);
             this.btnAgregar.TabIndex = 2;
             this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.UseVisualStyleBackColor = false;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // FrmClienteFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1035, 396);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtBuscar);

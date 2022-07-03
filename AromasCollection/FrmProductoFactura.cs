@@ -14,11 +14,13 @@ namespace AromasCollection
     {
         Producto producto = new Producto();
         FrmFactura factura1;
+        private bool seleccionado = false;
         public FrmProductoFactura(FrmFactura factura)
         {
             InitializeComponent();
             producto.Mostrar(dgProductos, 1);
             factura1 = factura;
+          dgProductos.Columns["idCategoria"].Visible = false;
 
 
         }
@@ -26,13 +28,9 @@ namespace AromasCollection
         private void btnAgregar_Click(object sender, EventArgs e)
         {
 
-             if(dgProductos.SelectedRows.Count > 0)
+             if(seleccionado)
              {
-                producto.IdProducto = int.Parse(dgProductos.SelectedRows[0].Cells[0].Value.ToString());
-                producto.NombreProducto = dgProductos.SelectedRows[0].Cells[1].Value.ToString();
-                producto.PrecioDetalle = float.Parse(dgProductos.SelectedRows[0].Cells[3].Value.ToString());
-                producto.PrecioMayorista = float.Parse(dgProductos.SelectedRows[0].Cells[4].Value.ToString());
-                producto.Existencia = int.Parse(dgProductos.SelectedRows[0].Cells[7].Value.ToString());
+                
                 factura1.RecuperarValorAlCerrar(producto);
 
                  
@@ -52,6 +50,24 @@ namespace AromasCollection
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
             producto.BuscarProducto(dgProductos, txtBuscar.Text, 1);
+        }
+
+        private void dgProductos_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dgProductos.Rows[e.RowIndex];
+
+                
+                
+                producto.IdProducto = int.Parse(row.Cells["Codigo"].Value.ToString());
+                producto.NombreProducto = row.Cells["Producto"].Value.ToString();
+                producto.PrecioDetalle = float.Parse(row.Cells["Precio detalle"].Value.ToString());
+                producto.PrecioMayorista = float.Parse(row.Cells["Precio mayorista"].Value.ToString());
+                producto.Existencia = int.Parse(row.Cells["Existencia"].Value.ToString());
+
+                seleccionado = true;
+            }
         }
 
 

@@ -15,11 +15,15 @@ namespace AromasCollection
     {
         Cliente cliente = new Cliente();
         FrmFactura factura1;
+        private bool seleccionado = false;
         public FrmClienteFactura(FrmFactura factura)
         {
             InitializeComponent();
             cliente.MostrarCliente(dgClientes, 1);
-            ocultarColumnas();
+            dgClientes.Columns["nombreCliente"].Visible = false;
+            dgClientes.Columns["apellidoCliente"].Visible = false;
+
+
 
 
 
@@ -28,13 +32,9 @@ namespace AromasCollection
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            if (dgClientes.SelectedRows.Count > 0)
+            if (seleccionado)
             {
-                cliente.IdCliente = int.Parse(dgClientes.SelectedRows[0].Cells[0].Value.ToString());
-                cliente.Rtn = dgClientes.SelectedRows[0].Cells[1].Value.ToString();
-                cliente.NombreCliente = dgClientes.SelectedRows[0].Cells[4].Value.ToString();
-                cliente.ApellidoCliente = dgClientes.SelectedRows[0].Cells[5].Value.ToString();
-
+               
 
                 factura1.RecuperarValorAlCerrarCliente(cliente);
 
@@ -48,16 +48,29 @@ namespace AromasCollection
 
         }
 
-        private void ocultarColumnas()
-        {
-            dgClientes.Columns[4].Visible = false;
-            dgClientes.Columns[5].Visible = false;
-        }
+   
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
             cliente.BuscarCliente(dgClientes, txtBuscar.Text, 1);
-            ocultarColumnas();
+      
+        }
+
+        private void dgClientes_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dgClientes.Rows[e.RowIndex];
+
+
+
+                cliente.IdCliente = int.Parse(row.Cells["Codigo"].Value.ToString());
+                cliente.Rtn = row.Cells["RTN"].Value.ToString();
+                cliente.NombreCliente = row.Cells["nombreCliente"].Value.ToString();
+                cliente.ApellidoCliente = row.Cells["apellidoCliente"].Value.ToString();
+
+                seleccionado = true;
+            }
         }
     }
 }

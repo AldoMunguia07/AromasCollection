@@ -129,6 +129,7 @@
             this.txtPrecioMayorista.Size = new System.Drawing.Size(253, 27);
             this.txtPrecioMayorista.TabIndex = 3;
             this.txtPrecioMayorista.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
+            this.txtPrecioMayorista.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecioMayorista_KeyPress);
             // 
             // txtDescripcion
             // 
@@ -175,6 +176,7 @@
             this.txtPrecioDetalle.Name = "txtPrecioDetalle";
             this.txtPrecioDetalle.Size = new System.Drawing.Size(253, 27);
             this.txtPrecioDetalle.TabIndex = 2;
+            this.txtPrecioDetalle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecioDetalle_KeyPress);
             // 
             // label5
             // 

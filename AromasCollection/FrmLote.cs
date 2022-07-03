@@ -29,37 +29,29 @@ namespace AromasCollection
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-
+            
             ObtenerParametros();
 
             lote.AgregarLote(lote);
-            Cleaner();
+            MasterCleaner();
         }
 
         private void ObtenerParametros()
         {
-            lote.cantidad = int.Parse(txtCantidad.Text);
-            lote.precioCompra = float.Parse(txtCosto.Text);
+            lote.cantidad = Convert.ToInt32(nudCantidad.Value);
+            lote.precioCompra = Convert.ToInt32(nudCosto.Value);
             lote.idProducto = codigo;
 
         }
 
-        private void Cleaner()
-        {
-            lote.Mostrar(dgLote, codigo);
-
-            foreach (Control ctr in gbLote.Controls)
-            {
-                if (ctr is TextBox)
-                    ctr.Text = "";
-            }
-
-            txtBuscar.Text = "";
-        }
+      
 
         private void MasterCleaner()
         {
-            Cleaner();
+            selecionActiva = false;
+            nudCosto.Value = 1;
+            nudCantidad.Value = 1;
+            lote.Mostrar(dgLote, codigo);
 
         }
 
@@ -79,28 +71,27 @@ namespace AromasCollection
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
-            Cleaner();
+            MasterCleaner();
         }
 
-        private void dgLote_CellMouseClick(object sender, DataGridViewCellEventArgs e)
+
+     
+
+        private void dgLote_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
+                
                 DataGridViewRow row = dgLote.Rows[e.RowIndex];
 
                 lote.idLote = int.Parse(row.Cells["Codigo"].Value.ToString());
-                lote.idProducto = int.Parse(row.Cells["idProducto"].Value.ToString());
+                lote.idProducto = codigo;
 
-                txtCantidad.Text = row.Cells["cantidad"].Value.ToString();
-                txtCosto.Text = row.Cells["preciocompra"].Value.ToString();
+                nudCantidad.Value = int.Parse(row.Cells["cantidad"].Value.ToString());
+                nudCosto.Value = int.Parse(row.Cells["costo"].Value.ToString());
 
                 selecionActiva = true;
             }
-        }
-
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            MasterCleaner();
         }
     }
 }

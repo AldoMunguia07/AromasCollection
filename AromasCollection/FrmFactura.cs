@@ -323,18 +323,6 @@ namespace AromasCollection
             }
         }
 
-        private void numDescuento_ValueChanged(object sender, EventArgs e)
-        {
-            if(int.Parse(numDescuento.Value.ToString()) <= double.Parse(txtTotal.Text))
-            {
-                calculos();
-            }
-            else
-            {
-                MessageBox.Show("El descuento no puede ser mayor al total de la venta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            
-        }
 
         private void btnCliente_Click(object sender, EventArgs e)
         {

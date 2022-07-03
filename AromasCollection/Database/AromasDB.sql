@@ -581,7 +581,7 @@ BEGIN
 
 END
 GO
-Create PROCEDURE [dbo].[sp_Lote]
+CREATE PROCEDURE [dbo].[sp_Lote]
 	@idLote int = null,
 	@idProducto int = null,
 	@cantidad int = null,
@@ -604,7 +604,7 @@ BEGIN
 		END
 	ELSE IF @accion = 'mostrar'
 		BEGIN
-			SELECT L.idLote Codigo, P.idProducto idProducto, L.cantidad Cantidad, L.precioCompra Costo, L.fecha Fecha 
+			SELECT L.idLote Codigo, L.cantidad Cantidad, L.precioCompra Costo, L.fecha Fecha 
 			FROM Lote L join Producto p
 			ON
 				L.idProducto = P.idProducto

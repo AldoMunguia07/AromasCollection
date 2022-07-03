@@ -147,6 +147,7 @@ namespace AromasCollection
             else
             {
                 new FrmLote(producto.IdProducto, miColaborador).ShowDialog();
+                inicializarDatagrid();
             }
         }
 
@@ -239,6 +240,36 @@ namespace AromasCollection
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
             producto.BuscarProducto(dgProducto, txtBuscar.Text, Convert.ToInt32(cmbVerEstado.SelectedValue));
+        }
+
+        private void txtPrecioDetalle_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+                (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtPrecioMayorista_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+                (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

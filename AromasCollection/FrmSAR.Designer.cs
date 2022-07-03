@@ -182,7 +182,7 @@
             this.cmbEstado.Font = new System.Drawing.Font("Century Gothic", 8.25F);
             this.cmbEstado.FormattingEnabled = true;
             this.cmbEstado.Location = new System.Drawing.Point(816, 70);
-            this.cmbEstado.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbEstado.Margin = new System.Windows.Forms.Padding(2);
             this.cmbEstado.Name = "cmbEstado";
             this.cmbEstado.Size = new System.Drawing.Size(133, 24);
             this.cmbEstado.TabIndex = 5;
@@ -193,7 +193,7 @@
             this.cmbVerEstado.Font = new System.Drawing.Font("Century Gothic", 8.25F);
             this.cmbVerEstado.FormattingEnabled = true;
             this.cmbVerEstado.Location = new System.Drawing.Point(112, 189);
-            this.cmbVerEstado.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbVerEstado.Margin = new System.Windows.Forms.Padding(2);
             this.cmbVerEstado.Name = "cmbVerEstado";
             this.cmbVerEstado.Size = new System.Drawing.Size(133, 24);
             this.cmbVerEstado.TabIndex = 7;
@@ -259,7 +259,7 @@
             // 
             this.dtpFLEmision.Font = new System.Drawing.Font("Century Gothic", 8.25F);
             this.dtpFLEmision.Location = new System.Drawing.Point(495, 40);
-            this.dtpFLEmision.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpFLEmision.Margin = new System.Windows.Forms.Padding(2);
             this.dtpFLEmision.Name = "dtpFLEmision";
             this.dtpFLEmision.Size = new System.Drawing.Size(224, 21);
             this.dtpFLEmision.TabIndex = 2;
@@ -276,7 +276,7 @@
             // 
             this.dtpFRecepcion.Font = new System.Drawing.Font("Century Gothic", 8.25F);
             this.dtpFRecepcion.Location = new System.Drawing.Point(495, 68);
-            this.dtpFRecepcion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpFRecepcion.Margin = new System.Windows.Forms.Padding(2);
             this.dtpFRecepcion.Name = "dtpFRecepcion";
             this.dtpFRecepcion.Size = new System.Drawing.Size(224, 21);
             this.dtpFRecepcion.TabIndex = 3;
@@ -288,6 +288,7 @@
             this.txtRangoFinal.Name = "txtRangoFinal";
             this.txtRangoFinal.Size = new System.Drawing.Size(133, 21);
             this.txtRangoFinal.TabIndex = 1;
+            this.txtRangoFinal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRangoFinal_KeyPress);
             // 
             // label3
             // 
@@ -305,6 +306,7 @@
             this.txtRangoInicial.Name = "txtRangoInicial";
             this.txtRangoInicial.Size = new System.Drawing.Size(133, 21);
             this.txtRangoInicial.TabIndex = 0;
+            this.txtRangoInicial.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRangoInicial_KeyPress);
             // 
             // dgvSAR
             // 
@@ -313,7 +315,7 @@
             this.dgvSAR.BackgroundColor = System.Drawing.Color.White;
             this.dgvSAR.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSAR.Location = new System.Drawing.Point(46, 287);
-            this.dgvSAR.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvSAR.Margin = new System.Windows.Forms.Padding(2);
             this.dgvSAR.Name = "dgvSAR";
             this.dgvSAR.ReadOnly = true;
             this.dgvSAR.RowHeadersWidth = 62;
@@ -331,7 +333,7 @@
             this.Controls.Add(this.dgvSAR);
             this.Controls.Add(this.groupBox2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmSAR";
