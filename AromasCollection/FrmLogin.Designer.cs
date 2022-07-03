@@ -74,7 +74,7 @@ namespace AromasCollection
             this.txtUsuario.Location = new System.Drawing.Point(348, 95);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(309, 27);
-            this.txtUsuario.TabIndex = 1;
+            this.txtUsuario.TabIndex = 0;
             this.txtUsuario.Text = "Usuario";
             this.txtUsuario.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtUsuario.Enter += new System.EventHandler(this.txtUsuario_Enter);
@@ -89,7 +89,7 @@ namespace AromasCollection
             this.txtContrasenia.Location = new System.Drawing.Point(348, 167);
             this.txtContrasenia.Name = "txtContrasenia";
             this.txtContrasenia.Size = new System.Drawing.Size(309, 27);
-            this.txtContrasenia.TabIndex = 2;
+            this.txtContrasenia.TabIndex = 1;
             this.txtContrasenia.Text = "Contraseña";
             this.txtContrasenia.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtContrasenia.Enter += new System.EventHandler(this.txtContrasenia_Enter);
@@ -118,7 +118,7 @@ namespace AromasCollection
             this.btnLogin.Location = new System.Drawing.Point(348, 236);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(309, 40);
-            this.btnLogin.TabIndex = 3;
+            this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "Iniciar sesión";
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -153,7 +153,7 @@ namespace AromasCollection
             this.linkLabel1.Location = new System.Drawing.Point(428, 291);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(149, 13);
-            this.linkLabel1.TabIndex = 0;
+            this.linkLabel1.TabIndex = 3;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "¿Has olvidado tu contraseña?";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);

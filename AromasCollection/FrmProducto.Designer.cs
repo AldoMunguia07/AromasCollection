@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.gbProductoInput = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.cmbEstado = new System.Windows.Forms.ComboBox();
             this.cmbCategoria = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtPrecioMayorista = new System.Windows.Forms.TextBox();
@@ -49,8 +51,6 @@
             this.cmbVerEstado = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtBuscar = new System.Windows.Forms.TextBox();
-            this.cmbEstado = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.gbProductoInput.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgProducto)).BeginInit();
@@ -81,14 +81,35 @@
             this.gbProductoInput.Text = "Aromas Collection";
             this.gbProductoInput.Enter += new System.EventHandler(this.gbProductoInput_Enter);
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(6, 454);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(59, 19);
+            this.label8.TabIndex = 15;
+            this.label8.Text = "Estado";
+            // 
+            // cmbEstado
+            // 
+            this.cmbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbEstado.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbEstado.FormattingEnabled = true;
+            this.cmbEstado.Location = new System.Drawing.Point(10, 476);
+            this.cmbEstado.Name = "cmbEstado";
+            this.cmbEstado.Size = new System.Drawing.Size(253, 29);
+            this.cmbEstado.TabIndex = 5;
+            // 
             // cmbCategoria
             // 
+            this.cmbCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCategoria.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCategoria.FormattingEnabled = true;
             this.cmbCategoria.Location = new System.Drawing.Point(10, 402);
             this.cmbCategoria.Name = "cmbCategoria";
             this.cmbCategoria.Size = new System.Drawing.Size(253, 29);
-            this.cmbCategoria.TabIndex = 13;
+            this.cmbCategoria.TabIndex = 4;
             // 
             // label3
             // 
@@ -106,7 +127,7 @@
             this.txtPrecioMayorista.Location = new System.Drawing.Point(10, 343);
             this.txtPrecioMayorista.Name = "txtPrecioMayorista";
             this.txtPrecioMayorista.Size = new System.Drawing.Size(253, 27);
-            this.txtPrecioMayorista.TabIndex = 11;
+            this.txtPrecioMayorista.TabIndex = 3;
             this.txtPrecioMayorista.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
             // txtDescripcion
@@ -116,7 +137,7 @@
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(253, 118);
-            this.txtDescripcion.TabIndex = 3;
+            this.txtDescripcion.TabIndex = 1;
             // 
             // label2
             // 
@@ -145,7 +166,7 @@
             this.txtProductoNombre.Location = new System.Drawing.Point(10, 61);
             this.txtProductoNombre.Name = "txtProductoNombre";
             this.txtProductoNombre.Size = new System.Drawing.Size(253, 27);
-            this.txtProductoNombre.TabIndex = 1;
+            this.txtProductoNombre.TabIndex = 0;
             // 
             // txtPrecioDetalle
             // 
@@ -153,7 +174,7 @@
             this.txtPrecioDetalle.Location = new System.Drawing.Point(10, 277);
             this.txtPrecioDetalle.Name = "txtPrecioDetalle";
             this.txtPrecioDetalle.Size = new System.Drawing.Size(253, 27);
-            this.txtPrecioDetalle.TabIndex = 9;
+            this.txtPrecioDetalle.TabIndex = 2;
             // 
             // label5
             // 
@@ -202,7 +223,7 @@
             this.btnAgregar.Location = new System.Drawing.Point(375, 478);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(119, 25);
-            this.btnAgregar.TabIndex = 16;
+            this.btnAgregar.TabIndex = 8;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = false;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
@@ -217,7 +238,7 @@
             this.btnEditar.Location = new System.Drawing.Point(515, 477);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(119, 26);
-            this.btnEditar.TabIndex = 17;
+            this.btnEditar.TabIndex = 9;
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = false;
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
@@ -232,7 +253,7 @@
             this.btnLimpiar.Location = new System.Drawing.Point(653, 478);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(119, 26);
-            this.btnLimpiar.TabIndex = 18;
+            this.btnLimpiar.TabIndex = 11;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = false;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
@@ -247,7 +268,7 @@
             this.btnNuevoLote.Location = new System.Drawing.Point(794, 477);
             this.btnNuevoLote.Name = "btnNuevoLote";
             this.btnNuevoLote.Size = new System.Drawing.Size(119, 26);
-            this.btnNuevoLote.TabIndex = 19;
+            this.btnNuevoLote.TabIndex = 12;
             this.btnNuevoLote.Text = "Nuevo Lote";
             this.btnNuevoLote.UseVisualStyleBackColor = false;
             this.btnNuevoLote.Click += new System.EventHandler(this.btnNuevoLote_Click);
@@ -262,7 +283,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(932, 477);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(119, 26);
-            this.btnCancelar.TabIndex = 20;
+            this.btnCancelar.TabIndex = 13;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -280,11 +301,12 @@
             // 
             // cmbVerEstado
             // 
+            this.cmbVerEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbVerEstado.FormattingEnabled = true;
             this.cmbVerEstado.Location = new System.Drawing.Point(452, 37);
             this.cmbVerEstado.Name = "cmbVerEstado";
             this.cmbVerEstado.Size = new System.Drawing.Size(112, 21);
-            this.cmbVerEstado.TabIndex = 23;
+            this.cmbVerEstado.TabIndex = 6;
             this.cmbVerEstado.SelectedIndexChanged += new System.EventHandler(this.cmbVerEstado_SelectedIndexChanged);
             // 
             // label7
@@ -304,27 +326,8 @@
             this.txtBuscar.Location = new System.Drawing.Point(672, 34);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(289, 26);
-            this.txtBuscar.TabIndex = 21;
+            this.txtBuscar.TabIndex = 7;
             this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
-            // 
-            // cmbEstado
-            // 
-            this.cmbEstado.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbEstado.FormattingEnabled = true;
-            this.cmbEstado.Location = new System.Drawing.Point(10, 476);
-            this.cmbEstado.Name = "cmbEstado";
-            this.cmbEstado.Size = new System.Drawing.Size(253, 29);
-            this.cmbEstado.TabIndex = 14;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(6, 454);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(59, 19);
-            this.label8.TabIndex = 15;
-            this.label8.Text = "Estado";
             // 
             // btnEliminar
             // 
@@ -336,7 +339,7 @@
             this.btnEliminar.Location = new System.Drawing.Point(515, 509);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(119, 26);
-            this.btnEliminar.TabIndex = 25;
+            this.btnEliminar.TabIndex = 10;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);

@@ -236,5 +236,91 @@ namespace AromasCollection.Clases
             }
 
         }
+
+        public bool ExisteDNI(string dni)
+        {
+            try
+            {
+
+                conexion.sqlConnection.Open();
+
+                SqlCommand sqlCommand = new SqlCommand("sp_Cliente", conexion.sqlConnection);
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+
+                using (sqlDataAdapter)
+                {
+                    sqlCommand.Parameters.AddWithValue("@dni", dni);
+                    sqlCommand.Parameters.AddWithValue("@accion", "obtenerDNI");
+
+                    DataTable dataTable = new DataTable();
+
+                    sqlDataAdapter.Fill(dataTable);
+
+
+
+                    if (dataTable.Rows.Count == 1) //Si el usuario existe retorna un true
+                    {
+                        return true;
+                    }
+
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                conexion.sqlConnection.Close();
+            }
+
+
+        }
+
+        public bool ExisteRTN(string rtn)
+        {
+            try
+            {
+
+                conexion.sqlConnection.Open();
+
+                SqlCommand sqlCommand = new SqlCommand("sp_Cliente", conexion.sqlConnection);
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+
+                using (sqlDataAdapter)
+                {
+                    sqlCommand.Parameters.AddWithValue("@rtn", rtn);
+                    sqlCommand.Parameters.AddWithValue("@accion", "obtenerRTN");
+
+                    DataTable dataTable = new DataTable();
+
+                    sqlDataAdapter.Fill(dataTable);
+
+
+
+                    if (dataTable.Rows.Count == 1) //Si el usuario existe retorna un true
+                    {
+                        return true;
+                    }
+
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                conexion.sqlConnection.Close();
+            }
+
+
+        }
     }
 }

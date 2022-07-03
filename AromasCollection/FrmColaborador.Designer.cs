@@ -33,6 +33,9 @@ namespace AromasCollection
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.gbProductoInput = new System.Windows.Forms.GroupBox();
+            this.chckVerPass = new System.Windows.Forms.CheckBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.cmbEstado = new System.Windows.Forms.ComboBox();
             this.txtColaboradorContrasena = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtColaboradorApellido = new System.Windows.Forms.TextBox();
@@ -51,8 +54,6 @@ namespace AromasCollection
             this.lbBuscar = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.cmbVerEstado = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.cmbEstado = new System.Windows.Forms.ComboBox();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.gbProductoInput.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvColaborador)).BeginInit();
@@ -68,7 +69,7 @@ namespace AromasCollection
             this.btnLimpiar.Location = new System.Drawing.Point(629, 515);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(119, 26);
-            this.btnLimpiar.TabIndex = 23;
+            this.btnLimpiar.TabIndex = 12;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = false;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
@@ -83,7 +84,7 @@ namespace AromasCollection
             this.btnEditar.Location = new System.Drawing.Point(491, 514);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(119, 26);
-            this.btnEditar.TabIndex = 22;
+            this.btnEditar.TabIndex = 11;
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = false;
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
@@ -98,7 +99,7 @@ namespace AromasCollection
             this.btnAgregar.Location = new System.Drawing.Point(351, 515);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(119, 25);
-            this.btnAgregar.TabIndex = 21;
+            this.btnAgregar.TabIndex = 10;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = false;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
@@ -106,6 +107,7 @@ namespace AromasCollection
             // gbProductoInput
             // 
             this.gbProductoInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(84)))), ((int)(((byte)(135)))));
+            this.gbProductoInput.Controls.Add(this.chckVerPass);
             this.gbProductoInput.Controls.Add(this.label8);
             this.gbProductoInput.Controls.Add(this.cmbEstado);
             this.gbProductoInput.Controls.Add(this.txtColaboradorContrasena);
@@ -124,10 +126,44 @@ namespace AromasCollection
             this.gbProductoInput.ForeColor = System.Drawing.Color.White;
             this.gbProductoInput.Location = new System.Drawing.Point(40, 71);
             this.gbProductoInput.Name = "gbProductoInput";
-            this.gbProductoInput.Size = new System.Drawing.Size(277, 470);
+            this.gbProductoInput.Size = new System.Drawing.Size(277, 530);
             this.gbProductoInput.TabIndex = 19;
             this.gbProductoInput.TabStop = false;
             this.gbProductoInput.Text = "Aromas Collection";
+            // 
+            // chckVerPass
+            // 
+            this.chckVerPass.AutoSize = true;
+            this.chckVerPass.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chckVerPass.ForeColor = System.Drawing.Color.White;
+            this.chckVerPass.Location = new System.Drawing.Point(10, 338);
+            this.chckVerPass.Name = "chckVerPass";
+            this.chckVerPass.Size = new System.Drawing.Size(109, 20);
+            this.chckVerPass.TabIndex = 5;
+            this.chckVerPass.Text = "Ver contraseña";
+            this.chckVerPass.UseVisualStyleBackColor = true;
+            this.chckVerPass.CheckedChanged += new System.EventHandler(this.chckVerPass_CheckedChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(6, 433);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(59, 19);
+            this.label8.TabIndex = 18;
+            this.label8.Text = "Estado";
+            // 
+            // cmbEstado
+            // 
+            this.cmbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbEstado.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbEstado.FormattingEnabled = true;
+            this.cmbEstado.Location = new System.Drawing.Point(10, 455);
+            this.cmbEstado.Name = "cmbEstado";
+            this.cmbEstado.Size = new System.Drawing.Size(253, 29);
+            this.cmbEstado.TabIndex = 7;
+            this.cmbEstado.SelectedIndexChanged += new System.EventHandler(this.cmbEstado_SelectedIndexChanged);
             // 
             // txtColaboradorContrasena
             // 
@@ -135,7 +171,7 @@ namespace AromasCollection
             this.txtColaboradorContrasena.Location = new System.Drawing.Point(10, 305);
             this.txtColaboradorContrasena.Name = "txtColaboradorContrasena";
             this.txtColaboradorContrasena.Size = new System.Drawing.Size(253, 27);
-            this.txtColaboradorContrasena.TabIndex = 16;
+            this.txtColaboradorContrasena.TabIndex = 4;
             // 
             // label4
             // 
@@ -153,7 +189,7 @@ namespace AromasCollection
             this.txtColaboradorApellido.Location = new System.Drawing.Point(10, 111);
             this.txtColaboradorApellido.Name = "txtColaboradorApellido";
             this.txtColaboradorApellido.Size = new System.Drawing.Size(253, 27);
-            this.txtColaboradorApellido.TabIndex = 14;
+            this.txtColaboradorApellido.TabIndex = 1;
             this.txtColaboradorApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtColaboradorApellido_KeyPress);
             // 
             // cmbColaboradorPuesto
@@ -161,16 +197,16 @@ namespace AromasCollection
             this.cmbColaboradorPuesto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbColaboradorPuesto.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbColaboradorPuesto.FormattingEnabled = true;
-            this.cmbColaboradorPuesto.Location = new System.Drawing.Point(10, 370);
+            this.cmbColaboradorPuesto.Location = new System.Drawing.Point(10, 401);
             this.cmbColaboradorPuesto.Name = "cmbColaboradorPuesto";
             this.cmbColaboradorPuesto.Size = new System.Drawing.Size(253, 29);
-            this.cmbColaboradorPuesto.TabIndex = 13;
+            this.cmbColaboradorPuesto.TabIndex = 6;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(6, 344);
+            this.label3.Location = new System.Drawing.Point(6, 375);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 19);
             this.label3.TabIndex = 12;
@@ -182,7 +218,7 @@ namespace AromasCollection
             this.txtColaboradorCorreo.Location = new System.Drawing.Point(10, 177);
             this.txtColaboradorCorreo.Name = "txtColaboradorCorreo";
             this.txtColaboradorCorreo.Size = new System.Drawing.Size(253, 27);
-            this.txtColaboradorCorreo.TabIndex = 9;
+            this.txtColaboradorCorreo.TabIndex = 2;
             // 
             // txtColaboradorUsuario
             // 
@@ -190,7 +226,7 @@ namespace AromasCollection
             this.txtColaboradorUsuario.Location = new System.Drawing.Point(10, 243);
             this.txtColaboradorUsuario.Name = "txtColaboradorUsuario";
             this.txtColaboradorUsuario.Size = new System.Drawing.Size(253, 27);
-            this.txtColaboradorUsuario.TabIndex = 11;
+            this.txtColaboradorUsuario.TabIndex = 3;
             // 
             // label2
             // 
@@ -218,7 +254,7 @@ namespace AromasCollection
             this.txtColaboradorNombre.Location = new System.Drawing.Point(10, 50);
             this.txtColaboradorNombre.Name = "txtColaboradorNombre";
             this.txtColaboradorNombre.Size = new System.Drawing.Size(253, 27);
-            this.txtColaboradorNombre.TabIndex = 1;
+            this.txtColaboradorNombre.TabIndex = 0;
             this.txtColaboradorNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtColaboradorNombre_KeyPress);
             // 
             // label5
@@ -268,7 +304,7 @@ namespace AromasCollection
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(119, 25);
-            this.btnCancelar.TabIndex = 25;
+            this.btnCancelar.TabIndex = 14;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -280,7 +316,7 @@ namespace AromasCollection
             this.txtBuscar.Margin = new System.Windows.Forms.Padding(2);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(458, 26);
-            this.txtBuscar.TabIndex = 29;
+            this.txtBuscar.TabIndex = 8;
             this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // lbBuscar
@@ -313,29 +349,8 @@ namespace AromasCollection
             this.cmbVerEstado.Location = new System.Drawing.Point(926, 80);
             this.cmbVerEstado.Name = "cmbVerEstado";
             this.cmbVerEstado.Size = new System.Drawing.Size(112, 21);
-            this.cmbVerEstado.TabIndex = 30;
+            this.cmbVerEstado.TabIndex = 9;
             this.cmbVerEstado.SelectedIndexChanged += new System.EventHandler(this.cmbVerEstado_SelectedIndexChanged);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(6, 402);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(59, 19);
-            this.label8.TabIndex = 18;
-            this.label8.Text = "Estado";
-            // 
-            // cmbEstado
-            // 
-            this.cmbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbEstado.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbEstado.FormattingEnabled = true;
-            this.cmbEstado.Location = new System.Drawing.Point(10, 424);
-            this.cmbEstado.Name = "cmbEstado";
-            this.cmbEstado.Size = new System.Drawing.Size(253, 29);
-            this.cmbEstado.TabIndex = 17;
-            this.cmbEstado.SelectedIndexChanged += new System.EventHandler(this.cmbEstado_SelectedIndexChanged);
             // 
             // btnEliminar
             // 
@@ -347,7 +362,7 @@ namespace AromasCollection
             this.btnEliminar.Location = new System.Drawing.Point(761, 515);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(119, 26);
-            this.btnEliminar.TabIndex = 32;
+            this.btnEliminar.TabIndex = 13;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
@@ -408,5 +423,6 @@ namespace AromasCollection
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cmbEstado;
         private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.CheckBox chckVerPass;
     }
 }

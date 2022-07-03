@@ -17,6 +17,7 @@ namespace AromasCollection
         Validacion Validacion = new Validacion();
         bool selecionActiva = false;
         bool cargado = false;
+        private string usuario, correo;
         public FrmColaborador(Colaborador uncolaborador)
         {
             InitializeComponent();
@@ -26,6 +27,7 @@ namespace AromasCollection
             colaborador.CargarComboBoxEstado(cmbEstado);
             cargado = true;
             InicializarDatagrid();
+            txtColaboradorContrasena.UseSystemPasswordChar = true;
         }
         private void InicializarDatagrid()
         {
@@ -61,6 +63,8 @@ namespace AromasCollection
             cmbEstado.SelectedValue = 1;
             cmbVerEstado.SelectedValue = 1;
             cmbColaboradorPuesto.SelectedValue = 1;
+            usuario = "";
+            correo = "";
             InicializarDatagrid();
         }
         private void FrmColaborador_Load(object sender, EventArgs e)
@@ -107,9 +111,29 @@ namespace AromasCollection
         }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            ObtenerParametros();
-            colaborador.AgregarColaborador(colaborador);
-            Cleaner();
+            if (VerificarParametros())
+            {
+                if(!colaborador.ExisteUsuario(txtColaboradorUsuario.Text))
+                {
+                    if(!colaborador.ExisteCorreo(txtColaboradorCorreo.Text))
+                    {
+                        ObtenerParametros();
+                        colaborador.AgregarColaborador(colaborador);
+                        Cleaner();
+                    }
+                    else
+                    {
+                        MessageBox.Show("El correo electrónico ya existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("El nombre de usuario ya existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
+            }
+                
         }
 
         private void txtColaboradorApellido_KeyPress(object sender, KeyPressEventArgs e)
@@ -136,6 +160,8 @@ namespace AromasCollection
                 cmbColaboradorPuesto.Text = row.Cells["Puesto"].Value.ToString();
                 cmbEstado.SelectedValue = Convert.ToInt32(row.Cells["Estado"].Value);
 
+                usuario = row.Cells["Usuario"].Value.ToString();
+                correo = row.Cells["Correo"].Value.ToString();
                 selecionActiva = true;
                 btnAgregar.Enabled = false;
             }
@@ -152,9 +178,25 @@ namespace AromasCollection
                 }
                 else
                 {
-                    ObtenerParametros();
-                    colaborador.ModificarColaborador(colaborador);
-                    MasterCleaner();
+                    if (!colaborador.ExisteUsuario(txtColaboradorUsuario.Text) || usuario == txtColaboradorUsuario.Text)
+                    {
+                        if (!colaborador.ExisteCorreo(txtColaboradorCorreo.Text) || correo == txtColaboradorCorreo.Text)
+                        {
+                            ObtenerParametros();
+                            colaborador.ModificarColaborador(colaborador);
+                            MasterCleaner();
+                        }
+                        else
+                        {
+                            MessageBox.Show("El correo electrónico ya existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("El nombre de usuario ya existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    
                 }
             }
         }
@@ -185,6 +227,18 @@ namespace AromasCollection
             else
             {
                 MessageBox.Show("Por favor, selecione un usuario a desactivar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void chckVerPass_CheckedChanged(object sender, EventArgs e)
+        {
+            if (txtColaboradorContrasena.UseSystemPasswordChar)
+            {
+                txtColaboradorContrasena.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                txtColaboradorContrasena.UseSystemPasswordChar = true;
             }
         }
 

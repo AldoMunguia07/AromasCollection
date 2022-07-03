@@ -56,7 +56,7 @@ namespace AromasCollection
             this.txtBuscar.Location = new System.Drawing.Point(108, 32);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(478, 20);
-            this.txtBuscar.TabIndex = 6;
+            this.txtBuscar.TabIndex = 0;
             this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // dgClientes
@@ -72,7 +72,7 @@ namespace AromasCollection
             this.dgClientes.Name = "dgClientes";
             this.dgClientes.ReadOnly = true;
             this.dgClientes.Size = new System.Drawing.Size(953, 264);
-            this.dgClientes.TabIndex = 5;
+            this.dgClientes.TabIndex = 1;
             // 
             // btnAgregar
             // 
@@ -80,7 +80,7 @@ namespace AromasCollection
             this.btnAgregar.Location = new System.Drawing.Point(491, 352);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 23);
-            this.btnAgregar.TabIndex = 4;
+            this.btnAgregar.TabIndex = 2;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);

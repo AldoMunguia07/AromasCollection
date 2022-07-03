@@ -61,7 +61,7 @@ namespace AromasCollection
             this.txtNombres.Location = new System.Drawing.Point(272, 260);
             this.txtNombres.Name = "txtNombres";
             this.txtNombres.Size = new System.Drawing.Size(228, 27);
-            this.txtNombres.TabIndex = 1;
+            this.txtNombres.TabIndex = 0;
             // 
             // txtApellidos
             // 
@@ -69,7 +69,7 @@ namespace AromasCollection
             this.txtApellidos.Location = new System.Drawing.Point(704, 256);
             this.txtApellidos.Name = "txtApellidos";
             this.txtApellidos.Size = new System.Drawing.Size(228, 27);
-            this.txtApellidos.TabIndex = 3;
+            this.txtApellidos.TabIndex = 1;
             // 
             // label2
             // 
@@ -88,7 +88,7 @@ namespace AromasCollection
             this.txtCorreo.Location = new System.Drawing.Point(272, 326);
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(228, 27);
-            this.txtCorreo.TabIndex = 5;
+            this.txtCorreo.TabIndex = 2;
             // 
             // label3
             // 
@@ -107,7 +107,7 @@ namespace AromasCollection
             this.txtContrasenia.Location = new System.Drawing.Point(272, 397);
             this.txtContrasenia.Name = "txtContrasenia";
             this.txtContrasenia.Size = new System.Drawing.Size(228, 27);
-            this.txtContrasenia.TabIndex = 7;
+            this.txtContrasenia.TabIndex = 4;
             // 
             // label4
             // 
@@ -126,7 +126,7 @@ namespace AromasCollection
             this.txtUsuario.Location = new System.Drawing.Point(704, 318);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(228, 27);
-            this.txtUsuario.TabIndex = 9;
+            this.txtUsuario.TabIndex = 3;
             // 
             // label5
             // 
@@ -150,7 +150,7 @@ namespace AromasCollection
             this.btnModificar.Location = new System.Drawing.Point(459, 478);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(193, 39);
-            this.btnModificar.TabIndex = 10;
+            this.btnModificar.TabIndex = 6;
             this.btnModificar.Text = "Actualizar datos";
             this.btnModificar.UseVisualStyleBackColor = false;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
@@ -174,7 +174,7 @@ namespace AromasCollection
             this.chckVerPas.Location = new System.Drawing.Point(272, 431);
             this.chckVerPas.Name = "chckVerPas";
             this.chckVerPas.Size = new System.Drawing.Size(109, 20);
-            this.chckVerPas.TabIndex = 13;
+            this.chckVerPas.TabIndex = 5;
             this.chckVerPas.Text = "Ver contraseña";
             this.chckVerPas.UseVisualStyleBackColor = true;
             this.chckVerPas.CheckedChanged += new System.EventHandler(this.chckVerPas_CheckedChanged);

@@ -19,6 +19,7 @@ namespace AromasCollection
         Validacion Validacion = new Validacion();
         bool selecionActiva = false;
         bool cargado = false;
+        private string dni, rtn;
         public FrmCliente(Colaborador colaborador)
         {
             InitializeComponent();
@@ -83,14 +84,32 @@ namespace AromasCollection
             btnAgregar.Enabled = true;
             inicializarDatagrid();
             cmbEstados.SelectedValue = 1;
+            dni = "";
+            rtn = "";
         }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             if (VerificarParametros())
             {
-                ObtenerParametros();
-                cliente.AgregarCliente(cliente);
-                Cleaner();
+                if(!cliente.ExisteDNI(txtID.Text))
+                {
+                    if(!cliente.ExisteRTN(txtRTN.Text))
+                    {
+                        ObtenerParametros();
+                        cliente.AgregarCliente(cliente);
+                        Cleaner();
+                    }
+                    else
+                    {
+                        MessageBox.Show("El RTN ya existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("El DNI ya existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                
             }
         }
         private void MasterCleaner()
@@ -109,9 +128,26 @@ namespace AromasCollection
             {
                 if (VerificarParametros())
                 {
-                    ObtenerParametros();
-                    cliente.ModificarCliente(cliente);
-                    MasterCleaner();
+                    if (!cliente.ExisteDNI(txtID.Text) || txtID.Text == dni)
+                    {
+                        if(!cliente.ExisteRTN(txtRTN.Text) || txtRTN.Text == rtn)
+                        {
+                            ObtenerParametros();
+                            cliente.ModificarCliente(cliente);
+                            MasterCleaner();
+                        }
+                        else
+                        {
+                            MessageBox.Show("El RTN ya existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("El DNI ya existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
+                    
                 }
             }
 
@@ -139,6 +175,8 @@ namespace AromasCollection
                 txtNombre.Text = row.Cells["nombreCliente"].Value.ToString();
                 txtApellido.Text = row.Cells["apellidoCliente"].Value.ToString();
                 cmbEstados.SelectedValue = Convert.ToInt32(row.Cells["Estado"].Value);
+                dni = row.Cells["Identidad"].Value.ToString();
+                rtn = row.Cells["RTN"].Value.ToString();
 
                 selecionActiva = true;
                 btnAgregar.Enabled = false;

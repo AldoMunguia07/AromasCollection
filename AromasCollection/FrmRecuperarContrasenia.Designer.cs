@@ -49,7 +49,7 @@ namespace AromasCollection
             this.btnRecuperar.Location = new System.Drawing.Point(277, 277);
             this.btnRecuperar.Name = "btnRecuperar";
             this.btnRecuperar.Size = new System.Drawing.Size(201, 36);
-            this.btnRecuperar.TabIndex = 0;
+            this.btnRecuperar.TabIndex = 1;
             this.btnRecuperar.Text = "Recuperar contraseña";
             this.btnRecuperar.UseVisualStyleBackColor = false;
             this.btnRecuperar.Click += new System.EventHandler(this.btnRecuperar_Click);
@@ -60,7 +60,7 @@ namespace AromasCollection
             this.txtCorreo.Location = new System.Drawing.Point(251, 165);
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(360, 27);
-            this.txtCorreo.TabIndex = 1;
+            this.txtCorreo.TabIndex = 0;
             // 
             // label1
             // 
