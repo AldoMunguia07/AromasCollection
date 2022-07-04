@@ -57,17 +57,26 @@ namespace AromasCollection
 
         private void dgFacturas_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            codigoFactura = Convert.ToInt32(dgFacturas.Rows[e.RowIndex].Cells["Código factura"].Value.ToString());
-            subtotal = Convert.ToDouble(dgFacturas.Rows[e.RowIndex].Cells["Subtotal"].Value.ToString());
-            if(subtotal == 0)
+            try
             {
-                esVenta = false;
+                codigoFactura = Convert.ToInt32(dgFacturas.Rows[e.RowIndex].Cells["Código factura"].Value.ToString());
+                subtotal = Convert.ToDouble(dgFacturas.Rows[e.RowIndex].Cells["Subtotal"].Value.ToString());
+                if (subtotal == 0)
+                {
+                    esVenta = false;
+                }
+                else
+                {
+                    esVenta = true;
+                }
+                seleccionado = true;
             }
-            else
+            catch (Exception)
             {
-                esVenta = true;
+
+                MessageBox.Show("Ha ocurrido un error... Favor intentelo de nuevo mas tarde", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            seleccionado = true;
+            
 
         }
     }

@@ -532,7 +532,7 @@ BEGIN
 		END
 		ELSE IF @accion = 'buscar'
 		BEGIN
-			SELECT c.idColaborador 'Codigo', c.nombreColaborador'Nombre',c.apellidoColaborador 'Apellido',c.correo'Correo',c.usuario 'Usuario', CONVERT(VARCHAR,DECRYPTBYPASSPHRASE('ACecrypt02',contrasenia)) 'Contraseña', (p.puesto) 'Puesto'
+			SELECT c.idColaborador 'Codigo', c.nombreColaborador'Nombre',c.apellidoColaborador 'Apellido',c.correo'Correo',c.usuario 'Usuario', CONVERT(VARCHAR,DECRYPTBYPASSPHRASE('ACecrypt02',contrasenia)) 'Contraseña', (p.puesto) 'Puesto', c.estado 'Estado'
 				FROM Colaborador c JOIN Puesto p 
 				ON c.idPuesto = p.idPuesto	
 			Where CONCAT(C.nombreColaborador, ' ', C.apellidoColaborador, ' ', C.usuario) LIKE CONCAT('%', @colaboradorBuscado,'%') and c.estado=@estado
