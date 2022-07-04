@@ -289,26 +289,28 @@ namespace AromasCollection
         {
             try
             {
-                seleccionado = true;
-                codigoSAR = Convert.ToInt32(dgvSAR.Rows[e.RowIndex].Cells["Código"].Value.ToString());
-                txtRangoInicial.Text = dgvSAR.Rows[e.RowIndex].Cells["Valor Inicial"].Value.ToString();
-                txtRangoFinal.Text = dgvSAR.Rows[e.RowIndex].Cells["Valor Final"].Value.ToString();
-                dtpFRecepcion.Value = Convert.ToDateTime(dgvSAR.Rows[e.RowIndex].Cells["Fecha de Recepcion"].Value.ToString());
-                dtpFLEmision.Value = Convert.ToDateTime(dgvSAR.Rows[e.RowIndex].Cells["Fecha Limite de Emision"].Value.ToString());
-                txtCAI.Text = dgvSAR.Rows[e.RowIndex].Cells["Cai"].Value.ToString();
-                bool state = Convert.ToBoolean(dgvSAR.Rows[e.RowIndex].Cells["Estado"].Value);
-                fecha = dtpFRecepcion.Value;
-                fechaFLEmision = dtpFLEmision.Value;
-
-                if (state)
+                if (e.RowIndex >= 0)
                 {
-                    cmbEstado.SelectedValue = 1;
-                }
-                else
-                {
-                    cmbEstado.SelectedValue = 0;
-                }
+                    seleccionado = true;
+                    codigoSAR = Convert.ToInt32(dgvSAR.Rows[e.RowIndex].Cells["Código"].Value.ToString());
+                    txtRangoInicial.Text = dgvSAR.Rows[e.RowIndex].Cells["Valor Inicial"].Value.ToString();
+                    txtRangoFinal.Text = dgvSAR.Rows[e.RowIndex].Cells["Valor Final"].Value.ToString();
+                    dtpFRecepcion.Value = Convert.ToDateTime(dgvSAR.Rows[e.RowIndex].Cells["Fecha de Recepcion"].Value.ToString());
+                    dtpFLEmision.Value = Convert.ToDateTime(dgvSAR.Rows[e.RowIndex].Cells["Fecha Limite de Emision"].Value.ToString());
+                    txtCAI.Text = dgvSAR.Rows[e.RowIndex].Cells["Cai"].Value.ToString();
+                    bool state = Convert.ToBoolean(dgvSAR.Rows[e.RowIndex].Cells["Estado"].Value);
+                    fecha = dtpFRecepcion.Value;
+                    fechaFLEmision = dtpFLEmision.Value;
 
+                    if (state)
+                    {
+                        cmbEstado.SelectedValue = 1;
+                    }
+                    else
+                    {
+                        cmbEstado.SelectedValue = 0;
+                    }
+                }
 
 
             }

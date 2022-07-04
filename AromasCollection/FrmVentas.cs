@@ -59,17 +59,20 @@ namespace AromasCollection
         {
             try
             {
-                codigoFactura = Convert.ToInt32(dgFacturas.Rows[e.RowIndex].Cells["Código factura"].Value.ToString());
-                subtotal = Convert.ToDouble(dgFacturas.Rows[e.RowIndex].Cells["Subtotal"].Value.ToString());
-                if (subtotal == 0)
+                if (e.RowIndex >= 0)
                 {
-                    esVenta = false;
+                    codigoFactura = Convert.ToInt32(dgFacturas.Rows[e.RowIndex].Cells["Código factura"].Value.ToString());
+                    subtotal = Convert.ToDouble(dgFacturas.Rows[e.RowIndex].Cells["Subtotal"].Value.ToString());
+                    if (subtotal == 0)
+                    {
+                        esVenta = false;
+                    }
+                    else
+                    {
+                        esVenta = true;
+                    }
+                    seleccionado = true;
                 }
-                else
-                {
-                    esVenta = true;
-                }
-                seleccionado = true;
             }
             catch (Exception)
             {
