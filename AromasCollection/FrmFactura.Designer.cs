@@ -481,6 +481,7 @@ namespace AromasCollection
             this.numDescuento.Name = "numDescuento";
             this.numDescuento.Size = new System.Drawing.Size(75, 21);
             this.numDescuento.TabIndex = 16;
+            this.numDescuento.ValueChanged += new System.EventHandler(this.numDescuento_ValueChanged);
             // 
             // rbNormal
             // 

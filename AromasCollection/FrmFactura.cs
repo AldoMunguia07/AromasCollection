@@ -274,7 +274,7 @@ namespace AromasCollection
 
             int descuento = 0;
 
-            descuento = int.Parse(numDescuento.Value.ToString());
+            descuento = Convert.ToInt16(numDescuento.Value);
 
             
             double total = 0;
@@ -357,6 +357,11 @@ namespace AromasCollection
         private void rbNormal_CheckedChanged(object sender, EventArgs e)
         {
             numDescuento.Enabled = true;
+            calculos();
+        }
+
+        private void numDescuento_ValueChanged(object sender, EventArgs e)
+        {
             calculos();
         }
     }
