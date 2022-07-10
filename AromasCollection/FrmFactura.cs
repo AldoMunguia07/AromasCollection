@@ -203,6 +203,7 @@ namespace AromasCollection
                     }
                     else
                     {
+                        sar.IdColaborador = factura.IdColaborador;
                         sar.DesactivarRango(sar.CodigoSarActivo());
                         MessageBox.Show("¡Se a sobrepasado la fecha limite de emisión del rango!", "SAR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }

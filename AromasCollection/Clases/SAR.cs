@@ -401,7 +401,7 @@ namespace AromasCollection.Clases
                     sqlDataAdapter.Fill(dataTable);
 
 
-                    if (DateTime.Now <= Convert.ToDateTime(dataTable.Rows[0]["fechaLimiteEmision"]))
+                    if (DateTime.Now.Date <= Convert.ToDateTime(dataTable.Rows[0]["fechaLimiteEmision"]))
                     {
 
 
