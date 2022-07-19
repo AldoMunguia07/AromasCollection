@@ -34,7 +34,7 @@ namespace AromasCollection
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            if(camposLlenosCarrito())
+            if(camposLlenosCarrito()) // validación de campos llenos
             {
                 for (int i = 0; i < dgCarrito.Rows.Count; i++)
                 {
@@ -46,7 +46,7 @@ namespace AromasCollection
                     }
                 }
 
-                if (producto.Existencia >= numCantidad.Value)
+                if (producto.Existencia >= numCantidad.Value) // no agregar si no hay producto en existencia
                 {
                     int codigo = producto.IdProducto;
                     float precio = 0;
@@ -92,15 +92,6 @@ namespace AromasCollection
             {
                 MessageBox.Show("Seleccione producto a quitar del carrito", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-
-
-
-            /* for (int i = 0; i < dgCarrito.SelectedRows.Count; i++)
-             {
-                 dgCarrito.Rows.Remove(dgCarrito.SelectedRows[i]);
-             }*/
-
 
         }
 
@@ -160,6 +151,7 @@ namespace AromasCollection
 
         private void btnFacturar_Click(object sender, EventArgs e)
         {
+            // Para facturar se deben cumplir las siguientes validaciones
             if(camposLlenosFactura())
             {
                 if (sar.CodigoSarActivo() != 0)
@@ -212,22 +204,14 @@ namespace AromasCollection
                 {
                     MessageBox.Show("¡Ya no tiene rangos disponibles para su facturacion!, debe solicitar mas al SAR", "SAR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-
-
-
-
             }
             else
             {
                 MessageBox.Show("Debe llenar los datos de la factura", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-
-
-
         }
 
-        private void codigoFacturacion()
+        private void codigoFacturacion() // metodo para obtener el codigo de factira de manera automatica
         {
             if (sar.CodigoSarActivo() != 0)
             {
@@ -245,7 +229,7 @@ namespace AromasCollection
         }
 
 
-        private void obtenerValores()
+        private void obtenerValores() // Método para obtener los valores de los controles
         {
 
             codigoFacturacion();
@@ -264,7 +248,7 @@ namespace AromasCollection
             factura.Observaciones = txtObservaciones.Text;
         }
 
-        private void calculos()
+        private void calculos() // método para realizar calculos de impuesto, subtotal y total
         {
             double subtotal = 0;
 

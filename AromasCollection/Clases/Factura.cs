@@ -35,7 +35,7 @@ namespace AromasCollection.Clases
             try
             {
                 conexion.sqlConnection.Open();
-                //Query para mostrar un zapato
+                //Query para mostrar las ventas
                 SqlCommand sqlCommand = new SqlCommand("sp_Venta", conexion.sqlConnection);
                 sqlCommand.CommandType = CommandType.StoredProcedure;
 
@@ -73,7 +73,7 @@ namespace AromasCollection.Clases
             try
             {
                 conexion.sqlConnection.Open();
-                //Query para mostrar un zapato
+                //Query para mostrar una venta
                 SqlCommand sqlCommand = new SqlCommand("sp_Venta", conexion.sqlConnection);
                 sqlCommand.CommandType = CommandType.StoredProcedure;
 
@@ -110,7 +110,7 @@ namespace AromasCollection.Clases
             try
             {
                 conexion.sqlConnection.Open();
-                //Query para añadir un paciente
+                //Query para añadir una factura
                 SqlCommand sqlCommand = new SqlCommand("sp_Venta", conexion.sqlConnection);
                 sqlCommand.CommandType = CommandType.StoredProcedure;
 

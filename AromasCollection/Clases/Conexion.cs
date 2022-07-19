@@ -11,7 +11,7 @@ namespace AromasCollection.Clases
     class Conexion
     {
         private static string connectionString = ConfigurationManager.ConnectionStrings["AromasCollection.Properties.Settings.conexionAromasDB"].ConnectionString;
-        public SqlConnection sqlConnection = new SqlConnection(connectionString);
+        public SqlConnection sqlConnection = new SqlConnection(connectionString); //Metodo para conectarse a la base de datos
 
 
     }
