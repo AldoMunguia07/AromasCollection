@@ -299,9 +299,9 @@ namespace AromasCollection
             this.txtNumFactura.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNumFactura.Location = new System.Drawing.Point(131, 18);
             this.txtNumFactura.Name = "txtNumFactura";
-            this.txtNumFactura.ReadOnly = true;
             this.txtNumFactura.Size = new System.Drawing.Size(211, 26);
             this.txtNumFactura.TabIndex = 0;
+            this.txtNumFactura.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumFactura_KeyPress);
             // 
             // txtCodigoCliente
             // 

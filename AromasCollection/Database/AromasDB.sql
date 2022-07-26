@@ -139,7 +139,7 @@ GO
 CREATE TABLE Factura
 (
 	idFactura INT NOT NULL,
-	CodigoSAR INT NOT NULL,
+	--CodigoSAR INT NOT NULL,
 	idColaborador INT NOT NULL,
 	idCliente INT NOT NULL,
 	fechaVenta DATETIME NOT NULL,
@@ -148,7 +148,7 @@ CREATE TABLE Factura
 	observaciones VARCHAR(150) 
 
 	CONSTRAINT PK_Factura_idFactura
-		PRIMARY KEY CLUSTERED (idFactura, CodigoSAR),
+		PRIMARY KEY CLUSTERED (idFactura),
 
 	CONSTRAINT FKVenta$Existe$Colaborador
 		FOREIGN KEY (idColaborador) REFERENCES Colaborador(idColaborador),
@@ -156,8 +156,8 @@ CREATE TABLE Factura
 	CONSTRAINT FK_Venta$Existe$Cliente
 		FOREIGN KEY (idCliente) REFERENCES Cliente(idCliente),
 
-	CONSTRAINT FK_FacturaVenta$Existe$SAR
-		FOREIGN KEY (CodigoSAR) REFERENCES SAR(CodigoSAR)
+	--CONSTRAINT FK_FacturaVenta$Existe$SAR
+		--FOREIGN KEY (CodigoSAR) REFERENCES SAR(CodigoSAR)
 
 
 );
@@ -166,16 +166,16 @@ GO
 CREATE TABLE DetalleFactura
 (
 	idFactura INT NOT NULL,
-	CodigoSAR INT NOT NULL,
+	--CodigoSAR INT NOT NULL,
 	idProducto INT NOT NULL,
 	precio FLOAT NOT NULL,
 	cantidad INT NOT NULL,
 
 	CONSTRAINT PK_DetalleFactura_idVenta_idProducto
-		PRIMARY KEY CLUSTERED (idFactura,idProducto, CodigoSAR),
+		PRIMARY KEY CLUSTERED (idFactura,idProducto),
 
 	CONSTRAINT FK_DetalleFactura$Existe$Factura
-		FOREIGN KEY (idFactura, CodigoSAR) REFERENCES Factura(idFactura, CodigoSAR),
+		FOREIGN KEY (idFactura) REFERENCES Factura(idFactura),
 
 	CONSTRAINT FK_Venta$Existe$Producto
 		FOREIGN KEY (idProducto) REFERENCES Producto(idProducto),
@@ -224,12 +224,15 @@ GO
 INSERT INTO Cliente VALUES ('2222222222222', '222222222222222', 'Otras', 'Salidas', 1)
 GO
 
+INSERT INTO Cliente VALUES ('3333333333333', '333333333333333', 'Consumidor', 'Final', 1)
+GO
+
 
 --PROCEDIMIENTOS ALMACENADOS
 
 CREATE PROCEDURE sp_Venta
 @idFactura int = NULL,
-@codigoSAR int = NULL,
+--@codigoSAR int = NULL,
 @idColaborador int = NULL,
 @idCliente int = NULL,
 @fechaVenta DATETIME = NULL,
@@ -244,7 +247,7 @@ BEGIN
 	SET @fechaVenta = CONVERT(DATE, GETDATE());
 	IF @accion = 'insertar'
 		BEGIN
-			INSERT INTO Factura VALUES (@idFactura,@codigoSAR, @idColaborador, @idCliente, @fechaVenta, @descuento, @esVenta, @observaciones)
+			INSERT INTO Factura VALUES (@idFactura,/*@codigoSAR,*/ @idColaborador, @idCliente, @fechaVenta, @descuento, @esVenta, @observaciones)
 		END
 	ELSE IF @accion = 'mostrar'
 		BEGIN
@@ -280,7 +283,7 @@ GO
 
 CREATE PROCEDURE sp_detalleVenta
 @idFactura int = NULL,
-@codigoSAR int = NULL,
+--@codigoSAR int = NULL,
 @idProducto int = NULL,
 @precio float = NULL,
 @cantidad int = NULL,
@@ -291,7 +294,7 @@ BEGIN
 	
 	IF @accion = 'insertar'
 		BEGIN
-			INSERT INTO DetalleFactura VALUES (@idFactura,@codigoSAR, @idProducto, @precio, @cantidad)
+			INSERT INTO DetalleFactura VALUES (@idFactura,/*@codigoSAR,*/ @idProducto, @precio, @cantidad)
 		END
 	ELSE IF @accion = 'mostrarDetalle'
 		BEGIN
@@ -673,7 +676,7 @@ BEGIN
 		select top 1 RangoInicial from SAR WHERE estado = 1 ORDER BY CodigoSAR ASC
 	END
 
-	ELSE IF @accion = 'PrimerFactura'
+	/*ELSE IF @accion = 'PrimerFactura'
 	BEGIN 
 		select * from Factura where CodigoSAR = (select top 1 CodigoSAR from SAR WHERE estado = 1 ORDER BY CodigoSAR ASC)
 	END 
@@ -682,7 +685,7 @@ BEGIN
 	BEGIN 
 		select top 1  idFactura+1 'Codigo' from Factura where CodigoSAR = (select top 1 CodigoSAR from SAR WHERE estado = 1 ORDER BY CodigoSAR ASC)
 		ORDER BY idFactura DESC
-	END
+	END*/
 
 	ELSE IF @accion = 'FechaLimiteEmision'
 	BEGIN 

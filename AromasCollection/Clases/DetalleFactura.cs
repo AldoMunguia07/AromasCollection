@@ -15,7 +15,7 @@ namespace AromasCollection.Clases
 
         //PROPIEDADES
         public int IdFactura { get; set; }
-        public int CodigoSAR { get; set; }
+        //public int CodigoSAR { get; set; }
         public int IdProducto{ get; set; }
         public float Precio{ get; set; }
         public int Cantidad { get; set; }
@@ -33,7 +33,7 @@ namespace AromasCollection.Clases
 
                 // Establecer los valores de los parámetros
                 sqlCommand.Parameters.AddWithValue("@idFactura", detalleFactura.IdFactura);
-                sqlCommand.Parameters.AddWithValue("@codigoSAR", detalleFactura.CodigoSAR);
+               // sqlCommand.Parameters.AddWithValue("@codigoSAR", detalleFactura.CodigoSAR);
                 sqlCommand.Parameters.AddWithValue("@idProducto", detalleFactura.IdProducto);
                 sqlCommand.Parameters.AddWithValue("@precio", detalleFactura.Precio);
                 sqlCommand.Parameters.AddWithValue("@cantidad", detalleFactura.Cantidad);

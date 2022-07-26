@@ -26,8 +26,8 @@ namespace AromasCollection
             rbDetalle.Checked = true;
             rbNormal.Checked = true;
             factura.IdColaborador = colaborador.IdColaborador;
-            codigoFacturacion();
-            txtNumFactura.Text = factura.IdFactura.ToString();
+            //codigoFacturacion();
+            //txtNumFactura.Text = factura.IdFactura.ToString();
             
 
         }
@@ -132,7 +132,7 @@ namespace AromasCollection
 
 
             detalleFactura.IdFactura = factura.IdFactura;
-            detalleFactura.CodigoSAR = factura.CodigoSAR;
+            //detalleFactura.CodigoSAR = factura.CodigoSAR;
 
 
             for (int i = 0; i < dgCarrito.Rows.Count; i++)
@@ -154,10 +154,10 @@ namespace AromasCollection
             // Para facturar se deben cumplir las siguientes validaciones
             if(camposLlenosFactura())
             {
-                if (sar.CodigoSarActivo() != 0)
+                /*if (sar.CodigoSarActivo() != 0)
                 {
                     if (sar.FechaLimiteEmisionVencio())
-                    {
+                    {*/
                         if (dgCarrito.Rows.Count > 0)
                         {
                             if (rbEnviosMall.Checked)
@@ -192,8 +192,8 @@ namespace AromasCollection
                         {
                             MessageBox.Show("Debe añadir productos al carrito", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-                    }
-                    else
+                    /*}
+                     else
                     {
                         sar.IdColaborador = factura.IdColaborador;
                         sar.DesactivarRango(sar.CodigoSarActivo());
@@ -203,7 +203,7 @@ namespace AromasCollection
                 else
                 {
                     MessageBox.Show("¡Ya no tiene rangos disponibles para su facturacion!, debe solicitar mas al SAR", "SAR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
+                }*/
             }
             else
             {
@@ -211,7 +211,7 @@ namespace AromasCollection
             }
         }
 
-        private void codigoFacturacion() // metodo para obtener el codigo de factira de manera automatica
+       /* private void codigoFacturacion() // metodo para obtener el codigo de factira de manera automatica
         {
             if (sar.CodigoSarActivo() != 0)
             {
@@ -226,14 +226,14 @@ namespace AromasCollection
                     factura.IdFactura = sar.ObtenerCodigoFactura();
                 }
             }
-        }
+        }*/
 
 
         private void obtenerValores() // Método para obtener los valores de los controles
         {
 
-            codigoFacturacion();
-    
+            //codigoFacturacion();
+            factura.IdFactura = int.Parse(txtNumFactura.Text);
             factura.IdCliente = int.Parse(txtCodigoCliente.Text);
             factura.FechaVenta = DateTime.Now;
             factura.Descuento = int.Parse(numDescuento.Value.ToString());
@@ -298,7 +298,7 @@ namespace AromasCollection
 
         private bool camposLlenosFactura()
         {
-            if (txtCodigoCliente.Text != "")
+            if (txtCodigoCliente.Text != "" && txtNumFactura.Text != "")
             {
                 return true;
             }
@@ -348,6 +348,17 @@ namespace AromasCollection
         private void numDescuento_ValueChanged(object sender, EventArgs e)
         {
             calculos();
+        }
+
+        private void txtNumFactura_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+
+       
+
         }
     }
 }
