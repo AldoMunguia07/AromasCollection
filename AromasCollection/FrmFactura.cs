@@ -40,7 +40,7 @@ namespace AromasCollection
                 {
                     if (producto.IdProducto == Convert.ToInt32(dgCarrito.Rows[i].Cells[0].Value))
                     {
-                        MessageBox.Show("El producto ya está agregado al carrito", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("El producto ya está agregado al carrito", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         limpiarAggProducto();
                         return;
                     }
@@ -68,13 +68,13 @@ namespace AromasCollection
                 }
                 else
                 {
-                    MessageBox.Show("Cantidad en inventario insuficiente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Cantidad en inventario insuficiente", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
 
             }
             else
             {
-                MessageBox.Show("Debe seleccionar un producto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Debe seleccionar un producto", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
             
@@ -90,7 +90,7 @@ namespace AromasCollection
             }
             else
             {
-                MessageBox.Show("Seleccione producto a quitar del carrito", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Seleccione producto a quitar del carrito", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
         }
@@ -168,7 +168,7 @@ namespace AromasCollection
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Debe elegir el codigo 1 del cliente (Envios Mall)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    MessageBox.Show("Debe elegir el codigo 1 del cliente (Envios Mall)", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 }
                             }
                             else if (rbOtros.Checked)
@@ -179,7 +179,7 @@ namespace AromasCollection
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Debe elegir el codigo 2 del cliente (Otras Salidas)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    MessageBox.Show("Debe elegir el codigo 2 del cliente (Otras Salidas)", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 }
                             }
                             else
@@ -190,7 +190,7 @@ namespace AromasCollection
                         }
                         else
                         {
-                            MessageBox.Show("Debe añadir productos al carrito", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Debe añadir productos al carrito", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     /*}
                      else
@@ -207,7 +207,7 @@ namespace AromasCollection
             }
             else
             {
-                MessageBox.Show("Debe llenar los datos de la factura", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Debe llenar los datos de la factura", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

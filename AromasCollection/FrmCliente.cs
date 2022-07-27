@@ -50,25 +50,25 @@ namespace AromasCollection
         {
             if (!Validacion.verificarTextoLargo(txtID.Text, 13))
             {
-                MessageBox.Show("Por favor, ingrese el numero de identidad del cliente.");
+                MessageBox.Show("Por favor, ingrese el numero de identidad del cliente.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
             if (!Validacion.verificarTextoLargo(txtRTN.Text, 13))
             {
-                MessageBox.Show("Por favor, ingrese el RTN del cliente.");
+                MessageBox.Show("Por favor, ingrese el RTN del cliente.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
             if (!Validacion.verificarTextoLargo(txtNombre.Text, 55))
             {
-                MessageBox.Show("Por favor, ingrese el nombre del cliente");
+                MessageBox.Show("Por favor, ingrese el nombre del cliente", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
             if (!Validacion.verificarTextoLargo(txtApellido.Text, 55))
             {
-                MessageBox.Show("Por favor, ingrese el apellido del cliente");
+                MessageBox.Show("Por favor, ingrese el apellido del cliente", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
@@ -122,7 +122,7 @@ namespace AromasCollection
         {
             if (!selecionActiva)
             {
-                MessageBox.Show("Por favor, selecione un cliente para modificar");
+                MessageBox.Show("Por favor, selecione un cliente para modificar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {

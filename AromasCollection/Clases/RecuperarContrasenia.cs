@@ -9,6 +9,7 @@ using System.Data;
 using System.Windows.Forms;
 using System.Net.Mail;
 using System.Net;
+using System.Net.NetworkInformation;
 
 namespace AromasCollection.Clases
 {
@@ -82,7 +83,15 @@ namespace AromasCollection.Clases
 
                 if (sqlCommand.ExecuteNonQuery() != 0)
                 {
-                    EnviarEmail(newPass, correo);
+                    if(internet())
+                    {
+                        EnviarEmail(newPass, correo);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Revise su conexión a internet", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    
                 }
             }
             catch (Exception ex)
@@ -132,6 +141,30 @@ namespace AromasCollection.Clases
             }
 
 
+        }
+
+        private bool internet()
+        {
+            bool hayInternet = false;
+            string testHost = "Google.com";
+
+            using (Ping p = new Ping())
+            {
+                string data = "Esto es un test";
+                byte[] buffer = Encoding.ASCII.GetBytes(data);
+                int timeout = 3000;
+
+                try
+                {
+                    PingReply reply = p.Send(testHost, timeout, buffer);
+                    hayInternet = (reply.Status == IPStatus.Success);
+                } catch(Exception)
+                {
+                    hayInternet = false;
+                }
+
+                return hayInternet;
+            }
         }
     }
 }

@@ -55,34 +55,34 @@ namespace AromasCollection
                                 frmMenuPrincipal.RecuperarValorAlCerrar(miColaborador);
                                 usuario = txtUsuario.Text;
                                 correo = txtCorreo.Text;
-                                MessageBox.Show("Datos actualizados", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show("Datos actualizados", "Aromas Colection", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                             else
                             {
-                                MessageBox.Show("El correo electrónico ya existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                MessageBox.Show("El correo electrónico ya existe", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             }
                         }
                         else
                         {
-                            MessageBox.Show("El nombre de usuario ya existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show("El nombre de usuario ya existe", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
 
                     }
                     else
                     {
-                        MessageBox.Show("El correo electronico no tiene el formato correcto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("El correo electronico no tiene el formato correcto", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
 
                 }
                 else
                 {
-                    MessageBox.Show("La contraseña debe ser mayor o igual a 8 caracteres", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("La contraseña debe ser mayor o igual a 8 caracteres", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
 
             }
             else
             {
-                MessageBox.Show("No debe dejar campos vacios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("No debe dejar campos vacios", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             
 

@@ -86,7 +86,7 @@ namespace AromasCollection
                 }
                 else
                 {
-                    MessageBox.Show("El producto ya existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("El producto ya existe", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
         }
@@ -95,25 +95,25 @@ namespace AromasCollection
         {
             if (!Validacion.verificarTextoLargo(txtProductoNombre.Text, 150))
             {
-                MessageBox.Show("Por favor, ingrese el nombre del producto.");
+                MessageBox.Show("Por favor, ingrese el nombre del producto.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
             if (!Validacion.verificarTextoLargo(txtDescripcion.Text, 255))
             {
-                MessageBox.Show("Por favor, ingrese la descripcion del producto.");
+                MessageBox.Show("Por favor, ingrese la descripcion del producto.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
             if (!Validacion.verificarContenidoTexto(txtPrecioDetalle.Text))
             {
-                MessageBox.Show("Ingrese un valor valido en el campo de 'Precio de Detalle'");
+                MessageBox.Show("Ingrese un valor valido en el campo de 'Precio de Detalle'", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
             if (!Validacion.verificarContenidoTexto(txtPrecioMayorista.Text))
             {
-                MessageBox.Show("Ingrese un valor valido en el campo de 'Precio de Mayorista'");
+                MessageBox.Show("Ingrese un valor valido en el campo de 'Precio de Mayorista'", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
@@ -151,7 +151,7 @@ namespace AromasCollection
             
             if (!selecionActiva)
             {
-                MessageBox.Show("Por favor, selecione un producto");
+                MessageBox.Show("Por favor, selecione un producto", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
@@ -164,7 +164,7 @@ namespace AromasCollection
         {
             if(!selecionActiva)
             {
-                MessageBox.Show("Por favor, selecione un producto a modificar");
+                MessageBox.Show("Por favor, selecione un producto a modificar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {

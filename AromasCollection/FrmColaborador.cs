@@ -79,31 +79,31 @@ namespace AromasCollection
         {
             if (!Validacion.verificarTextoLargo(txtColaboradorNombre.Text, 30))
             {
-                MessageBox.Show("Por favor, ingrese el nombre de maximo 30 caracteres para el colaborador.");
+                MessageBox.Show("Por favor, ingrese el nombre de maximo 30 caracteres para el colaborador.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
             if (!Validacion.verificarTextoLargo(txtColaboradorApellido.Text, 30))
             {
-                MessageBox.Show("Por favor, ingrese el apellido de maximo 30 caracteres para el colaborador.");
+                MessageBox.Show("Por favor, ingrese el apellido de maximo 30 caracteres para el colaborador.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
             if (!Validacion.verificarTextoLargo(txtColaboradorCorreo.Text, 50))
             {
-                MessageBox.Show("Por favor, ingrese el correo de maximo 50 caracteres para el colaborador.");
+                MessageBox.Show("Por favor, ingrese el correo de maximo 50 caracteres para el colaborador.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
             if (!Validacion.verificarTextoLargo(txtColaboradorUsuario.Text, 25))
             {
-                MessageBox.Show("Por favor, ingrese el usuario de maximo 25 caracteres para el colaborador.");
+                MessageBox.Show("Por favor, ingrese el usuario de maximo 25 caracteres para el colaborador.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
             if (!Validacion.verificarTextoLargo(txtColaboradorContrasena.Text, 15))
             {
-                MessageBox.Show("Por favor, ingrese la contraseña de maximo 15 caracteres para el colaborador.");
+                MessageBox.Show("Por favor, ingrese la contraseña de maximo 15 caracteres para el colaborador.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
@@ -123,13 +123,13 @@ namespace AromasCollection
                     }
                     else
                     {
-                        MessageBox.Show("El correo electrónico ya existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("El correo electrónico ya existe", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
 
                 }
                 else
                 {
-                    MessageBox.Show("El nombre de usuario ya existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("El nombre de usuario ya existe", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
 
             }
@@ -174,7 +174,7 @@ namespace AromasCollection
 
                 if (!selecionActiva)
                 {
-                    MessageBox.Show("Por favor, selecione un colaborador para modificar");
+                    MessageBox.Show("Por favor, selecione un colaborador para modificar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
                 {

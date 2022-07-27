@@ -59,7 +59,7 @@ namespace AromasCollection
         {
             if (!selecionActiva)
             {
-                MessageBox.Show("Por favor, selecione un producto a modificar");
+                MessageBox.Show("Por favor, selecione un producto a modificar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
