@@ -48,13 +48,13 @@ namespace AromasCollection
         }
         private bool VerificarParametros()
         {
-            if (!Validacion.verificarTextoLargo(txtID.Text, 15))
+            if (!Validacion.verificarTextoLargo(txtID.Text, 13))
             {
                 MessageBox.Show("Por favor, ingrese el numero de identidad del cliente.");
                 return false;
             }
 
-            if (!Validacion.verificarTextoLargo(txtRTN.Text, 15))
+            if (!Validacion.verificarTextoLargo(txtRTN.Text, 13))
             {
                 MessageBox.Show("Por favor, ingrese el RTN del cliente.");
                 return false;

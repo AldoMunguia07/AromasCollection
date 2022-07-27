@@ -19,6 +19,7 @@ namespace AromasCollection
         bool selecionActiva = false;
         Colaborador miColaborador = new Colaborador();
         bool cargado = false;
+        string product;
         public FrmProducto(Colaborador colaborador)
         {
             InitializeComponent();
@@ -76,10 +77,17 @@ namespace AromasCollection
         {
             if(VerificarParametros())
             {
-                ObtenerParametros();
+                if (!producto.ExisteProducto(txtProductoNombre.Text))
+                {
+                    ObtenerParametros();
 
-                producto.AgregarProducto(producto);
-                Cleaner();
+                    producto.AgregarProducto(producto);
+                    Cleaner();
+                }
+                else
+                {
+                    MessageBox.Show("El producto ya existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
 
@@ -132,6 +140,7 @@ namespace AromasCollection
             }
 
             cmbCategoria.SelectedIndex = 0;
+            product = "";
 
             btnAgregar.Enabled = true;
             inicializarDatagrid();
@@ -161,9 +170,16 @@ namespace AromasCollection
             {
                 if(VerificarParametros())
                 {
-                    ObtenerParametros();
-                    producto.ModificarProducto(producto);
-                    MasterCleaner();
+                    if (!producto.ExisteProducto(txtProductoNombre.Text) || product == txtProductoNombre.Text)
+                    {
+                        ObtenerParametros();
+                        producto.ModificarProducto(producto);
+                        MasterCleaner();
+                    }
+                    else
+                    {
+                        MessageBox.Show("El producto ya existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
             }
         }
@@ -198,6 +214,7 @@ namespace AromasCollection
 
                 selecionActiva = true;
                 btnAgregar.Enabled = false;
+                product = row.Cells["Producto"].Value.ToString();
             }
             
         }

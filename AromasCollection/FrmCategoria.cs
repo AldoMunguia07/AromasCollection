@@ -19,9 +19,11 @@ namespace AromasCollection
 
         bool editarEstado = false;
         bool seleccionado = false;
+        string cat;
 
         public FrmCategoria(Colaborador colaborador)
         {
+            
             InitializeComponent();
 
             categoria.CargarComboBoxEstado(cmbEstado);
@@ -50,12 +52,19 @@ namespace AromasCollection
         {
             if (validacion.verificarTextoLargo(texto, 30))
             {
-                categoria.categoria = texto;
-                categoria.estado = Convert.ToBoolean(Convert.ToInt32(cmbEstado.SelectedValue));
-               
-                categoria.AgregarCategoria(categoria);
+                if (!categoria.ExisteCategoria(txtboxCategoria.Text))
+                {
+                    categoria.categoria = texto;
+                    categoria.estado = Convert.ToBoolean(Convert.ToInt32(cmbEstado.SelectedValue));
 
-                MasterCleaner();
+                    categoria.AgregarCategoria(categoria);
+
+                    MasterCleaner();
+                }
+                else
+                {
+                    MessageBox.Show("La categoria ya existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
             else
             {
@@ -95,6 +104,7 @@ namespace AromasCollection
             btnCancelar.Enabled = false;
 
             txtboxCategoria.Enabled = false;
+            cat = "";
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
@@ -142,6 +152,9 @@ namespace AromasCollection
                 categoria.categoria = row.Cells[1].Value.ToString();
                 seleccionado = true;
 
+                cat = row.Cells[1].Value.ToString(); ;
+
+
             }
 
                
@@ -173,9 +186,16 @@ namespace AromasCollection
             categoria.estado = Convert.ToBoolean(Convert.ToInt32(cmbEstado.SelectedValue));
             if (validacion.verificarTextoLargo(categoria.categoria, 30))
             {
-                
-                categoria.ModificarCategoria(categoria);
-                MasterCleaner();
+                if (!categoria.ExisteCategoria(txtboxCategoria.Text) || txtboxCategoria.Text == cat)
+                {
+
+                    categoria.ModificarCategoria(categoria);
+                    MasterCleaner();
+                }
+                else
+                {
+                    MessageBox.Show("La categoria ya existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
             else
             {

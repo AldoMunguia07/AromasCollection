@@ -366,6 +366,14 @@ BEGIN
 		WHERE idProducto = @idProducto
 	END
 
+	ELSE IF @accion = 'obtenerProducto'
+		BEGIN
+			SELECT *
+			  FROM Producto P
+			  WHERE P.nombreProducto = @nombreProducto
+		END
+
+
 END
 GO
 
@@ -483,6 +491,13 @@ BEGIN
 		SET  estado = 0
 		WHERE idCategoria = @idCategoria
 	END
+
+	ELSE IF @accion = 'obtenerCategoria'
+		BEGIN
+			SELECT *
+			  FROM Categoria C
+			  WHERE C.categoria = @categoria
+		END
 
 	END
 END

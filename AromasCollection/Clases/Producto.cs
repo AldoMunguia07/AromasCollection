@@ -252,5 +252,48 @@ namespace AromasCollection.Clases
 
         }
 
+        public bool ExisteProducto(string produc)
+        {
+            try
+            {
+
+                conexion.sqlConnection.Open();
+
+                SqlCommand sqlCommand = new SqlCommand("sp_Producto", conexion.sqlConnection);
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+
+                using (sqlDataAdapter)
+                {
+                    sqlCommand.Parameters.AddWithValue("@nombreProducto", produc);
+                    sqlCommand.Parameters.AddWithValue("@accion", "obtenerProducto");
+
+                    DataTable dataTable = new DataTable();
+
+                    sqlDataAdapter.Fill(dataTable);
+
+
+
+                    if (dataTable.Rows.Count == 1) //Si el usuario existe retorna un true
+                    {
+                        return true;
+                    }
+
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                conexion.sqlConnection.Close();
+            }
+
+
+        }
+
     }
 }
