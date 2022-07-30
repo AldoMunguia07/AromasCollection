@@ -99,11 +99,6 @@ namespace AromasCollection
                 return false;
             }
 
-            if (!Validacion.verificarTextoLargo(txtDescripcion.Text, 255))
-            {
-                MessageBox.Show("Por favor, ingrese la descripcion del producto.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
 
             if (!Validacion.verificarContenidoTexto(txtPrecioDetalle.Text))
             {

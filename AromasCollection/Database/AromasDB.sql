@@ -88,7 +88,7 @@ CREATE TABLE Producto
 (
 	idProducto INT NOT NULL IDENTITY,
 	nombreProducto VARCHAR(150) NOT NULL UNIQUE,
-	descripcion VARCHAR(255) NOT NULL,
+	descripcion VARCHAR(255) NULL,
 	precioDetalle FLOAT NOT NULL,
 	precioMayorista FLOAT NOT NULL,
 	idCategoria INT NOT NULL,
